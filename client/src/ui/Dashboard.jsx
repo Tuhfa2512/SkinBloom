@@ -109,7 +109,7 @@ export default function Dashboard() {
                     >
                         <div className="hero-art-bg hero-art-overlay soft-left-fade" />
                         <img
-                            src="../category images/53f327ff-40e1-4ead-9443-b5ed9f9ce923.jpg"
+                            src="../category images/db2a9938-3c9a-46d9-af1e-7ec16256aa46.jpg"
                             alt="Minimal skincare products with branch shadow"
                             className="hero-art-img"
                             onError={(e) => {
@@ -530,7 +530,7 @@ export default function Dashboard() {
                     <div className="highlight-media">
                         {/* Replace the src below with your own image placed in /public (e.g. /routine-hero.jpg) */}
                         <img
-                            src="/routine-hero.jpg"
+                            src="../category images/53f327ff-40e1-4ead-9443-b5ed9f9ce923.jpg"
                             alt="Daily skincare routine products neatly arranged"
                             className="highlight-img"
                             style={{
