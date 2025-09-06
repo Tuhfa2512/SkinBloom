@@ -1,0 +1,95 @@
+name,brand,category,skinType,description,step,popular,image
+Cetaphil Gentle Skin Cleanser,Cetaphil,Cleanser,All;Sensitive,"Mild, non‑irritating daily cleanser.",1,True,https://www.cetaphil.com/us/products/gentle-skin-cleanser
+CeraVe Hydrating Cleanser,CeraVe,Cleanser,Dry;All,Cream cleanser with ceramides + HA.,1,True,https://www.cerave.com/skincare/cleansers/hydrating-facial-cleanser
+CeraVe Foaming Facial Cleanser,CeraVe,Cleanser,Oily;Combination,Foaming gel cleanser with niacinamide.,1,True,https://www.cerave.com/skincare/cleansers/foaming-facial-cleanser
+La Roche-Posay Toleriane Hydrating Gentle Cleanser,La Roche-Posay,Cleanser,All;Sensitive,Gentle cream cleanser with thermal water.,1,True,https://www.laroche-posay.us/face-and-body-cleanser/toleriane-hydrating-gentle-facial-cleanser-3606000436713.html
+Neutrogena Hydro Boost Hydrating Cleansing Gel,Neutrogena,Cleanser,All;Dry,Hydrating gel cleanser with HA.,1,True,https://www.neutrogena.com/products/skincare/hydro-boost-hydrating-cleansing-gel/6811041.html
+Bioderma Sensibio H2O Micellar Water,Bioderma,Cleanser,All;Sensitive,Micellar water makeup remover.,1,True,https://www.bioderma.us/our-products/sensibio/h2o
+Garnier Micellar Cleansing Water (Pink),Garnier,Cleanser,All;Sensitive,No‑rinse makeup remover & cleanse.,1,True,https://www.garnierusa.com/about-our-brands/skin-care/micellar-water
+Clinique Take The Day Off Cleansing Balm,Clinique,Cleanser,All,Makeup‑melting balm cleanser.,1,True,https://www.clinique.com/product/1573/5128/skincare/cleansers-makeup-removers/take-the-day-off-cleansing-balm
+Banila Co Clean It Zero Cleansing Balm Original,Banila Co,Cleanser,All,K‑beauty balm for makeup removal.,1,True,https://banilausa.com/products/clean-it-zero-cleansing-balm-original
+COSRX Low pH Good Morning Gel Cleanser,COSRX,Cleanser,All;Combination,Gentle low‑pH gel cleanser.,1,True,https://www.cosrx.com/products/low-ph-good-morning-gel-cleanser
+KraveBeauty Matcha Hemp Hydrating Cleanser,KraveBeauty,Cleanser,All,Hydrating jelly cleanser with matcha.,1,True,https://kravebeauty.com/products/matcha-hemp-hydrating-cleanser
+Innisfree Green Tea Hydrating Amino Acid Cleanser,Innisfree,Cleanser,All;Combination,Foam cleanser with green tea extract.,1,True,https://us.innisfree.com/products/green-tea-hydrating-aminos-acid-cleanser
+First Aid Beauty Pure Skin Face Cleanser,First Aid Beauty,Cleanser,All;Sensitive,Fragrance‑free gentle cleanser.,1,True,https://www.firstaidbeauty.com/product/pure-skin-face-cleanser/FA356.html
+Youth to the People Superfood Cleanser,Youth to the People,Cleanser,All,Kale + green tea daily cleanser.,1,True,https://www.youthtothepeople.com/products/superfood-cleanser
+Simple Kind to Skin Refreshing Facial Wash,Simple,Cleanser,All;Sensitive,No perfume/dye gentle wash.,1,True,https://www.simpleskincare.com/us/products/face-wash/kind-to-skin-refreshing-facial-wash-gel.html
+Pixi Glow Tonic 5% Glycolic,Pixi,Toner,All;Combination,Exfoliating toner with glycolic acid.,2,True,https://www.pixibeauty.com/products/glow-tonic
+Paula’s Choice Skin Perfecting 2% BHA Liquid Exfoliant,Paula's Choice,Toner,Oily;Combination;All,Salicylic acid leave‑on exfoliant.,2,True,https://www.paulaschoice.com/skin-perfecting-2pct-bha-liquid-exfoliant/201-2010.html
+Klairs Supple Preparation Unscented Toner,Klairs,Toner,All;Sensitive,"Balance pH, fragrance‑free.",2,True,https://www.klairscosmetics.com/product/supple-preparation-unscented-toner/
+Laneige Cream Skin Toner & Moisturizer,Laneige,Toner,Dry;All,Milky toner‑moisturizer hybrid.,2,True,https://us.laneige.com/products/cream-skin-toner-moisturizer
+COSRX AHA/BHA Clarifying Treatment Toner,COSRX,Toner,All;Combination,Mild daily exfoliating toner.,2,True,https://www.cosrx.com/products/aha-bha-clarifying-treatment-toner
+The Ordinary Hyaluronic Acid 2% + B5,The Ordinary,Serum,Dry;All,HA hydration serum with B5.,3,True,https://theordinary.com/en-us/hyaluronic-acid-2-b5-100425.html
+The Ordinary Niacinamide 10% + Zinc 1%,The Ordinary,Serum,Oily;Combination;All,Oil‑regulating niacinamide serum.,3,True,https://theordinary.com/en-us/niacinamide-10-zinc-1-100436.html
+La Roche-Posay Hyalu B5 Serum,La Roche-Posay,Serum,All,HA + B5 plumping serum.,3,True,https://www.laroche-posay.us/face-and-body-serum/hyalu-b5-pure-hyaluronic-acid-serum-3337875583626.html
+Skinceuticals C E Ferulic,SkinCeuticals,Serum,All,Vit C + E + ferulic antioxidant.,3,True,https://www.skinceuticals.com/c-e-ferulic-635494347207.html
+Vichy Mineral 89,Vichy,Serum,All,HA booster with volcanic water.,3,True,https://www.vichyusa.com/mineral-89/3337875543248.html
+Estée Lauder Advanced Night Repair,Estée Lauder,Serum,All,Multi‑recovery night serum.,3,True,https://www.esteelauder.com/product/681/46153/product-catalog/skincare/repair/advanced-night-repair/synchronized-multi-recovery-complex
+Sunday Riley Good Genes Lactic Acid,Sunday Riley,Treatment,All;Combination,Lactic acid resurfacing treatment.,3,True,https://www.sundayriley.com/products/good-genes
+Paula’s Choice 10% Azelaic Acid Booster,Paula's Choice,Treatment,All;Oily;Combination,Azelaic acid for tone and redness.,3,True,https://www.paulaschoice.com/10-azelaic-acid-booster/777.html
+Differin Gel 0.1% Adapalene,Differin,Treatment,All;Oily;Combination,Retinoid acne treatment.,3,True,https://www.differin.com/acne-treatment/differin-gel/
+The Ordinary Retinol 1% in Squalane,The Ordinary,Treatment,All;Combination,Retinol in squalane base.,3,True,https://theordinary.com/en-us/retinol-1-in-squalane-100428.html
+Biossance Squalane + Vitamin C Rose Oil,Biossance,Treatment,Dry;All,Brightening face oil with squalane.,3,True,https://www.biossance.com/products/squalane-vitamin-c-rose-oil
+The Inkey List Retinol Serum,The Inkey List,Treatment,All,Slow‑release retinol serum.,3,True,https://www.theinkeylist.com/products/retinol-serum
+Murad Retinol Youth Renewal Serum,Murad,Serum,All,Retinol tri‑active technology.,3,True,https://www.murad.com/products/retinol-youth-renewal-serum/
+Tranexamic Acid 5% Serum (Naturium),Naturium,Serum,All,Target dark spots and tone.,3,True,https://naturium.com/products/tranexamic-topical-acid-5
+Azelaic Acid Suspension 10% (The Ordinary),The Ordinary,Treatment,All;Oily;Combination,Multifunctional brightening cream‑gel.,3,True,https://theordinary.com/en-us/azelaic-acid-suspension-10-100439.html
+CeraVe Moisturizing Cream,CeraVe,Moisturizer,Dry;All,Rich cream with ceramides + HA.,4,True,https://www.cerave.com/skincare/moisturizers/moisturizing-cream
+La Roche-Posay Toleriane Double Repair Face Moisturizer,La Roche-Posay,Moisturizer,All;Sensitive,Barrier‑supporting daily moisturizer.,4,True,https://www.laroche-posay.us/face-and-body-moisturizer/toleriane-double-repair-face-moisturizer-3337875543248.html
+Neutrogena Hydro Boost Water Gel,Neutrogena,Moisturizer,Dry;All,HA water gel moisturizer.,4,True,https://www.neutrogena.com/products/skincare/hydro-boost-water-gel/6811047.html
+Clinique Dramatically Different Moisturizing Lotion+,Clinique,Moisturizer,Dry;All,Iconic daily hydrator.,4,True,https://www.clinique.com/product/1573/5166/skincare/moisturizers/dramatically-different-moisturizing-lotion
+First Aid Beauty Ultra Repair Cream,First Aid Beauty,Moisturizer,Dry;Sensitive;All,"Intense hydration, fragrance‑free.",4,True,https://www.firstaidbeauty.com/product/ultra-repair-cream/FA-U-10001.html
+Dr. Jart+ Ceramidin Cream,Dr. Jart+,Moisturizer,Dry;All,Ceramide‑rich barrier cream.,4,True,https://us.drjart.com/products/ceramidin-cream
+Kiehl’s Ultra Facial Cream,Kiehl's,Moisturizer,All,24‑hour lightweight hydration.,4,True,https://www.kiehls.com/skincare/face-moisturizers/ultra-facial-cream/622.html
+Tatcha The Water Cream,Tatcha,Moisturizer,Oily;Combination,Oil‑free water cream.,4,True,https://www.tatcha.com/product/WWC.html
+Belif The True Cream Aqua Bomb,belif,Moisturizer,Oily;Combination;All,Gel‑cream hydration burst.,4,True,https://belifusa.com/products/the-true-cream-aqua-bomb
+Embryolisse Lait‑Crème Concentré,Embryolisse,Moisturizer,Dry;All,Makeup‑artist favorite moisturizer.,4,True,https://www.embryolisseusa.com/products/lait-creme-concentre
+La Roche-Posay Anthelios Melt‑in Milk SPF 60,La Roche-Posay,Sunscreen,All,Broad‑spectrum daily sunscreen.,5,True,https://www.laroche-posay.us/sunscreen/anthelios-melt-in-milk-sunscreen-spf-60-3337872411991.html
+EltaMD UV Clear Broad‑Spectrum SPF 46,EltaMD,Sunscreen,All;Sensitive,Niacinamide facial sunscreen.,5,True,https://eltamd.com/products/uv-clear-broad-spectrum-spf-46
+Supergoop! Unseen Sunscreen SPF 40,Supergoop!,Sunscreen,All,Invisible gel sunscreen.,5,True,https://supergoop.com/products/unseen-sunscreen-spf-40
+Biore UV Aqua Rich Watery Essence SPF 50+,Biore,Sunscreen,All,Lightweight Japanese sunscreen.,5,True,https://www.kao.com/global/en/biore/uv/
+CeraVe Hydrating Mineral Sunscreen SPF 50,CeraVe,Sunscreen,All;Sensitive,100% mineral face sunscreen.,5,True,https://www.cerave.com/skincare/sunscreen/hydrating-mineral-face-sunscreen-lotion-spf-50
+Black Girl Sunscreen SPF 30,Black Girl Sunscreen,Sunscreen,All,No‑white‑cast moisturizing SPF.,5,True,https://www.blackgirlsunscreen.com/product/black-girl-sunscreen-spf-30/
+Shiseido Urban Environment Oil‑Free UV Protector,Shiseido,Sunscreen,All;Combination,Oil‑free daily UV protector.,5,True,https://www.shiseido.com/urban-environment/
+Beauty of Joseon Relief Sun: Rice + Probiotics SPF50+,Beauty of Joseon,Sunscreen,All,Beloved K‑beauty sunscreen.,5,True,https://beautyofjoseon.com/products/relief-sun-rice-probiotics
+ISDIN Eryfotona Actinica SPF 50+,ISDIN,Sunscreen,All,Photolyase + zinc oxide SPF.,5,True,https://www.isdin.com/en-US/eryfotona-actinica-5oz
+Aztec Secret Indian Healing Clay,Aztec Secret,Mask,Oily;Combination,Deep pore cleansing clay mask.,6,True,https://www.aztec-secret.com/
+Origins Clear Improvement Active Charcoal Mask,Origins,Mask,Oily;Combination,Charcoal purifying mask.,6,True,https://www.origins.com/product/15348/11910/skincare/masks/clear-improvement/active-charcoal-mask-to-clear-pores
+Fresh Rose Face Mask,Fresh,Mask,All;Dry,Hydrating mask with rose petals.,6,True,https://www.fresh.com/us/skincare/face-masks/rose-face-mask-H00006231.html
+The Ordinary AHA 30% + BHA 2% Peeling Solution,The Ordinary,Exfoliant,All;Oily;Combination,Weekly exfoliating peel.,6,True,https://theordinary.com/en-us/aha-30-bha-2-peeling-solution-100422.html
+Paula’s Choice Skin Perfecting 8% AHA Gel,Paula's Choice,Exfoliant,All;Combination,Leave‑on glycolic exfoliant.,6,True,https://www.paulaschoice.com/skin-perfecting-8-aha-gel-exfoliant/135.html
+Glow Recipe Watermelon Glow Sleeping Mask,Glow Recipe,Mask,All;Dry,Hydrating sleeping mask.,6,True,https://www.glowrecipe.com/products/watermelon-glow-sleeping-mask
+Laneige Water Sleeping Mask,Laneige,Mask,All;Dry,Overnight hydration mask.,6,True,https://us.laneige.com/products/water-sleeping-mask
+Kiehl’s Creamy Eye Treatment with Avocado,Kiehl's,Eye,All;Dry,Rich eye cream with avocado oil.,7,True,https://www.kiehls.com/skincare/eye-care/creamy-eye-treatment-with-avocado/622.html
+The Ordinary Caffeine Solution 5% + EGCG,The Ordinary,Eye,All,De‑puffing eye serum.,7,True,https://theordinary.com/en-us/caffeine-solution-5-egcg-100423.html
+Laneige Lip Sleeping Mask,Laneige,Lip,All,Overnight lip mask.,7,True,https://us.laneige.com/products/lip-sleeping-mask
+Aquaphor Lip Repair + Protect SPF 30,Aquaphor,Lip,All,SPF lip protectant.,7,True,https://www.aquaphorus.com/products/lip-repair/
+Vaseline Lip Therapy Original,Vaseline,Lip,All,Occlusive lip jelly.,7,True,https://www.vaseline.com/us/en/products/lip-care/lip-therapy-original.html
+Mario Badescu Drying Lotion,Mario Badescu,Spot Treatment,All;Oily,Overnight acne spot treatment.,8,True,https://www.mariobadescu.com/product/drying-lotion/
+COSRX Acne Pimple Master Patch,COSRX,Spot Treatment,All,Hydrocolloid pimple patches.,8,True,https://www.cosrx.com/products/acne-pimple-master-patch
+Clean & Clear Persa-Gel 10,Clean & Clear,Spot Treatment,Oily;Combination,10% benzoyl peroxide gel.,8,True,https://www.cleanandclear.com/products/acne-treatment/persa-gel-10
+La Roche-Posay Effaclar Duo Acne Treatment,La Roche-Posay,Spot Treatment,Oily;Combination,BPO + lipo‑hydroxy acid spot tx.,8,True,https://www.laroche-posay.us/acne-treatment/effaclar-duo-3337872413025.html
+The Ordinary 100% Plant‑Derived Squalane,The Ordinary,Oil,Dry;All,Lightweight squalane oil.,4,True,https://theordinary.com/en-us/100-plant-derived-squalane-100416.html
+Bioré Deep Pore Charcoal Strips,Bioré,Treatment,Oily;Combination,Charcoal nose pore strips.,6,True,https://www.biore.com/us/en/products/charcoal-pore-strips
+Thayers Alcohol‑Free Rose Witch Hazel Toner,Thayers,Toner,All;Sensitive,Soothing witch hazel toner.,2,True,https://www.thayers.com/products/rose-petal-alcohol-free-toner
+Kosas DreamBeam SPF 40 PA+++,Kosas,Sunscreen,All,Mineral SPF with peptides.,5,True,https://kosas.com/products/dreambeam-spf-40
+Tower 28 SOS Daily Rescue Facial Spray,Tower 28,Treatment,All;Sensitive,Hypochlorous acid soothing spray.,3,True,https://www.tower28beauty.com/products/sos-daily-rescue-facial-spray
+Tatcha The Rice Wash,Tatcha,Cleanser,All,Soft cream cleanser with rice.,1,True,https://www.tatcha.com/product/TRW.html
+Shiseido WASO Quick Gentle Cleanser,Shiseido,Cleanser,All;Combination,Oil‑free jelly cleanser.,1,True,https://www.shiseido.com/waso-quick-gentle-cleanser-730852150298.html
+Glossier Milky Jelly Cleanser,Glossier,Cleanser,All;Sensitive,pH‑balanced conditioning cleanser.,1,True,https://www.glossier.com/products/milky-jelly-cleanser
+KraveBeauty Oat So Simple Water Cream,KraveBeauty,Moisturizer,All;Sensitive,Minimalist oat moisturizer.,4,True,https://kravebeauty.com/products/oat-so-simple-water-cream
+Benton Aloe BHA Skin Toner,Benton,Toner,Oily;Combination;All,Aloe soothing + BHA toner.,2,True,https://bentoncosmetics.com/product/aloe-bha-skin-toner/52/
+Isntree Hyaluronic Acid Toner,Isntree,Toner,Dry;All,Multi‑weight HA toner.,2,True,https://isntree.com/product/hyaluronic-acid-toner/52/
+COSRX Advanced Snail 96 Mucin Power Essence,COSRX,Essence,All;Dry,Snail mucin hydrating essence.,2,True,https://www.cosrx.com/products/advanced-snail-96-mucin-power-essence
+Purito Centella Unscented Serum,Purito,Serum,All;Sensitive,Centella barrier‑support serum.,3,True,https://puritoen.com/product/centella-unscented-serum/154/
+Kiehl’s Clearly Corrective Dark Spot Solution,Kiehl's,Serum,All,Brightening serum with activated C.,3,True,https://www.kiehls.com/skincare/face-serums/clearly-corrective-dark-spot-solution/WW0138KIE.html
+Biossance Squalane + Omega Repair Cream,Biossance,Moisturizer,Dry;All,Rich ceramide‑like moisturizer.,4,True,https://www.biossance.com/products/squalane-omega-repair-cream
+Drunk Elephant Protini Polypeptide Cream,Drunk Elephant,Moisturizer,All,Peptide gel‑cream moisturizer.,4,True,https://www.drunkelephant.com/products/protini-polypeptide-cream
+Kojic Acid Dark Spot Corrector (Naturium),Naturium,Treatment,All,Kojic acid brightening serum.,3,True,https://naturium.com/products/kojic-acid-emulsion-5
+The Inkey List Niacinamide Serum,The Inkey List,Serum,Oily;Combination;All,Oil‑control niacinamide serum.,3,True,https://www.theinkeylist.com/products/niacinamide-serum
+Good Molecules Discoloration Correcting Serum,Good Molecules,Serum,All,Tranexamic acid derivative.,3,True,https://goodmolecules.com/products/discoloration-correcting-serum
+CeraVe PM Facial Moisturizing Lotion,CeraVe,Moisturizer,All;Combination,Lightweight night lotion with niacinamide.,4,True,https://www.cerave.com/skincare/moisturizers/pm-facial-moisturizing-lotion
+Olay Regenerist Micro‑Sculpting Cream,Olay,Moisturizer,All,Niacinamide anti‑aging cream.,4,True,https://www.olay.com/regenerist-micro-sculpting-cream
+Eucerin Advanced Repair Cream (Body),Eucerin,Body,Dry;All,Ceramide body moisturizer.,4,True,https://www.eucerinus.com/products/advanced-repair/advanced-repair-cream
+Bioderma Atoderm Intensive Baume,Bioderma,Body,Dry;Sensitive,Ultra‑soothing body balm.,4,True,https://www.bioderma.us/our-products/atoderm/atoderm-intensive-baume
+La Roche-Posay Cicaplast Baume B5,La Roche-Posay,Treatment,All;Sensitive,Soothing repairing balm.,3,True,https://www.laroche-posay.us/face-and-body-moisturizer/cicaplast-baume-b5-3337872418730.html
