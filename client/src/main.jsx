@@ -286,6 +286,23 @@ root.render(
                             </ProtectedRoute>
                         }
                     />
+                    {/* Aliases so derm notification links work */}
+                    <Route
+                        path="dermatologist/tickets"
+                        element={
+                            <ProtectedRoute allowedRoles={["dermatologist"]}>
+                                <Tickets />
+                            </ProtectedRoute>
+                        }
+                    />
+                    <Route
+                        path="dermatologist/tickets/:id"
+                        element={
+                            <ProtectedRoute allowedRoles={["dermatologist"]}>
+                                <TicketDetails />
+                            </ProtectedRoute>
+                        }
+                    />
                 </Route>
             </Routes>
         </AuthProvider>

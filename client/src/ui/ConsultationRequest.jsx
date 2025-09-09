@@ -22,7 +22,18 @@ export default function ConsultationRequest() {
     const [availableSlots, setAvailableSlots] = useState([]);
     const [selectedSlot, setSelectedSlot] = useState("");
     const [consultationType, setConsultationType] = useState("photo_review");
-    const [payLoading, setPayLoading] = useState(false);
+
+    const getConsultationFee = () => {
+        switch (consultationType) {
+            case "video_call":
+                return 100;
+            case "follow_up":
+                return 30;
+            case "photo_review":
+            default:
+                return 50;
+        }
+    };
 
     const skinTypeOptions = [
         { value: "oily", label: "Oily" },
@@ -251,7 +262,7 @@ export default function ConsultationRequest() {
                 const response = await API.post("/bookings", bookingData);
 
                 alert(
-                    "Video consultation booked successfully! You will receive confirmation from the dermatologist."
+                    "Video consultation booked successfully! You will receive confirmation and be able to pay from My Consultations."
                 );
 
                 // Redirect to bookings page
@@ -300,49 +311,40 @@ export default function ConsultationRequest() {
         }
     };
 
-    const getConsultationFee = () => {
-        switch (consultationType) {
-            case "video_call":
-                return 100;
-            case "follow_up":
-                return 30;
-            default:
-                return 50;
-        }
-    };
-
-    const payWithCard = async () => {
+    // Start Stripe checkout for a generic consultation purchase
+    const handleStripeConsultationPay = async () => {
         try {
-            setPayLoading(true);
-            const { data } = await API.post('/payment/consultation');
-            if (data?.url) {
-                window.location.href = data.url;
+            const res = await API.post('/payment/consultation');
+            const url = res.data?.url;
+            if (url) {
+                window.location.href = url;
             } else {
-                alert('Failed to start card payment.');
+                alert('Unable to start Stripe checkout');
             }
-        } catch (e) {
-            console.error('Stripe pay error', e);
-            alert(e.response?.data?.error || 'Failed to start card payment');
-        } finally {
-            setPayLoading(false);
+        } catch (err) {
+            console.error('Stripe consultation checkout error:', err);
+            alert(err.response?.data?.error || 'Stripe is unavailable right now');
         }
     };
 
-    const payWithBkash = async () => {
+    // Start bKash sandbox flow for consultation purchase
+    const handleBkashConsultationPay = async () => {
         try {
-            setPayLoading(true);
             const amount = getConsultationFee();
-            const { data } = await API.post('/payment/bkash/create', { amount, intent: 'sale', callbackPath: '/payment/success' });
-            if (data?.url) {
-                window.location.href = data.url;
+            const res = await API.post('/payment/bkash/create', {
+                amount,
+                invoice: `CONS-${Date.now()}`,
+                callbackPath: '/payment/success'
+            });
+            const url = res.data?.url;
+            if (url) {
+                window.location.href = url;
             } else {
-                alert('Failed to start bKash payment');
+                alert('Unable to start bKash payment');
             }
-        } catch (e) {
-            console.error('bKash pay error', e);
-            alert(e.response?.data?.error || 'Failed to start bKash');
-        } finally {
-            setPayLoading(false);
+        } catch (err) {
+            console.error('bKash consultation create error:', err);
+            alert(err.response?.data?.error || 'bKash is unavailable right now');
         }
     };
 
@@ -965,71 +967,59 @@ export default function ConsultationRequest() {
                     </div>
                 )}
 
-                {/* Consultation Fee and Payment Options */}
-                {consultationType && (
-                    <div
-                        style={{
-                            background: "#f0f9ff",
-                            border: "1px solid #dbeafe",
-                            borderRadius: "8px",
-                            padding: "16px",
-                            marginBottom: "24px",
-                        }}
-                    >
-                        <h3
+                {/* Note: Payment */}
+                <div
+                    style={{
+                        background: "#eef6ff",
+                        border: "1px solid #dbeafe",
+                        borderRadius: "8px",
+                        padding: "16px",
+                        marginBottom: "24px",
+                    }}
+                >
+                    <h3 style={{ margin: 0, marginBottom: 6, color: '#1e3a8a' }}>
+                        Consultation Fee: ${getConsultationFee()}
+                    </h3>
+                    <p style={{ margin: 0, marginBottom: 10, color: '#1e3a8a', fontSize: 14 }}>
+                        Payment is required to confirm your booking.
+                    </p>
+                    <div style={{ color: '#1e3a8a', fontSize: 13, marginBottom: 8 }}>Available Payment Options:</div>
+                    <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+                        <button
+                            type="button"
+                            onClick={handleStripeConsultationPay}
                             style={{
-                                fontSize: "16px",
-                                fontWeight: "600",
-                                color: "#1e40af",
-                                marginBottom: "8px",
+                                padding: '10px 14px',
+                                background: '#2563eb',
+                                color: 'white',
+                                border: 'none',
+                                borderRadius: 8,
+                                fontWeight: 700,
+                                cursor: 'pointer'
                             }}
                         >
-                            Consultation Fee: ${getConsultationFee()}
-                        </h3>
-                        <p
+                            💳 Pay with Card (Stripe)
+                        </button>
+                        <button
+                            type="button"
+                            onClick={handleBkashConsultationPay}
                             style={{
-                                fontSize: "14px",
-                                color: "#1e40af",
-                                marginBottom: "12px",
+                                padding: '10px 14px',
+                                background: '#8b5cf6',
+                                color: 'white',
+                                border: 'none',
+                                borderRadius: 8,
+                                fontWeight: 700,
+                                cursor: 'pointer'
                             }}
                         >
-                            {consultationType === "video_call" &&
-                                "Video consultations include a live 30-minute session. "}
-                            Payment is required to confirm your booking.
-                        </p>
-
-                        {/* Payment Options */}
-                        <div style={{ marginTop: "12px" }}>
-                            <h4
-                                style={{
-                                    fontSize: "14px",
-                                    fontWeight: "600",
-                                    color: "#1e40af",
-                                    marginBottom: "8px",
-                                }}
-                            >
-                                Available Payment Options:
-                            </h4>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
-                                <button type="button" onClick={payWithCard} disabled={payLoading}
-                                    style={{ padding: '8px 12px', background: '#1e40af', color: 'white', border: 'none', borderRadius: 6, fontSize: 14, cursor: payLoading ? 'not-allowed' : 'pointer' }}>
-                                    💳 Pay with Card (Stripe)
-                                </button>
-                                <button type="button" onClick={payWithBkash} disabled={payLoading}
-                                    style={{ padding: '8px 12px', background: '#c026d3', color: 'white', border: 'none', borderRadius: 6, fontSize: 14, cursor: payLoading ? 'not-allowed' : 'pointer' }}>
-                                    📱 Pay with bKash (Sandbox)
-                                </button>
-                            </div>
-                            <p
-                                style={{
-                                    fontSize: "12px",
-                                    color: "#6b7280",
-                                    marginTop: "8px",
-                                }}
-                            >Secure card payments via Stripe, and mobile via bKash sandbox.</p>
-                        </div>
+                            📱 Pay with bKash (Sandbox)
+                        </button>
                     </div>
-                )}
+                    <p style={{ margin: 0, marginTop: 6, color: '#6b7280', fontSize: 12 }}>
+                        Secure card payments via Stripe; mobile via bKash sandbox.
+                    </p>
+                </div>
 
                 {/* Submit Button */}
                 <button

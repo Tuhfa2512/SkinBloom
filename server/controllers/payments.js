@@ -1,6 +1,7 @@
 // controllers/payments.js
 import Stripe from "stripe";
 import User from "../models/User.js";
+import Ticket from "../models/Ticket.js";
 import Product from "../models/Product.js";
 import Notification from "../models/Notification.js";
 import PDFDocument from "pdfkit";
@@ -319,7 +320,7 @@ export const verifyPayment = async (req, res) => {
 
     const session = await stripe.checkout.sessions.retrieve(sessionId);
 
-        if (session.payment_status === "paid") {
+    if (session.payment_status === "paid") {
             // Payment successful - create order record
             const orderData = {
                 sessionId,
@@ -351,30 +352,99 @@ export const verifyPayment = async (req, res) => {
                 console.warn("Non-blocking: failed to generate product receipt:", e?.message || e);
             }
 
-            // Fire-and-forget notification to user (if we know them)
-            try {
-                if (orderData.userId) {
-                    const title = "Payment Successful";
-                    const message = orderData.type === "consultation"
-                        ? "Your consultation payment was received. We'll be in touch to confirm scheduling."
-                        : "Your order payment has been received. You can download the receipt.";
-                    const actionUrl = orderData.type === "consultation"
-                        ? "/consultation-request"
-                        : (receiptUrl || "/products");
-                    const actionText = orderData.type === "consultation" ? "View" : (receiptUrl ? "Download Receipt" : "View");
-                    await Notification.create({
-                        recipient: orderData.userId,
-                        type: "payment_confirmed",
-                        title,
-                        message,
-                        payment: session.payment_intent,
-                        actionRequired: false,
-                        actionUrl,
-                        actionText
+            // If this is a generic consultation purchase, create a ticket and notify dermatologists
+            if (orderData.type === "consultation" && orderData.userId) {
+                try {
+                    // Create a minimal prepaid ticket so dermatologists can see and pick it up
+                    const ticket = await Ticket.create({
+                        user: orderData.userId,
+                        concern: "Prepaid dermatology consultation",
+                        consultationType: "photo_review",
+                        status: "submitted",
+                        paymentStatus: "paid",
+                        paymentId: session.payment_intent,
+                        paymentDate: new Date(),
+                        photos: [],
                     });
+
+                    // Notify the user with a clear CTA to view their ticket
+                    try {
+                        await Notification.create({
+                            recipient: orderData.userId,
+                            type: "payment_confirmed",
+                            title: "Consultation Purchased",
+                            message:
+                                "Your consultation payment was received. A case has been created and dermatologists will review it shortly.",
+                            payment: session.payment_intent,
+                            actionRequired: true,
+                            actionUrl: `/tickets/${ticket._id}`,
+                            actionText: "View Ticket",
+                        });
+                    } catch (e) {
+                        console.warn(
+                            "Non-blocking: failed to notify user after consultation payment:",
+                            e?.message || e
+                        );
+                    }
+
+                    // Notify available dermatologists of the new (unassigned) prepaid ticket
+                    try {
+                        const dermatologists = await User.find({
+                            role: "dermatologist",
+                            isActive: true,
+                        }).select("_id name");
+                        for (const derm of dermatologists) {
+                            await Notification.create({
+                                recipient: derm._id,
+                                type: "ticket_submitted",
+                                title: "New Prepaid Consultation",
+                                message:
+                                    "A prepaid consultation case is awaiting review.",
+                                ticket: ticket._id,
+                                sender: orderData.userId,
+                                actionRequired: true,
+                                actionUrl: `/dermatologist/tickets/${ticket._id}`,
+                                actionText: "Review Case",
+                            });
+                        }
+                    } catch (e) {
+                        console.warn(
+                            "Non-blocking: failed to notify dermatologists of prepaid ticket:",
+                            e?.message || e
+                        );
+                    }
+                } catch (e) {
+                    console.warn(
+                        "Non-blocking: failed to create ticket for consultation payment:",
+                        e?.message || e
+                    );
                 }
-            } catch (e) {
-                console.warn("Non-blocking: failed to create payment notification:", e?.message || e);
+            } else {
+                // Default: send a generic payment notification to the user
+                try {
+                    if (orderData.userId) {
+                        const title = "Payment Successful";
+                        const message =
+                            "Your order payment has been received. You can download the receipt.";
+                        const actionUrl = receiptUrl || "/products";
+                        const actionText = receiptUrl ? "Download Receipt" : "View";
+                        await Notification.create({
+                            recipient: orderData.userId,
+                            type: "payment_confirmed",
+                            title,
+                            message,
+                            payment: session.payment_intent,
+                            actionRequired: false,
+                            actionUrl,
+                            actionText,
+                        });
+                    }
+                } catch (e) {
+                    console.warn(
+                        "Non-blocking: failed to create payment notification:",
+                        e?.message || e
+                    );
+                }
             }
 
             res.status(200).json({

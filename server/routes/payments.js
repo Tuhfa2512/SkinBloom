@@ -11,8 +11,8 @@ import {
 
 const r = Router()
 
-// Consultation payment endpoint
-r.post('/consultation', createConsultationCheckout)
+// Consultation payment endpoint (require auth so we can link to a user and create a ticket on success)
+r.post('/consultation', authRequired, createConsultationCheckout)
 
 // Product checkout endpoint
 r.post('/checkout', authRequired, createProductCheckout)

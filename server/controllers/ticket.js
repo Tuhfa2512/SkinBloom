@@ -65,8 +65,8 @@ export async function createTicket(req, res) {
             });
         }
 
-        // Create the ticket
-        const ticket = await Ticket.create({
+    // Create the ticket
+    const ticket = await Ticket.create({
             user: req.user.id,
             concern,
             skinType,
@@ -85,6 +85,19 @@ export async function createTicket(req, res) {
 
         // Populate user info
         await ticket.populate("user", "name email");
+
+        // If a preferred dermatologist is provided, assign the ticket immediately so it shows as 'assigned' in the derm dashboard
+        let assignedDermId = null;
+        if (preferredDermatologist) {
+            try {
+                ticket.dermatologist = preferredDermatologist;
+                ticket.status = "assigned";
+                await ticket.save();
+                assignedDermId = preferredDermatologist;
+            } catch (e) {
+                console.warn("Non-blocking: failed to assign preferred dermatologist on ticket create:", e?.message || e);
+            }
+        }
 
         // Optional: create a booking directly if requested and dermatologist + slot info present
         let booking = null;
@@ -197,19 +210,19 @@ export async function createTicket(req, res) {
                     }
                 );
             }
-        } else if (!booking) {
-            // If preferred dermatologist but no booking auto-created, still notify them
+        } else {
+            // If preferred dermatologist was set, notify them that a ticket is assigned (regardless of booking)
             await createNotification(
                 preferredDermatologist,
-                "ticket_submitted",
-                "New Consultation Request",
-                `${ticket.user.name} submitted a consultation request for you`,
+                "ticket_assigned",
+                "New Assigned Consultation",
+                `${ticket.user.name} has assigned you a new consultation case`,
                 {
                     ticket: ticket._id,
                     sender: req.user.id,
                     actionRequired: true,
                     actionUrl: `/dermatologist/tickets/${ticket._id}`,
-                    actionText: "Review Consultation",
+                    actionText: "Provide Consultation",
                 }
             );
         }

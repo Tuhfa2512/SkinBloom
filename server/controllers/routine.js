@@ -3,8 +3,21 @@ import Log from '../models/Log.js'
 
 export async function saveRoutine(req,res){
   try{
-    const data = { user: req.user.id, ...req.body }
-    const routine = await Routine.findOneAndUpdate({ user:req.user.id }, data, { upsert:true, new:true, setDefaultsOnInsert:true })
+    // Normalize steps to include product and optional productName
+    const incoming = Array.isArray(req.body?.steps) ? req.body.steps : []
+    const steps = incoming.map(s => ({
+      product: s.product || null,
+      productName: s.productName || undefined,
+      note: s.note || '',
+      timeOfDay: s.timeOfDay || 'AM'
+    }))
+
+    const data = { user: req.user.id, steps }
+    const routine = await Routine.findOneAndUpdate(
+      { user: req.user.id },
+      data,
+      { upsert: true, new: true, setDefaultsOnInsert: true }
+    ).populate('steps.product')
     res.json(routine)
   }catch(e){ res.status(500).json({error:e.message}) }
 }

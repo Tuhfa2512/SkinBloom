@@ -18,10 +18,31 @@ export default function DermatologistDashboard() {
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
   const [loadingProfile, setLoadingProfile] = useState(false);
-  const [activeTab, setActiveTab] = useState('overview'); // overview, tickets, bookings
+  const [activeTab, setActiveTab] = useState('tickets'); // overview, tickets, bookings
   const [activeSubTab, setActiveSubTab] = useState('pending'); // for tickets: pending, assigned, completed
   const [activity, setActivity] = useState({ views: 0, replies: 0, consultations: 0 });
   const [kpis, setKpis] = useState({ todayBookings: 0, inProgress: 0, completed: 0, earnings: { total: 0, today: 0, previous: 0 } });
+
+  // Resolve backend static file URLs when server returns relative /uploads paths
+  const resolveBackendUrl = (url) => {
+    if (!url) {
+      return '';
+    }
+    const u = String(url);
+    if (/^https?:\/\//i.test(u)) {
+      return u;
+    }
+    const apiBase = (import.meta.env.VITE_API_URL || 'http://localhost:5000/api');
+    const backendBase = apiBase.replace(/\/?api\/?$/, '');
+    if (u.startsWith('/uploads')) {
+      return backendBase + u;
+    }
+    if (u.startsWith('uploads/')) {
+      return backendBase + '/' + u;
+    }
+    // Fallback: prefix with backend base
+    return backendBase + (u.startsWith('/') ? '' : '/') + u;
+  };
 
   useEffect(() => {
     loadTickets();
@@ -96,6 +117,34 @@ export default function DermatologistDashboard() {
       alert('Ticket assigned successfully!');
     } catch (error) {
       alert('Failed to assign ticket');
+    }
+  };
+
+  // Booking actions
+  const confirmBooking = async (bookingId) => {
+    try {
+      await API.patch(`/bookings/${bookingId}/status`, { status: 'confirmed' });
+      await loadBookings();
+    } catch (e) {
+      alert('Failed to confirm booking');
+    }
+  };
+
+  const startBooking = async (bookingId) => {
+    try {
+      await API.post(`/bookings/${bookingId}/start`);
+      await loadBookings();
+    } catch (e) {
+      alert('Failed to start consultation');
+    }
+  };
+
+  const completeBooking = async (bookingId) => {
+    try {
+      await API.patch(`/bookings/${bookingId}/status`, { status: 'completed' });
+      await loadBookings();
+    } catch (e) {
+      alert('Failed to mark completed');
     }
   };
 
@@ -308,24 +357,60 @@ export default function DermatologistDashboard() {
         ))}
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: selectedTicket ? '1fr 1fr' : '1fr', gap: '24px' }}>
-        {/* Tickets List */}
-        <div style={{
-          background: 'white',
-          borderRadius: '12px',
-          padding: '24px',
-          border: '1px solid #f3f4f6'
-        }}>
-          <h2 style={{
-            fontSize: '1.5rem',
-            fontWeight: '600',
-            marginBottom: '20px',
-            color: '#1f2937'
-          }}>
-            Tickets
+      <div style={{ display: 'grid', gridTemplateColumns: selectedTicket && activeTab === 'tickets' ? '1fr 1fr' : '1fr', gap: '24px' }}>
+        {/* Conditional panel: Bookings or Tickets */}
+        <div style={{ background: 'white', borderRadius: '12px', padding: '24px', border: '1px solid #f3f4f6' }}>
+          <h2 style={{ fontSize: '1.5rem', fontWeight: '600', marginBottom: '20px', color: '#1f2937' }}>
+            {activeTab === 'bookings' ? 'Bookings' : 'Tickets'}
           </h2>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+          {/* Bookings List */}
+          {activeTab === 'bookings' ? (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+              {bookings.map(booking => (
+                <div key={booking._id} style={{ border: '1px solid #f3f4f6', borderRadius: '8px', padding: '16px', background: '#fafafa' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                      <span style={{ background: '#f3f4f6', color: '#374151', padding: '2px 6px', borderRadius: 4, fontSize: 12, fontFamily: 'monospace' }}>#{booking._id.slice(-6).toUpperCase()}</span>
+                      <span style={{ background: getStatusColor(booking.status), color: 'white', padding: '2px 8px', borderRadius: 12, fontSize: 11, fontWeight: 600 }}>{booking.status}</span>
+                      <span style={{ background: '#f0f9ff', color: '#0369a1', padding: '2px 8px', borderRadius: 12, fontSize: 11, fontWeight: 600 }}>{(booking.sessionType || '').replace('_', ' ')}</span>
+                    </div>
+                    <span style={{ fontSize: 12, color: '#6b7280' }}>{new Date(booking.scheduledDateTime).toLocaleString()}</span>
+                  </div>
+
+                  <div style={{ marginBottom: 12 }}>
+                    <strong style={{ fontSize: 14, color: '#1f2937' }}>Patient:</strong> <span style={{ fontSize: 14, color: '#374151' }}>{booking.patient?.name || 'Unknown'}</span>
+                  </div>
+
+                  {booking.ticket?.concern && (
+                    <p style={{ fontSize: 13, color: '#6b7280', marginBottom: 12 }}>{booking.ticket.concern.substring(0, 120)}...</p>
+                  )}
+
+                  <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+                    {booking.status === 'scheduled' && (
+                      <button onClick={() => confirmBooking(booking._id)} style={{ background: '#3b82f6', color: 'white', border: 'none', padding: '6px 12px', borderRadius: 4, fontSize: 12, cursor: 'pointer' }}>Confirm</button>
+                    )}
+                    {booking.status === 'confirmed' && (
+                      <button onClick={() => startBooking(booking._id)} style={{ background: '#8b5cf6', color: 'white', border: 'none', padding: '6px 12px', borderRadius: 4, fontSize: 12, cursor: 'pointer' }}>Start Consultation</button>
+                    )}
+                    {booking.status === 'in_progress' && (
+                      <button onClick={() => completeBooking(booking._id)} style={{ background: '#059669', color: 'white', border: 'none', padding: '6px 12px', borderRadius: 4, fontSize: 12, cursor: 'pointer' }}>Mark Completed</button>
+                    )}
+                    <button onClick={() => setSelectedBooking(booking)} style={{ background: '#6b7280', color: 'white', border: 'none', padding: '6px 12px', borderRadius: 4, fontSize: 12, cursor: 'pointer' }}>View Details</button>
+                  </div>
+                </div>
+              ))}
+
+              {bookings.length === 0 && (
+                <div style={{ textAlign: 'center', padding: 40, color: '#6b7280' }}>
+                  <div style={{ fontSize: 48, marginBottom: 16 }}>📅</div>
+                  <p>No bookings found</p>
+                </div>
+              )}
+            </div>
+          ) : (
+            // Tickets List
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
             {getFilteredTickets().map(ticket => (
               <div
                 key={ticket._id}
@@ -533,10 +618,11 @@ export default function DermatologistDashboard() {
               </div>
             )}
           </div>
+          )}
         </div>
 
         {/* Consultation Panel */}
-        {selectedTicket && (
+  {activeTab === 'tickets' && selectedTicket && (
           <div style={{
             background: 'white',
             borderRadius: '12px',
@@ -699,7 +785,7 @@ export default function DermatologistDashboard() {
                   {selectedTicket.photos.map((photo, index) => (
                     <img
                       key={index}
-                      src={`http://localhost:5000${photo}`}
+                      src={resolveBackendUrl(photo?.url || photo)}
                       alt={`Patient photo ${index + 1}`}
                       style={{
                         width: '100%',
@@ -996,7 +1082,7 @@ export default function DermatologistDashboard() {
                       Profile Picture
                     </h3>
                     <img
-                      src={`http://localhost:5000${selectedUserProfile.profile.photo}`}
+                      src={resolveBackendUrl(selectedUserProfile.profile.photo)}
                       alt="Profile"
                       style={{
                         width: '120px',
@@ -1067,7 +1153,7 @@ export default function DermatologistDashboard() {
                           overflow: 'hidden'
                         }}>
                           <img
-                            src={`http://localhost:5000${photo.url}`}
+                            src={resolveBackendUrl(photo?.url || photo)}
                             alt={`Consultation ${index + 1}`}
                             style={{
                               width: '100%',

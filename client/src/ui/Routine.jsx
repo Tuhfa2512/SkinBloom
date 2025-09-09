@@ -396,6 +396,20 @@ export default function Routine() {
     loadData()
   }, [])
 
+  // Backfill productName from local catalog if missing
+  useEffect(() => {
+    if (!products?.length || !routine?.steps?.length) return
+    let changed = false
+    const steps = routine.steps.map(s => {
+      if (!s.productName && s.product) {
+        const p = products.find(pp => pp._id === (typeof s.product === 'object' ? s.product?._id : s.product))
+        if (p) { changed = true; return { ...s, productName: p.name } }
+      }
+      return s
+    })
+    if (changed) setRoutine(r => ({ ...r, steps }))
+  }, [products, routine?.steps?.length])
+
   const loadData = async () => {
     setLoading(true)
     try {
@@ -409,7 +423,7 @@ export default function Routine() {
         const raw = routineRes.value.data || { steps: [] }
         const enhancedSteps = (raw.steps||[]).map(s => ({
           ...s,
-          productName: s.productName || (s.product && typeof s.product === 'object' ? s.product.name : '')
+          productName: s.productName || (s.product && typeof s.product === 'object' ? s.product?.name : '')
         }))
         setRoutine({ ...raw, steps: enhancedSteps })
       } else {
@@ -756,14 +770,14 @@ export default function Routine() {
   const saveRoutine = async () => {
     try {
       await API.post('/routine', {
-        steps: routine.steps.map(s => ({ product: s.product, note: s.note, timeOfDay: s.timeOfDay }))
+        steps: routine.steps.map(s => ({ product: s.product, productName: s.productName, note: s.note, timeOfDay: s.timeOfDay }))
       })
       // Fetch fresh (populated) routine so product names appear
       try {
         const { data: fresh } = await API.get('/routine')
         const enhancedSteps = (fresh?.steps||[]).map(s => ({
           ...s,
-          productName: s.productName || (s.product && typeof s.product === 'object' ? s.product.name : '')
+          productName: s.productName || (s.product && typeof s.product === 'object' ? s.product?.name : '')
         }))
         setRoutine({ ...fresh, steps: enhancedSteps })
       } catch(e){ console.warn('Post-save reload failed', e?.response?.status) }

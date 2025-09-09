@@ -157,6 +157,25 @@ export default function UserBookings() {
         }
     };
 
+    const handleBkashPayment = async (booking) => {
+        try {
+            const amount = booking.consultationFee || 0;
+            const res = await API.post('/payment/bkash/create', {
+                amount,
+                invoice: `BOOK-${booking._id}`,
+                callbackPath: '/payment/success'
+            });
+            if (res.data?.url) {
+                window.location.href = res.data.url;
+            } else {
+                alert('Failed to start bKash payment');
+            }
+        } catch (e) {
+            console.error('bKash create error:', e);
+            alert(e.response?.data?.error || 'bKash is unavailable right now');
+        }
+    };
+
     const joinVideoCall = (booking) => {
         if (booking.meetingLink) {
             window.open(booking.meetingLink, "_blank");
@@ -621,6 +640,69 @@ export default function UserBookings() {
                                         </p>
                                     </div>
                                 </div>
+
+                                {/* Payment Panel (pending) */}
+                                {["scheduled", "confirmed"].includes(booking.status) && booking.paymentStatus === "pending" && (
+                                    <div
+                                        style={{
+                                            background: "#f0f9ff",
+                                            border: "1px solid #dbeafe",
+                                            borderRadius: "8px",
+                                            padding: "16px",
+                                            marginBottom: "16px",
+                                        }}
+                                    >
+                                        <h4
+                                            style={{
+                                                fontSize: "16px",
+                                                fontWeight: 600,
+                                                color: "#1e40af",
+                                                margin: 0,
+                                                marginBottom: 8,
+                                            }}
+                                        >
+                                            Consultation Fee: ${booking.consultationFee}
+                                        </h4>
+                                        <p style={{ fontSize: 14, color: "#1e40af", marginBottom: 12 }}>
+                                            Payment is required to confirm your booking.
+                                        </p>
+                                        <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+                                            <button
+                                                onClick={() => handlePayment(booking)}
+                                                style={{
+                                                    padding: "8px 12px",
+                                                    background: "#1e40af",
+                                                    color: "white",
+                                                    border: "none",
+                                                    borderRadius: 6,
+                                                    fontSize: 14,
+                                                    fontWeight: 600,
+                                                    cursor: "pointer",
+                                                }}
+                                            >
+                                                💳 Pay with Card (Stripe)
+                                            </button>
+                                            <button
+                                                onClick={() => handleBkashPayment(booking)}
+                                                style={{
+                                                    padding: "8px 12px",
+                                                    background: "#c026d3",
+                                                    color: "white",
+                                                    border: "none",
+                                                    borderRadius: 6,
+                                                    fontSize: 14,
+                                                    fontWeight: 600,
+                                                    cursor: "pointer",
+                                                }}
+                                            >
+                                                📱 Pay with bKash (Sandbox)
+                                            </button>
+                                        </div>
+                                        <p style={{ fontSize: 12, color: "#6b7280", marginTop: 8 }}>
+                                            Secure card payments via Stripe; mobile via bKash sandbox.
+                                        </p>
+                                    </div>
+                                )}
                                 {/* Photos from related ticket (if any) */}
                                 {booking.ticket?.photos?.length > 0 && (
                                     <div style={{ marginTop: 12 }}>
@@ -700,47 +782,7 @@ export default function UserBookings() {
                                     flexWrap: "wrap",
                                 }}
                             >
-                                {booking.status === "scheduled" &&
-                                    booking.paymentStatus === "pending" && (
-                                        <button
-                                            onClick={() =>
-                                                handlePayment(booking)
-                                            }
-                                            style={{
-                                                background: "#10b981",
-                                                color: "white",
-                                                border: "none",
-                                                padding: "8px 16px",
-                                                borderRadius: "6px",
-                                                fontSize: "12px",
-                                                fontWeight: "600",
-                                                cursor: "pointer",
-                                            }}
-                                        >
-                                            Pay Now (${booking.consultationFee})
-                                        </button>
-                                    )}
-
-                                {booking.status === "scheduled" && booking.paymentStatus === "pending" && (
-                                    <button
-                                        onClick={() => {
-                                            setSelectedBooking(booking);
-                                            setShowPayment(true);
-                                        }}
-                                        style={{
-                                            background: "#0369a1",
-                                            color: "white",
-                                            border: "none",
-                                            padding: "8px 16px",
-                                            borderRadius: "6px",
-                                            fontSize: "12px",
-                                            fontWeight: "600",
-                                            cursor: "pointer",
-                                        }}
-                                    >
-                                        Submit Mobile Payment
-                                    </button>
-                                )}
+                                {/* Payment buttons now shown in the Payment Panel above */}
 
                                 {booking.status === "in_progress" &&
                                     booking.sessionType === "video_call" && (
