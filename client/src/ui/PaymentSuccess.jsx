@@ -78,6 +78,18 @@ function PaymentSuccess() {
     };
 
     const downloadPDFReceipt = () => {
+        // If server generated a receipt, prefer direct download from backend
+        if (orderDetails?.receiptUrl) {
+            const a = document.createElement('a');
+            a.href = orderDetails.receiptUrl; // absolute http://localhost:5000/uploads/receipts/...
+            a.target = '_blank';
+            // Let the browser/viewer handle it; some browsers will open, others will download
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+            return;
+        }
+
         const doc = new jsPDF();
 
         // Set up the PDF

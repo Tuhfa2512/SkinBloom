@@ -155,10 +155,7 @@ export default function ConsultationRequest() {
 
                 const response = await API.post(
                     "/upload/consultation",
-                    formData,
-                    {
-                        headers: { "Content-Type": "multipart/form-data" },
-                    }
+                    formData
                 );
 
                 // Create preview URL

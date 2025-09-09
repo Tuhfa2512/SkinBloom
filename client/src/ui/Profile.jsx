@@ -117,16 +117,20 @@ export default function Profile() {
       return
     }
 
-    // Validate file type
-    if (!file.type.startsWith('image/')) {
-      setMsg('Please select an image file')
+    // Validate file type (support browsers that report HEIC as octet-stream)
+    const allowedExt = new Set(['.jpg', '.jpeg', '.png', '.webp', '.heic', '.heif'])
+    const nameLower = (file.name || '').toLowerCase()
+    const ext = nameLower.slice(nameLower.lastIndexOf('.'))
+    const looksLikeImage = (file.type && file.type.startsWith('image/')) || allowedExt.has(ext)
+    if (!looksLikeImage) {
+      setMsg('Please select an image file (JPG, PNG, WebP, HEIC)')
       setTimeout(() => setMsg(''), 3000)
       return
     }
 
-    // Validate file size (5MB max)
-    if (file.size > 5 * 1024 * 1024) {
-      setMsg('Image must be smaller than 5MB')
+    // Validate file size (15MB max to match server)
+    if (file.size > 15 * 1024 * 1024) {
+      setMsg('Image must be smaller than 15MB')
       setTimeout(() => setMsg(''), 3000)
       return
     }
@@ -190,16 +194,20 @@ export default function Profile() {
 
     console.log('File selected:', file.name, 'Size:', file.size, 'Type:', file.type)
 
-    // Validate file type
-    if (!file.type.startsWith('image/')) {
-      setMsg('Please select an image file')
+    // Validate file type (allow HEIC/HEIF and octet-stream by extension)
+    const allowedExt = new Set(['.jpg', '.jpeg', '.png', '.webp', '.heic', '.heif'])
+    const nameLower = (file.name || '').toLowerCase()
+    const ext = nameLower.slice(nameLower.lastIndexOf('.'))
+    const looksLikeImage = (file.type && file.type.startsWith('image/')) || allowedExt.has(ext)
+    if (!looksLikeImage) {
+      setMsg('Please select an image file (JPG, PNG, WebP, HEIC)')
       setTimeout(() => setMsg(''), 3000)
       return
     }
 
-    // Validate file size (10MB max for consultation photos)
-    if (file.size > 10 * 1024 * 1024) {
-      setMsg('Image must be smaller than 10MB')
+    // Validate file size (15MB max to match server)
+    if (file.size > 15 * 1024 * 1024) {
+      setMsg('Image must be smaller than 15MB')
       setTimeout(() => setMsg(''), 3000)
       return
     }
@@ -546,14 +554,14 @@ export default function Profile() {
           <input
             ref={fileInputRef}
             type="file"
-            accept="image/*"
+            accept="image/*,.heic,.heif"
             onChange={handlePhotoUpload}
             style={{display: 'none'}}
           />
 
           <p style={{ color: '#666', marginTop: '15px', fontSize: '14px' }}>
             Upload a clear photo of your face for better skin analysis<br/>
-            Max size: 5MB • Formats: JPG, PNG, WebP
+            Max size: 15MB • Formats: JPG, PNG, WebP, HEIC
           </p>
         </div>
 
@@ -904,13 +912,13 @@ export default function Profile() {
             <input
               ref={consultationFileInputRef}
               type="file"
-              accept="image/*"
+              accept="image/*,.heic,.heif"
               onChange={handleConsultationPhotoUpload}
               style={{display: 'none'}}
             />
 
             <p style={{ color: '#d69e2e', marginTop: '10px', fontSize: '12px' }}>
-              Max size: 10MB • Formats: JPG, PNG, WebP • Select concerns first
+              Max size: 15MB • Formats: JPG, PNG, WebP, HEIC • Select concerns first
             </p>
           </div>
 

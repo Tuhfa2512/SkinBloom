@@ -390,7 +390,8 @@ export async function getUserBookings(req, res) {
 
         const bookings = await Booking.find(query)
             .populate("dermatologist", "name specialization rating")
-            .populate("ticket", "concern status")
+            // include photos so client can render thumbnails
+            .populate("ticket", "concern status photos")
             .populate("consultation", "diagnosis status")
             .sort({ scheduledDateTime: -1 });
 

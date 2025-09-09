@@ -39,6 +39,7 @@ router.post(
             const response = {
                 message: "Photo uploaded successfully",
                 photoUrl: uploadResult.url,
+                url: uploadResult.url, // backward compatibility for clients expecting `url`
                 fileId: uploadResult.fileId,
                 thumbnail: uploadResult.thumbnail,
                 dimensions: {
@@ -50,7 +51,7 @@ router.post(
             console.log("Sending response:", response);
             res.json(response);
         } catch (error) {
-            console.error("Profile photo upload error:", error);
+            console.error("Profile photo upload error:", error?.message || error);
             console.error("Error stack:", error.stack);
             res.status(500).json({
                 message: "Upload failed",
@@ -93,6 +94,7 @@ router.post(
             const response = {
                 message: "Consultation photo uploaded successfully",
                 photoUrl: uploadResult.url,
+                url: uploadResult.url, // backward compatibility for clients expecting `url`
                 fileId: uploadResult.fileId,
                 thumbnail: uploadResult.thumbnail,
                 dimensions: {
@@ -104,7 +106,7 @@ router.post(
             console.log("Sending response:", response);
             res.json(response);
         } catch (error) {
-            console.error("Consultation photo upload error:", error);
+            console.error("Consultation photo upload error:", error?.message || error);
             console.error("Error stack:", error.stack);
             res.status(500).json({
                 message: "Upload failed",
@@ -147,6 +149,7 @@ router.post(
             const response = {
                 message: "Skin photo uploaded successfully",
                 photoUrl: uploadResult.url,
+                url: uploadResult.url, // backward compatibility for clients expecting `url`
                 fileId: uploadResult.fileId,
                 thumbnail: uploadResult.thumbnail,
                 dimensions: {
@@ -158,7 +161,7 @@ router.post(
             console.log("Sending response:", response);
             res.json(response);
         } catch (error) {
-            console.error("Skin photo upload error:", error);
+            console.error("Skin photo upload error:", error?.message || error);
             console.error("Error stack:", error.stack);
             res.status(500).json({
                 message: "Upload failed",

@@ -165,6 +165,19 @@ export default function UserBookings() {
         }
     };
 
+    // Resolve backend static file URLs when server returned relative /uploads paths
+    const resolveBackendUrl = (url) => {
+        if (!url) { return ''; }
+        const u = String(url);
+        if (/^https?:\/\//i.test(u)) { return u; }
+        if (u.startsWith('/uploads')) {
+            const apiBase = (import.meta.env.VITE_API_URL || 'http://localhost:5000/api');
+            const backendBase = apiBase.replace(/\/?api\/?$/, '');
+            return backendBase + u;
+        }
+        return u;
+    }
+
     if (loading) {
         return (
             <div style={{ padding: "20px", textAlign: "center" }}>
@@ -608,6 +621,23 @@ export default function UserBookings() {
                                         </p>
                                     </div>
                                 </div>
+                                {/* Photos from related ticket (if any) */}
+                                {booking.ticket?.photos?.length > 0 && (
+                                    <div style={{ marginTop: 12 }}>
+                                        <strong style={{ fontSize: 12, color: '#6b7280' }}>PHOTOS</strong>
+                                        <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginTop: 8 }}>
+                                            {booking.ticket.photos.slice(0, 4).map((p, idx) => (
+                                                <img
+                                                    key={idx}
+                                                    src={resolveBackendUrl(p.url)}
+                                                    alt={p.description || `Photo ${idx + 1}`}
+                                                    style={{ width: 72, height: 72, objectFit: 'cover', borderRadius: 8, border: '1px solid #e5e7eb', background: '#fff' }}
+                                                    onError={(e) => { e.currentTarget.style.display = 'none' }}
+                                                />
+                                            ))}
+                                        </div>
+                                    </div>
+                                )}
                             </div>
 
                             {/* Patient Notes */}
@@ -1042,6 +1072,25 @@ export default function UserBookings() {
                                 <strong>Fee:</strong> $
                                 {selectedBooking.consultationFee}
                             </p>
+
+                            {/* Photos from related ticket (full gallery) */}
+                            {selectedBooking.ticket?.photos?.length > 0 && (
+                                <div style={{ marginTop: 12 }}>
+                                    <strong>Photos:</strong>
+                                    <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginTop: 8 }}>
+                                        {selectedBooking.ticket.photos.map((p, idx) => (
+                                            <a key={idx} href={resolveBackendUrl(p.url)} target="_blank" rel="noopener noreferrer">
+                                                <img
+                                                    src={resolveBackendUrl(p.url)}
+                                                    alt={p.description || `Photo ${idx + 1}`}
+                                                    style={{ width: 96, height: 96, objectFit: 'cover', borderRadius: 8, border: '1px solid #e5e7eb', background: '#fff' }}
+                                                    onError={(e) => { e.currentTarget.style.display = 'none' }}
+                                                />
+                                            </a>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
 
                             {selectedBooking.patientNotes && (
                                 <div style={{ marginTop: "16px" }}>

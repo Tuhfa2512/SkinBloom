@@ -91,8 +91,30 @@ export default function Notifications() {
     }
     
     if (notification.actionUrl) {
-      // Navigate to the specified URL
-      window.location.href = notification.actionUrl
+      // Decide where to route: backend for files (/uploads/*), frontend otherwise
+      const actionUrl = String(notification.actionUrl)
+      const apiBase = (import.meta.env.VITE_API_URL || 'http://localhost:5000/api')
+      const backendBase = apiBase.replace(/\/?api\/?$/, '') // strip trailing /api
+
+      let targetUrl = actionUrl
+
+      if (/^https?:\/\//i.test(actionUrl)) {
+        // Absolute URL from server, use as-is
+        targetUrl = actionUrl
+      } else if (actionUrl.startsWith('/uploads')) {
+        // Static files are served by backend
+        targetUrl = backendBase + actionUrl
+      } else {
+        // Treat as a frontend route
+        targetUrl = actionUrl
+      }
+
+      // Open in a new tab for documents; keep same tab for app routes
+      if (targetUrl.match(/\.(pdf|jpg|jpeg|png|webp)(\?.*)?$/i) || targetUrl.includes('/uploads/')) {
+        window.open(targetUrl, '_blank')
+      } else {
+        window.location.href = targetUrl
+      }
     }
   }
 

@@ -4,6 +4,8 @@ import cors from 'cors'
 import morgan from 'morgan'
 import dotenv from 'dotenv'
 import mongoose from 'mongoose'
+import path from 'path'
+import { fileURLToPath } from 'url'
 
 // routes
 import authRoutes from './routes/auth.js'
@@ -26,8 +28,10 @@ import dashboardRoutes from './routes/dashboard.js'
 
 
 
-// env
-dotenv.config()
+// Resolve __dirname for ESM and load env from the server directory explicitly
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+dotenv.config({ path: path.join(__dirname, '.env') })
 const { PORT = 5000, MONGO_URI, JWT_SECRET, FRONTEND_URL = 'http://localhost:5173' } = process.env
 
 if (!JWT_SECRET) {
@@ -46,10 +50,6 @@ app.use(express.json({ limit: '2mb' }))
 app.use(morgan('dev'))
 
 // static for uploads
-import path from 'path'
-import { fileURLToPath } from 'url'
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')))
 
 // db

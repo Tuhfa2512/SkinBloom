@@ -1,5 +1,4 @@
 // controllers/payments.js
-import dotenv from "dotenv";
 import Stripe from "stripe";
 import User from "../models/User.js";
 import Product from "../models/Product.js";
@@ -9,19 +8,21 @@ import fs from "fs";
 import path from "path";
 import fetch from "node-fetch";
 
-dotenv.config(); // Load .env variables
-
+// Lazy-initialize Stripe after server has loaded envs
 let stripe = null;
-if (
-    process.env.STRIPE_SECRET_KEY &&
-    process.env.STRIPE_SECRET_KEY !== "sk_test_dummy_key_for_development"
-) {
-    stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
-        apiVersion: "2022-11-15",
-    });
-} else {
-    console.log("Stripe not configured - payments will be disabled");
-}
+let stripeInitLogged = false;
+const ensureStripe = () => {
+    const key = process.env.STRIPE_SECRET_KEY;
+    if (!stripe && key && key !== "sk_test_dummy_key_for_development") {
+        stripe = new Stripe(key, { apiVersion: "2022-11-15" });
+        stripeInitLogged = false;
+    }
+    if (!stripe && !stripeInitLogged) {
+        console.log("Stripe not configured - payments will be disabled");
+        stripeInitLogged = true;
+    }
+    return stripe;
+};
 
 // bKash configuration (Sandbox)
 const BKASH_BASE = (process.env.BKASH_SANDBOX === undefined || process.env.BKASH_SANDBOX === "true")
@@ -130,10 +131,10 @@ export const executeBkashPayment = async (req, res) => {
 // Create consultation checkout session
 export const createConsultationCheckout = async (req, res) => {
     try {
-        if (!stripe) {
+    if (!ensureStripe()) {
             return res.status(500).json({ error: "Payments not configured" });
         }
-        const session = await stripe.checkout.sessions.create({
+    const session = await stripe.checkout.sessions.create({
             payment_method_types: ["card"],
             line_items: [
                 {
@@ -175,7 +176,7 @@ export const createConsultationCheckout = async (req, res) => {
 // Create product checkout session (for cart items)
 export const createProductCheckout = async (req, res) => {
     try {
-        if (!stripe) {
+    if (!ensureStripe()) {
             return res.status(500).json({ error: "Payments not configured" });
         }
         const { cartItems, paymentType = "full", customerInfo } = req.body;
@@ -235,7 +236,7 @@ export const createProductCheckout = async (req, res) => {
         }
 
         // Create Stripe session
-        const sessionConfig = {
+            const sessionConfig = {
             payment_method_types: ["card"],
             line_items,
             mode,
@@ -275,7 +276,7 @@ export const createProductCheckout = async (req, res) => {
             ];
         }
 
-        const session = await stripe.checkout.sessions.create(sessionConfig);
+    const session = await stripe.checkout.sessions.create(sessionConfig);
 
         res.status(200).json({
             id: session.id,
@@ -292,10 +293,10 @@ export const createProductCheckout = async (req, res) => {
 // Create discount coupon for cash payments
 const createDiscountCoupon = async (discountAmount) => {
     try {
-        if (!stripe) {
+    if (!ensureStripe()) {
             throw new Error("Payments not configured");
         }
-        const coupon = await stripe.coupons.create({
+    const coupon = await stripe.coupons.create({
             amount_off: discountAmount,
             currency: "usd",
             duration: "once",
@@ -311,12 +312,12 @@ const createDiscountCoupon = async (discountAmount) => {
 // Verify payment and create order
 export const verifyPayment = async (req, res) => {
     try {
-        if (!stripe) {
+    if (!ensureStripe()) {
             return res.status(500).json({ error: "Payments not configured" });
         }
         const { sessionId } = req.params;
 
-        const session = await stripe.checkout.sessions.retrieve(sessionId);
+    const session = await stripe.checkout.sessions.retrieve(sessionId);
 
         if (session.payment_status === "paid") {
             // Payment successful - create order record
@@ -342,7 +343,9 @@ export const verifyPayment = async (req, res) => {
                 if (orderData.type === "product_purchase") {
                     const lineItems = await stripe.checkout.sessions.listLineItems(sessionId, { limit: 100 });
                     const rel = await generateOrderReceiptPDF(orderData, lineItems?.data || [], session);
-                    receiptUrl = rel; // e.g., /uploads/receipts/receipt-<sessionId>.pdf
+                    // Build absolute URL so the client opens the backend origin, not the frontend (5173)
+                    const backendBase = process.env.BACKEND_URL || `http://localhost:${process.env.PORT || 5000}`;
+                    receiptUrl = rel ? `${backendBase}${rel}` : null; // e.g., http://localhost:5000/uploads/receipts/receipt-<sessionId>.pdf
                 }
             } catch (e) {
                 console.warn("Non-blocking: failed to generate product receipt:", e?.message || e);
@@ -377,6 +380,8 @@ export const verifyPayment = async (req, res) => {
             res.status(200).json({
                 success: true,
                 order: orderData,
+                // Expose the absolute receipt URL so the client can offer a direct download
+                receiptUrl,
                 session: {
                     id: session.id,
                     payment_status: session.payment_status,
