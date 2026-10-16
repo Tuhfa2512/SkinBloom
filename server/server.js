@@ -7,7 +7,7 @@ import mongoose from 'mongoose'
 import path from 'path'
 import { fileURLToPath } from 'url'
 
-// routes
+// Routes
 import authRoutes from './routes/auth.js'
 import profileRoutes from './routes/profile.js'
 import routineRoutes from './routes/routine.js'
@@ -25,53 +25,91 @@ import bookingRoutes from './routes/booking.js'
 import activityRoutes from './routes/activity.js'
 import dashboardRoutes from './routes/dashboard.js'
 
-
-
-
-// Resolve __dirname for ESM and load env from the server directory explicitly
+// Resolve __dirname for ESM
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
-dotenv.config({ path: path.join(__dirname, '.env') })
-const { PORT = 5000, MONGO_URI, JWT_SECRET, FRONTEND_URL = 'http://localhost:5173' } = process.env
 
+// Load environment variables
+dotenv.config({ path: path.join(__dirname, '.env') })
+
+const {
+  PORT = 5000,
+  MONGO_URI,
+  JWT_SECRET,
+  FRONTEND_URL = 'http://localhost:5173'
+} = process.env
+
+// Check required environment variables
 if (!JWT_SECRET) {
-  console.error('❌ JWT_SECRET not set in .env file')
+  console.error('❌ JWT_SECRET not set in environment variables')
   process.exit(1)
 }
 
+if (!MONGO_URI) {
+  console.error('❌ MONGO_URI not set in environment variables')
+  process.exit(1)
+}
+
+// Initialize Express
 const app = express()
+
+// ============================================
+// CORS CONFIGURATION
+// ============================================
+
+// Allowed frontend URLs
+const allowedOrigins = [
+  FRONTEND_URL,
+  'https://skin-bloom.vercel.app',
+  'https://skin-bloom-git-main-tuhfa.vercel.app',
+  'http://localhost:5173',
+  'http://localhost:5174'
+].map(origin => origin.trim().replace(/\/$/, ''))
+
+// Enable CORS
 app.use(cors({
-  origin: [FRONTEND_URL, 'http://localhost:5173', 'http://localhost:5174'],
+  origin: allowedOrigins,
   credentials: true,
   exposedHeaders: ['Authorization'],
-  allowedHeaders: ['Content-Type', 'Authorization']
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS']
 }))
+
+// ============================================
+// MIDDLEWARE
+// ============================================
+
 app.use(express.json({ limit: '2mb' }))
 app.use(morgan('dev'))
 
-// static for uploads
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')))
+// Static files for uploads
+app.use(
+  '/uploads',
+  express.static(path.join(__dirname, 'uploads'))
+)
 
-// db
-mongoose.connect(MONGO_URI).then(() => {
-  console.log('✅ MongoDB connected')
-  const port = Number(PORT)
-  app.listen(port, () => {
-    console.log(`🚀 Server running on http://localhost:${port}`)
+// ============================================
+// HEALTH CHECK ROUTE
+// ============================================
+
+app.get('/', (req, res) => {
+  res.json({
+    ok: true,
+    service: 'Skinbloom API'
   })
-}).catch(err => {
-  console.error('❌ Mongo connection error:', err)
-  process.exit(1)
 })
 
-// health
-app.get('/', (req, res) => res.json({ ok:true, service:'Skinbloom API' }))
+// ============================================
+// PUBLIC ROUTES
+// ============================================
 
-// Public routes first
 app.use('/api/auth', authRoutes)
-app.use('/api/products', productRoutes) // Public product access
+app.use('/api/products', productRoutes)
 
-// User protected routes (require authentication)
+// ============================================
+// USER ROUTES
+// ============================================
+
 app.use('/api/profile', profileRoutes)
 app.use('/api/routine', routineRoutes)
 app.use('/api/feedback', feedbackRoutes)
@@ -86,3 +124,22 @@ app.use('/api/notifications', notificationRoutes)
 app.use('/api/bookings', bookingRoutes)
 app.use('/api/activity', activityRoutes)
 app.use('/api/dashboard', dashboardRoutes)
+
+// ============================================
+// MONGODB CONNECTION AND SERVER START
+// ============================================
+
+mongoose.connect(MONGO_URI)
+  .then(() => {
+    console.log('✅ MongoDB connected')
+
+    const port = Number(PORT)
+
+    app.listen(port, () => {
+      console.log(`🚀 Server running on port ${port}`)
+    })
+  })
+  .catch(err => {
+    console.error('❌ Mongo connection error:', err)
+    process.exit(1)
+  })
