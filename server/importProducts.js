@@ -31,8 +31,7 @@ async function importProducts() {
         console.log(`📁 Found ${dataLines.length} products in CSV`);
 
         // Clear existing products
-        await Product.deleteMany({});
-        console.log("🗑️ Cleared existing products");
+        //
 
         const products = [];
 
@@ -140,7 +139,7 @@ function generateProductImage(productName, category) {
     };
 
     const imageName = categoryImages[category] || "product.jpg";
-    return `http://localhost:5000/uploads/products/${imageName}`;
+    return `https://skinbloom-api.onrender.com/uploads/products/${imageName}`;
 }
 
 function generateIngredients(category) {
