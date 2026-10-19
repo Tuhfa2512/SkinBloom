@@ -92,10 +92,10 @@ SkinBloom follows a client-server architecture using the MERN stack.
 flowchart TD
     A[User] --> B[React Frontend]
     B --> C[Axios HTTP Requests]
-    C --> D[Express.js REST API]
+    C --> D[Express REST API]
     D --> E[Authentication and Authorization]
-    D --> F[Application Services]
-    F --> G[(MongoDB Database)]
+    E --> F[Application Services]
+    F --> G[MongoDB Database]
     F --> H[External Product APIs]
     F --> I[Consultation and Payment Services]
     G --> J[Application Response]
@@ -104,7 +104,6 @@ flowchart TD
     J --> D
     D --> C
     C --> B
-    B --> K[User Interface]
 ```
 
 ### Architecture Components
