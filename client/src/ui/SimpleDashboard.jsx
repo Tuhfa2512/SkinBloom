@@ -126,7 +126,12 @@ export default function SimpleDashboard() {
                             Explore Collection
                         </Link>
                     </div>
-                    <div className="highlight-media" />
+                    <div className="highlight-media" style={{
+                        backgroundImage: 'url("/images/herbal-collection.jpg")',
+                        backgroundSize: "cover",
+                        backgroundPosition: "center",
+                        backgroundRepeat: "no-repeat"
+                    }} />
                 </div>
             </section>
 
