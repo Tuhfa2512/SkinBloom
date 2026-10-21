@@ -258,7 +258,7 @@ body {
 }
 .highlight-media {
     background: linear-gradient(145deg, #dbe3db, #f4f6f4);
-    background-image: url("../category images/62cfdda1-70ea-465c-b831-4fa6b0a41a03.jpg");
+    background-image: none;
     background-size: cover;
     background-position: center;
     height: 420px;
