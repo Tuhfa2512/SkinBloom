@@ -82,11 +82,11 @@ export default function SimpleDashboard() {
                         aria-hidden="true"
                     >
                         <img
-                            src="../category images/eb9f1214-559d-4a62-b7ca-166303c53d99.jpg"
+                            src="/images/landing-skincare.jpg"
                             alt="Minimal skincare products with branch shadow"
                             className="hero-art-img"
                             onError={(e) => {
-                                e.currentTarget.style.opacity = "0";
+                                console.error("Landing image failed to load:", e.currentTarget.src);
                             }}
                         />
                     </div>
