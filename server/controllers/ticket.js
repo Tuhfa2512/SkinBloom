@@ -1,3 +1,4 @@
+import { uploadToImageKit } from "../middleware/upload.js";
 import Ticket from "../models/Ticket.js";
 import Consultation from "../models/Consultation.js";
 import Notification from "../models/Notification.js";
@@ -58,10 +59,21 @@ export async function createTicket(req, res) {
             createBooking,
         } = req.body;
 
-        // Validate required fields
-        if (!concern || !photos || photos.length === 0) {
+        // Only concern is required; photos are optional.
+        if (!concern || !concern.trim()) {
             return res.status(400).json({
-                error: "Concern description and at least one photo are required",
+                error: "Concern description is required",
+            });
+        }
+
+        // Uploaded multipart files are available in req.files.
+        const uploadedPhotos = [];
+
+        for (const file of req.files || []) {
+            const result = await uploadToImageKit(file, "consultations");
+            uploadedPhotos.push({
+                url: result.url,
+                description: "",
             });
         }
 
@@ -74,10 +86,7 @@ export async function createTicket(req, res) {
             duration,
             previousTreatments,
             allergies,
-            photos: photos.map((photo) => ({
-                url: photo.url,
-                description: photo.description || "",
-            })),
+            photos: uploadedPhotos,
             status: "submitted",
             consultationType: consultationType || "photo_review",
             preferredDermatologist: preferredDermatologist || null,
