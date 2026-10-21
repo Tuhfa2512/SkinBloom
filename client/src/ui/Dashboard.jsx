@@ -536,8 +536,10 @@ export default function Dashboard() {
                             style={{
                                 width: "100%",
                                 height: "100%",
-                                objectFit: "cover",
+                                objectFit: "contain",
+                                objectPosition: "center",
                                 display: "block",
+                                background: "#fff4e9",
                             }}
                             onError={(e) => {
                                 e.currentTarget.style.objectFit = "contain";
