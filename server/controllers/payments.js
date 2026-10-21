@@ -356,7 +356,15 @@ export const verifyPayment = async (req, res) => {
             if (orderData.type === "consultation" && orderData.userId) {
                 try {
                     // Create a minimal prepaid ticket so dermatologists can see and pick it up
-                    const ticket = await Ticket.create({
+                    const existingTicket = await Ticket.findOne({
+                        paymentId: session.payment_intent,
+                    });
+
+                    if (existingTicket) {
+                        console.log("Consultation ticket already exists:", existingTicket._id);
+                    }
+
+                    const ticket = existingTicket || await Ticket.create({
                         user: orderData.userId,
                         concern: "Prepaid dermatology consultation",
                         consultationType: "photo_review",
@@ -369,6 +377,13 @@ export const verifyPayment = async (req, res) => {
 
                     // Notify the user with a clear CTA to view their ticket
                     try {
+                        const existingUserNotification = await Notification.findOne({
+                            recipient: orderData.userId,
+                            type: "payment_confirmed",
+                            payment: session.payment_intent,
+                        });
+
+                        if (!existingUserNotification) {
                         await Notification.create({
                             recipient: orderData.userId,
                             type: "payment_confirmed",
@@ -380,6 +395,7 @@ export const verifyPayment = async (req, res) => {
                             actionUrl: `/tickets/${ticket._id}`,
                             actionText: "View Ticket",
                         });
+                        }
                     } catch (e) {
                         console.warn(
                             "Non-blocking: failed to notify user after consultation payment:",
@@ -394,6 +410,14 @@ export const verifyPayment = async (req, res) => {
                             isActive: true,
                         }).select("_id name");
                         for (const derm of dermatologists) {
+                            const existingDermNotification = await Notification.findOne({
+                                recipient: derm._id,
+                                type: "ticket_submitted",
+                                ticket: ticket._id,
+                            });
+
+                            if (existingDermNotification) continue;
+
                             await Notification.create({
                                 recipient: derm._id,
                                 type: "ticket_submitted",
