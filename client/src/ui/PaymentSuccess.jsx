@@ -30,7 +30,7 @@ function PaymentSuccess() {
             if (isBooking && bookingId) {
                 // Verify booking payment
                 response = await axios.post(
-                    `http://localhost:5000/api/bookings/${bookingId}/verify-payment`,
+                    `${import.meta.env.VITE_API_URL || 'http://localhost:5000/api'}/bookings/${bookingId}/verify-payment`,
                     { sessionId },
                     {
                         headers: {
@@ -43,7 +43,7 @@ function PaymentSuccess() {
             } else {
                 // Verify product payment
                 response = await axios.get(
-                    `http://localhost:5000/api/payment/verify/${sessionId}`
+                    `${import.meta.env.VITE_API_URL || 'http://localhost:5000/api'}/payment/verify/${sessionId}`
                 );
             }
 
