@@ -428,16 +428,24 @@ export const verifyPayment = async (req, res) => {
                             "Your order payment has been received. You can download the receipt.";
                         const actionUrl = receiptUrl || "/products";
                         const actionText = receiptUrl ? "Download Receipt" : "View";
-                        await Notification.create({
+                        const existingNotification = await Notification.findOne({
                             recipient: orderData.userId,
                             type: "payment_confirmed",
-                            title,
-                            message,
                             payment: session.payment_intent,
-                            actionRequired: false,
-                            actionUrl,
-                            actionText,
                         });
+
+                        if (!existingNotification) {
+                            await Notification.create({
+                                recipient: orderData.userId,
+                                type: "payment_confirmed",
+                                title,
+                                message,
+                                payment: session.payment_intent,
+                                actionRequired: false,
+                                actionUrl,
+                                actionText,
+                            });
+                        }
                     }
                 } catch (e) {
                     console.warn(
