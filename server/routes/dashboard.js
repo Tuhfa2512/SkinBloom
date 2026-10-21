@@ -1,3 +1,4 @@
+import mongoose from 'mongoose'
 import { Router } from 'express'
 import { dermatologistRequired } from '../middleware/auth.js'
 import Booking from '../models/Booking.js'
@@ -7,7 +8,7 @@ const r = Router()
 
 r.get('/dermatologist/stats', dermatologistRequired, async (req, res) => {
   try {
-    const dermaId = req.user.id
+    const dermaId = new mongoose.Types.ObjectId(String(req.user._id || req.user.id))
     const startOfToday = new Date(); startOfToday.setHours(0,0,0,0)
     const endOfToday = new Date(); endOfToday.setHours(23,59,59,999)
 
@@ -19,19 +20,19 @@ r.get('/dermatologist/stats', dermatologistRequired, async (req, res) => {
 
     const [bookingEarningsAgg, bookingEarningsTodayAgg, ticketEarningsAgg, ticketEarningsTodayAgg] = await Promise.all([
       Booking.aggregate([
-        { $match: { dermatologist: req.user._id || dermaId, paymentStatus: 'paid' } },
+        { $match: { dermatologist: dermaId, paymentStatus: 'paid' } },
         { $group: { _id: null, total: { $sum: '$consultationFee' } } }
       ]),
       Booking.aggregate([
-        { $match: { dermatologist: req.user._id || dermaId, paymentStatus: 'paid', paymentDate: { $gte: startOfToday, $lte: endOfToday } } },
+        { $match: { dermatologist: dermaId, paymentStatus: 'paid', paymentDate: { $gte: startOfToday, $lte: endOfToday } } },
         { $group: { _id: null, total: { $sum: '$consultationFee' } } }
       ]),
       Ticket.aggregate([
-        { $match: { dermatologist: req.user._id || dermaId, paymentStatus: 'paid' } },
+        { $match: { dermatologist: dermaId, paymentStatus: 'paid' } },
         { $group: { _id: null, total: { $sum: '$consultationFee' } } }
       ]),
       Ticket.aggregate([
-        { $match: { dermatologist: req.user._id || dermaId, paymentStatus: 'paid', paymentDate: { $gte: startOfToday, $lte: endOfToday } } },
+        { $match: { dermatologist: dermaId, paymentStatus: 'paid', paymentDate: { $gte: startOfToday, $lte: endOfToday } } },
         { $group: { _id: null, total: { $sum: '$consultationFee' } } }
       ])
     ])
