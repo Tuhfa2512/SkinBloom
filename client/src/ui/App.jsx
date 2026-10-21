@@ -174,7 +174,28 @@ export default function App() {
                                                             onClick={() => {
                                                                 setOpen(false);
                                                                 if (n.actionUrl) {
-                                                                    window.location.href = n.actionUrl;
+                                                                    let targetUrl = n.actionUrl;
+                                                                    const apiBase = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
+                                                                    const backendBase = apiBase.replace(/\/?api\/?$/, "");
+
+                                                                    try {
+                                                                        const url = new URL(n.actionUrl, window.location.origin);
+                                                                        const isLocal = ["localhost", "127.0.0.1"].includes(url.hostname);
+
+                                                                        if (isLocal && url.pathname.startsWith("/uploads/")) {
+                                                                            targetUrl = backendBase + url.pathname + url.search;
+                                                                        } else if (n.actionUrl.startsWith("/uploads/")) {
+                                                                            targetUrl = backendBase + n.actionUrl;
+                                                                        }
+                                                                    } catch (error) {
+                                                                        console.error("Invalid notification URL:", error);
+                                                                    }
+
+                                                                    if (targetUrl.includes("/uploads/")) {
+                                                                        window.open(targetUrl, "_blank");
+                                                                    } else {
+                                                                        window.location.href = targetUrl;
+                                                                    }
                                                                 }
                                                             }}
                                                             style={{
