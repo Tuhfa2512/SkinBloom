@@ -64,7 +64,7 @@ function Checkout() {
 
   const fetchPaymentOptions = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/api/payment/options?amount=${cart.totalAmount}`);
+      const response = await axios.get(`${import.meta.env.VITE_API_URL || 'http://localhost:5000/api'}/payment/options?amount=${cart.totalAmount}`);
       setPaymentOptions(response.data);
     } catch (error) {
       console.error('Error fetching payment options:', error.message || error);
