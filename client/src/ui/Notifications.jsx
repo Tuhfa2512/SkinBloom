@@ -99,8 +99,19 @@ export default function Notifications() {
       let targetUrl = actionUrl
 
       if (/^https?:\/\//i.test(actionUrl)) {
-        // Absolute URL from server, use as-is
-        targetUrl = actionUrl
+        // Redirect old local receipt links to the deployed backend
+        try {
+          const parsedUrl = new URL(actionUrl)
+          const isOldLocalhost = ['localhost', '127.0.0.1'].includes(parsedUrl.hostname)
+
+          if (isOldLocalhost && parsedUrl.pathname.startsWith('/uploads/')) {
+            targetUrl = backendBase + parsedUrl.pathname + parsedUrl.search
+          } else {
+            targetUrl = actionUrl
+          }
+        } catch {
+          targetUrl = actionUrl
+        }
       } else if (actionUrl.startsWith('/uploads')) {
         // Static files are served by backend
         targetUrl = backendBase + actionUrl
