@@ -175,6 +175,18 @@ export default function App() {
                                                                 setOpen(false);
                                                                 if (n.actionUrl) {
                                                                     let targetUrl = n.actionUrl;
+
+                                                                    // Old receipt links contain the Stripe Checkout session ID.
+                                                                    // Open the payment success page to generate the PDF in-browser.
+                                                                    const receiptMatch = String(n.actionUrl).match(
+                                                                        /\/uploads\/receipts\/order-receipt-(cs_(?:test|live)_[A-Za-z0-9]+)\.pdf(?:\?.*)?$/
+                                                                    );
+
+                                                                    if (receiptMatch) {
+                                                                        window.location.href =
+                                                                            `/payment/success?session_id=${encodeURIComponent(receiptMatch[1])}`;
+                                                                        return;
+                                                                    }
                                                                     const apiBase = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
                                                                     const backendBase = apiBase.replace(/\/?api\/?$/, "");
 
