@@ -68,7 +68,7 @@ function PaymentSuccess() {
         try {
             const token = localStorage.getItem("token");
             if (token) {
-                await axios.delete("http://localhost:5000/api/cart/clear", {
+                await axios.delete(`${import.meta.env.VITE_API_URL || 'http://localhost:5000/api'}/cart/clear`, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
             }

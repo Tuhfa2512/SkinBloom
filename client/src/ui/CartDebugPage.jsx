@@ -43,7 +43,7 @@ function CartDebugPage() {
 
       // Test cart API
       addLog('Making cart API call...')
-      const response = await axios.get('http://localhost:5000/api/cart', {
+      const response = await axios.get(`${import.meta.env.VITE_API_URL || 'http://localhost:5000/api'}/cart`, {
         headers: { Authorization: `Bearer ${token}` }
       })
 
@@ -78,7 +78,7 @@ function CartDebugPage() {
     try {
       addLog('Clearing cart...')
       const token = localStorage.getItem('token')
-      await axios.delete('http://localhost:5000/api/cart/clear', {
+      await axios.delete(`${import.meta.env.VITE_API_URL || 'http://localhost:5000/api'}/cart/clear`, {
         headers: { Authorization: `Bearer ${token}` }
       })
       addLog('Cart cleared successfully')
@@ -92,7 +92,7 @@ function CartDebugPage() {
     try {
       addLog('Adding test item to cart...')
       const token = localStorage.getItem('token')
-      const response = await axios.post('http://localhost:5000/api/cart/add', 
+      const response = await axios.post(`${import.meta.env.VITE_API_URL || 'http://localhost:5000/api'}/cart/add`, 
         { productId: '68b97e715764bab841dfd187', quantity: 1 },
         { headers: { Authorization: `Bearer ${token}` } }
       )

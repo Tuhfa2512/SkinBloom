@@ -27,7 +27,7 @@ function SimpleCart() {
             }
 
             console.log("SimpleCart: Making API call");
-            const response = await axios.get("http://localhost:5000/api/cart", {
+            const response = await axios.get(`${import.meta.env.VITE_API_URL || 'http://localhost:5000/api'}/cart`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             console.log("SimpleCart: API response:", response.data);
