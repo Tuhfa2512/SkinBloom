@@ -530,7 +530,7 @@ export default function Dashboard() {
                     <div className="highlight-media">
                         {/* Replace the src below with your own image placed in /public (e.g. /routine-hero.jpg) */}
                         <img
-                            src="/images/hero.jpg"
+                            src="/images/routine-design.svg"
                             alt="Daily skincare routine products neatly arranged"
                             className="highlight-img"
                             style={{
