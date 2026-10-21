@@ -1841,52 +1841,6 @@ textarea:focus {
 .btn.sm { padding: 8px 14px !important; font-size: 12px !important; }
 .btn.lg { padding: 16px 28px !important; font-size: 16px !important; }
 
-/* SkinBloom Hero Layout Fix */
-@media (min-width: 981px) {
-    .hero-inner {
-        display: grid;
-        grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
-        gap: 36px;
-        align-items: center;
-    }
-
-    .hero-text {
-        min-width: 0;
-    }
-
-    .hero-text h1 {
-        font-size: clamp(38px, 3.6vw, 56px);
-    }
-
-    .hero-art {
-        width: 100%;
-        height: 440px;
-        min-width: 0;
-    }
-
-    .hero-art-img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center;
-    }
-}
-
-@media (max-width: 980px) {
-    .hero-art {
-        width: 100%;
-        max-width: 560px;
-        height: 360px;
-        margin: 0 auto;
-    }
-
-    .hero-art-img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-}
-
 
 /* SkinBloom Hero Layout Fix */
 @media (min-width: 981px) {
@@ -1933,4 +1887,3 @@ textarea:focus {
         object-fit: cover;
     }
 }
-
