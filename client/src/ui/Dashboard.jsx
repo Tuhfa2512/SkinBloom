@@ -109,7 +109,7 @@ export default function Dashboard() {
                     >
                         <div className="hero-art-bg hero-art-overlay soft-left-fade" />
                         <img
-                            src="../category images/db2a9938-3c9a-46d9-af1e-7ec16256aa46.jpg"
+                            src="/images/hero.jpg"
                             alt="Minimal skincare products with branch shadow"
                             className="hero-art-img"
                             onError={(e) => {
