@@ -81,7 +81,22 @@ function PaymentSuccess() {
         // If server generated a receipt, prefer direct download from backend
         if (orderDetails?.receiptUrl) {
             const a = document.createElement('a');
-            a.href = orderDetails.receiptUrl; // absolute http://localhost:5000/uploads/receipts/...
+            const apiOrigin = (
+                import.meta.env.VITE_API_URL ||
+                'http://localhost:5000/api'
+            ).replace(/\/api\/?$/, '');
+
+            const receiptUrl = new URL(
+                orderDetails.receiptUrl,
+                apiOrigin
+            );
+
+            if (['localhost', '127.0.0.1'].includes(receiptUrl.hostname)) {
+                receiptUrl.protocol = new URL(apiOrigin).protocol;
+                receiptUrl.host = new URL(apiOrigin).host;
+            }
+
+            a.href = receiptUrl.toString(); // absolute http://localhost:5000/uploads/receipts/...
             a.target = '_blank';
             // Let the browser/viewer handle it; some browsers will open, others will download
             document.body.appendChild(a);
