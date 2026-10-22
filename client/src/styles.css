@@ -1915,3 +1915,52 @@ textarea:focus {
     object-position: center !important;
     background: transparent !important;
 }
+
+/* ===== SkinBloom shared button visibility fix ===== */
+
+/* Base button: readable text and predictable appearance */
+button,
+.btn,
+a.btn {
+    font-family: inherit;
+    -webkit-text-fill-color: currentColor;
+}
+
+/* Solid buttons: preserve existing background colors */
+button.btn:not(.ghost):not(.outline):not(.secondary):not(:disabled),
+a.btn:not(.ghost):not(.outline):not(.secondary) {
+    color: #ffffff;
+}
+
+/* Keep text visible on outlined buttons */
+.btn.ghost,
+.btn.outline,
+button.outline,
+button.secondary {
+    -webkit-text-fill-color: currentColor;
+}
+
+/* Quantity buttons: readable plus/minus symbols */
+button[aria-label="Increase quantity"],
+button[aria-label="Decrease quantity"] {
+    color: #1f2937 !important;
+    background-color: #ffffff !important;
+    border: 1px solid #d1d5db !important;
+    -webkit-text-fill-color: #1f2937 !important;
+}
+
+/* Disabled buttons */
+button:disabled,
+.btn:disabled {
+    color: #6b7280 !important;
+    background: #e5e7eb !important;
+    -webkit-text-fill-color: #6b7280 !important;
+}
+
+/* Visible keyboard focus */
+button:focus-visible,
+.btn:focus-visible {
+    outline: 3px solid #10b981;
+    outline-offset: 3px;
+}
+
