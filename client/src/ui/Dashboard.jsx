@@ -536,8 +536,8 @@ export default function Dashboard() {
                             style={{
                                 width: "100%",
                                 height: "100%",
-                                objectFit: "contain",
-                                objectPosition: "center",
+                                objectFit: "cover",
+                                objectPosition: "center 25%",
                                 display: "block",
                                 background: "#fff4e9",
                             }}
