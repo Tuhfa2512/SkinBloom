@@ -463,7 +463,17 @@ function WishlistItem({ item, onRemove, onUpdatePriceAlert, onUpdateNotes }) {
             Added {new Date(item.addedAt).toLocaleDateString()}
           </div>
 
-          <button className="btn" style={{ fontSize: '14px', marginTop: '8px' }}>
+          <button
+            className="btn primary"
+            style={{
+              fontSize: '14px',
+              marginTop: '8px',
+              background: '#10b981',
+              color: '#ffffff',
+              border: 'none',
+              minWidth: '140px'
+            }}
+          >
             Add to Cart
           </button>
         </div>
