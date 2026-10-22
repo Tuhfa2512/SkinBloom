@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import API from "../auth";
 import Button from "../components/Button";
 
 export default function Products() {
+    const [searchParams] = useSearchParams();
+    const selectedCategory = searchParams.get("category") || "";
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
     const [filters, setFilters] = useState({
         search: "",
-        category: "",
+        category: selectedCategory,
         skinType: "",
         priceMin: "",
         priceMax: "",
@@ -23,6 +25,17 @@ export default function Products() {
     });
     const [wishlist, setWishlist] = useState([]);
     const [cart, setCart] = useState({ items: [] });
+
+    useEffect(() => {
+        setFilters((prev) =>
+            prev.category === selectedCategory
+                ? prev
+                : { ...prev, category: selectedCategory }
+        );
+        setPagination((prev) =>
+            prev.page === 1 ? prev : { ...prev, page: 1 }
+        );
+    }, [selectedCategory]);
 
     useEffect(() => {
         fetchProducts();
