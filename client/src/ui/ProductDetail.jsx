@@ -630,6 +630,7 @@ export default function ProductDetail() {
                                             height: "40px",
                                             border: "1px solid var(--border-color)",
                                             background: "white",
+                                            color: "#1f2937",
                                             borderRadius: "6px",
                                             cursor: "pointer",
                                             fontSize: "18px",
@@ -664,6 +665,7 @@ export default function ProductDetail() {
                                             height: "40px",
                                             border: "1px solid var(--border-color)",
                                             background: "white",
+                                            color: "#1f2937",
                                             borderRadius: "6px",
                                             cursor: "pointer",
                                             fontSize: "18px",
@@ -723,8 +725,9 @@ export default function ProductDetail() {
                                     fontWeight: "600",
                                     padding: "16px",
                                     background: product.inStock
-                                        ? undefined
+                                        ? "#4f46e5"
                                         : "#ccc",
+                                    color: "#ffffff",
                                     cursor: product.inStock
                                         ? "pointer"
                                         : "not-allowed",
