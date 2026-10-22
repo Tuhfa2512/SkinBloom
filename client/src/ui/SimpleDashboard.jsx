@@ -98,7 +98,11 @@ export default function SimpleDashboard() {
                 <h2 className="section-heading">Popular Categories</h2>
                 <div className="category-scroller">
                     {categories.map((c) => (
-                        <Link key={c} to="/products" className="category-pill">
+                        <Link
+                            key={c}
+                            to={`/products?category=${encodeURIComponent(c)}`}
+                            className="category-pill"
+                        >
                             <div className="cat-img" />
                             <span>{c}</span>
                         </Link>
