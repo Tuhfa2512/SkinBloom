@@ -168,6 +168,7 @@ export default function Wishlist() {
                 <WishlistItem
                   key={item.productId._id}
                   item={item}
+                  onAddToCart={addToCart}
                   onRemove={() => removeFromWishlist(item.productId._id)}
                   onUpdatePriceAlert={(enabled, targetPrice) => 
                     updatePriceAlert(item.productId._id, enabled, targetPrice)
@@ -224,7 +225,7 @@ export default function Wishlist() {
   )
 }
 
-function WishlistItem({ item, onRemove, onUpdatePriceAlert, onUpdateNotes }) {
+function WishlistItem({ item, onRemove, onAddToCart, onUpdatePriceAlert, onUpdateNotes }) {
   const [showPriceAlert, setShowPriceAlert] = useState(false)
   const [targetPrice, setTargetPrice] = useState(item.priceAlert?.targetPrice || '')
   const [notes, setNotes] = useState(item.notes || '')
@@ -477,7 +478,7 @@ function WishlistItem({ item, onRemove, onUpdatePriceAlert, onUpdateNotes }) {
           </div>
 
           <button
-            onClick={() => addToCart(item.productId._id)}
+            onClick={() => onAddToCart(item.productId._id)}
             className="btn primary"
             style={{
               fontSize: '14px',
