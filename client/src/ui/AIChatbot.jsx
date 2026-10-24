@@ -12,6 +12,8 @@ export default function AIChatbot() {
   const [messages, setMessages] = useState([welcomeMessage]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
+  // PERSONALIZED_CHAT_UI_V1
+  const [useSkinProfile, setUseSkinProfile] = useState(false);
   const messagesEndRef = useRef(null);
 
   useEffect(() => {
@@ -35,7 +37,7 @@ export default function AIChatbot() {
     try {
       const { data } = await API.post(
         "/chatbot/message",
-        { message, history },
+        { message, history, useSkinProfile },
         { timeout: 35000 }
       );
 
@@ -120,6 +122,18 @@ export default function AIChatbot() {
               ))}
             </div>
           )}
+
+          <label className="skinbloom-ai-profile-option">
+            <input
+              type="checkbox"
+              checked={useSkinProfile}
+              onChange={(event) =>
+                setUseSkinProfile(event.target.checked)
+              }
+              disabled={loading}
+            />
+            Use my saved skin profile for personalized advice
+          </label>
 
           <form className="skinbloom-ai-form" onSubmit={handleSubmit}>
             <input
