@@ -1,0 +1,177 @@
+.skinbloom-ai-widget {
+  position: fixed;
+  bottom: 22px;
+  right: 22px;
+  z-index: 9999;
+  font-family: Arial, sans-serif;
+}
+
+.skinbloom-ai-widget button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.skinbloom-ai-launcher {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 13px 18px;
+  border: none;
+  border-radius: 999px;
+  background: #059669 !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  font-size: 14px;
+  font-weight: 700;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, .22);
+}
+
+.skinbloom-ai-window {
+  width: min(370px, calc(100vw - 30px));
+  height: min(530px, calc(100dvh - 110px));
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  margin-bottom: 12px;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 12px 45px rgba(0, 0, 0, .22);
+  border: 1px solid #d1fae5;
+}
+
+.skinbloom-ai-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background: #047857;
+  color: white;
+}
+
+.skinbloom-ai-header strong,
+.skinbloom-ai-header small {
+  display: block;
+  color: white;
+}
+
+.skinbloom-ai-header small {
+  font-size: 11px;
+  margin-top: 4px;
+  opacity: .85;
+}
+
+.skinbloom-ai-close {
+  border: none;
+  background: transparent !important;
+  color: white !important;
+  -webkit-text-fill-color: white !important;
+  font-size: 20px;
+}
+
+.skinbloom-ai-messages {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  background: #f8fffb;
+}
+
+.skinbloom-ai-message {
+  max-width: 85%;
+  padding: 11px 13px;
+  border-radius: 14px;
+  font-size: 13px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.skinbloom-ai-message.assistant {
+  align-self: flex-start;
+  background: #e6f7ee;
+  color: #064e3b;
+}
+
+.skinbloom-ai-message.user {
+  align-self: flex-end;
+  background: #059669;
+  color: white;
+}
+
+.skinbloom-ai-suggestions {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  padding: 10px;
+  background: #fff;
+}
+
+.skinbloom-ai-suggestions button {
+  border: 1px solid #a7f3d0;
+  background: #ecfdf5 !important;
+  color: #065f46 !important;
+  -webkit-text-fill-color: #065f46 !important;
+  padding: 7px 9px;
+  border-radius: 20px;
+  font-size: 11px;
+}
+
+.skinbloom-ai-form {
+  display: flex;
+  gap: 8px;
+  padding: 12px;
+  border-top: 1px solid #e5e7eb;
+  background: white;
+}
+
+.skinbloom-ai-form input {
+  flex: 1;
+  min-width: 0;
+  padding: 11px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  font-size: 13px;
+  background: white;
+  color: #111827;
+}
+
+.skinbloom-ai-form button {
+  border: none;
+  border-radius: 10px;
+  padding: 0 14px;
+  background: #059669 !important;
+  color: white !important;
+  -webkit-text-fill-color: white !important;
+}
+
+.skinbloom-ai-form button:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+.skinbloom-ai-disclaimer {
+  margin: 0;
+  padding: 5px 8px 9px;
+  font-size: 10px;
+  color: #6b7280;
+  text-align: center;
+  background: white;
+}
+
+@media (max-width: 480px) {
+  .skinbloom-ai-widget {
+    right: 12px;
+    bottom: 12px;
+  }
+
+  .skinbloom-ai-window {
+    height: min(510px, calc(100dvh - 95px));
+  }
+
+  .skinbloom-ai-launcher {
+    padding: 11px 14px;
+    font-size: 12px;
+  }
+}

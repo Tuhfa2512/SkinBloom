@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import API from "../auth";
+import AIChatbot from "./AIChatbot.jsx";
 
 export default function App() {
     const navigate = useNavigate();
@@ -303,6 +304,7 @@ export default function App() {
                     </div>
                 </div>
             </div>
+            <AIChatbot />
         </>
     );
 }
