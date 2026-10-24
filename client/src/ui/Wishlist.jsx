@@ -24,6 +24,19 @@ export default function Wishlist() {
     }
   }
 
+  const addToCart = async (productId) => {
+    try {
+      await API.post('/cart/add', {
+        productId,
+        quantity: 1
+      });
+      alert('Product added to cart successfully!');
+    } catch (err) {
+      console.error('Wishlist Add to Cart error:', err);
+      alert(err.response?.data?.error || 'Failed to add to cart');
+    }
+  };
+
   const removeFromWishlist = async (productId) => {
     try {
       const { data } = await API.delete(`/wishlist/remove/${productId}`)
@@ -464,6 +477,7 @@ function WishlistItem({ item, onRemove, onUpdatePriceAlert, onUpdateNotes }) {
           </div>
 
           <button
+            onClick={() => addToCart(item.productId._id)}
             className="btn primary"
             style={{
               fontSize: '14px',
