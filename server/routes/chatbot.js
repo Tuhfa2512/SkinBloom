@@ -106,7 +106,9 @@ router.post('/message', async (req, res) => {
     )
 
     if (!response.ok) {
+      const errorBody = await response.text()
       console.error('Gemini API status:', response.status)
+      console.error('Gemini API details:', errorBody.slice(0, 1000))
 
       return res.status(502).json({
         error: response.status === 429
