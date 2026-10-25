@@ -43,7 +43,13 @@ export default function AIChatbot() {
 
       setMessages((prev) => [
         ...prev,
-        { role: "model", text: data.reply }
+        {
+          role: "model",
+          text: data.reply,
+          products: Array.isArray(data.products)
+            ? data.products.slice(0, 5)
+            : []
+        }
       ]);
     } catch (error) {
       const errorMessage =
@@ -93,6 +99,41 @@ export default function AIChatbot() {
                 }`}
               >
                 {message.text}
+
+                {/* SKINBLOOM_PRODUCT_CARDS_V1 */}
+                {message.role === "model" &&
+                  Array.isArray(message.products) &&
+                  message.products.length > 0 && (
+                    <div className="skinbloom-ai-product-list">
+                      {message.products.map((product) => (
+                        <div
+                          className="skinbloom-ai-product-card"
+                          key={product.id}
+                        >
+                          {product.image && (
+                            <img
+                              src={product.image}
+                              alt={product.name}
+                              loading="lazy"
+                            />
+                          )}
+
+                          <div className="skinbloom-ai-product-info">
+                            <strong>{product.name}</strong>
+                            <span>{product.brand}</span>
+
+                            <b>
+                              ৳{Number(product.price).toLocaleString("en-BD")}
+                            </b>
+
+                            <a href={`/products/${product.id}`}>
+                              View Product →
+                            </a>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
               </div>
             ))}
 
