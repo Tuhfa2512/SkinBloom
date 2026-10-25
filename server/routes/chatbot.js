@@ -78,6 +78,9 @@ router.post('/message', async (req, res) => {
         parts: [{ text: m.text }]
       }))
 
+    // SKINBLOOM_SMART_MATCHING_V2
+    let savedSkinContext = null
+
     // PERSONALIZED_SKINBLOOM_V1
     let personalizedInstruction = SYSTEM_INSTRUCTION
 
@@ -136,6 +139,8 @@ router.post('/message', async (req, res) => {
         allergies: cleanItems(profile.allergies)
       }
 
+      savedSkinContext = skinContext
+
       personalizedInstruction += `
 
 The user has explicitly opted in to personalized skincare advice.
@@ -167,7 +172,8 @@ ${JSON.stringify(skinContext)}
       const budget = budgetMatch ? Number(budgetMatch[1]) : null
 
       const requestedSkinType = (
-        message.match(/\\b(oily|dry|combination|sensitive|normal)\\b/i)?.[1] || ''
+        message.match(/\b(oily|dry|combination|sensitive|normal)\b/i)?.[1] ||
+        savedSkinContext?.skinType || ''
       ).toLowerCase()
 
       const filter = {
@@ -190,7 +196,7 @@ ${JSON.stringify(skinContext)}
       }
 
       const products = await Product.find(filter)
-        .select('name brand category skinType description price image rating ingredients concerns inStock stockQuantity')
+        .select('name brand category skinType description price image rating ingredients concerns fragrance inStock stockQuantity')
         .sort({ rating: -1, price: 1 })
         .limit(30)
         .lean()
@@ -198,7 +204,43 @@ ${JSON.stringify(skinContext)}
       const relevantWords = message.toLowerCase()
         .match(/[a-z]{4,}/g) || []
 
-      const ranked = products.map(product => {
+      // SKINBLOOM_ALLERGY_SCREENING_V2
+      // Preliminary ingredient screening, not a safety guarantee.
+      const allergies = (savedSkinContext?.allergies || [])
+        .map(value => value.toLowerCase().trim())
+        .filter(value => value.length >= 3)
+
+      const eligibleProducts = products.filter(product => {
+        const ingredients = Array.isArray(product.ingredients)
+          ? product.ingredients.map(value =>
+              String(value).toLowerCase().trim()
+            )
+          : []
+
+        const fragrance = String(product.fragrance || '')
+          .toLowerCase()
+
+        return !allergies.some(allergy => {
+          const ingredientMatch = ingredients.some(ingredient =>
+            ingredient === allergy ||
+            ingredient.includes(allergy) ||
+            (ingredient.length >= 4 && allergy.includes(ingredient))
+          )
+
+          const fragranceMatch =
+            /fragrance|perfume|parfum/i.test(allergy) &&
+            (
+              ingredients.some(ingredient =>
+                /fragrance|perfume|parfum/i.test(ingredient)
+              ) ||
+              (fragrance && fragrance !== 'fragrance-free')
+            )
+
+          return ingredientMatch || fragranceMatch
+        })
+      })
+
+      const ranked = eligibleProducts.map(product => {
         const searchable = [
           product.name,
           product.brand,
@@ -246,6 +288,17 @@ Do not claim products are allergy-safe without verification.
 
 Available SkinBloom products:
 ${JSON.stringify(recommendedProducts)}
+
+PRODUCT SELECTION FORMAT:
+When recommending SkinBloom catalog products, append exactly one final line:
+[SKINBLOOM_IDS:id1,id2,id3]
+
+Replace id1,id2,id3 with exact product IDs from the catalog.
+Include only products actually recommended in your response.
+Never invent IDs.
+If no suitable products exist, append [SKINBLOOM_IDS:].
+Do not explain this format to the user.
+Do not claim products are guaranteed allergy-safe.
 `
     }
 
@@ -305,7 +358,42 @@ ${JSON.stringify(recommendedProducts)}
       })
     }
 
-    res.json({ reply, products: recommendedProducts })
+    // SKINBLOOM_EXACT_PRODUCT_MATCHING_V2
+    // Accept only IDs from the server-selected product candidates.
+    const selectionPattern = /\[SKINBLOOM_IDS:([^\]\r\n]*)\]/g
+
+    const matches = [...reply.matchAll(selectionPattern)]
+
+    const selectedText = matches.length
+      ? matches[matches.length - 1][1]
+      : null
+
+    const cleanReply = reply
+      .replace(selectionPattern, '')
+      .trim()
+
+    let selectedProducts = []
+
+    if (productIntent && selectedText !== null) {
+      const requestedIds = selectedText
+        .split(',')
+        .map(id => id.trim())
+        .filter(Boolean)
+        .slice(0, 5)
+
+      const availableById = new Map(
+        recommendedProducts.map(product => [product.id, product])
+      )
+
+      selectedProducts = [...new Set(requestedIds)]
+        .filter(id => availableById.has(id))
+        .map(id => availableById.get(id))
+    }
+
+    res.json({
+      reply: cleanReply,
+      products: selectedProducts
+    })
 
   } catch (err) {
     console.error('Chatbot error:', err.message)
