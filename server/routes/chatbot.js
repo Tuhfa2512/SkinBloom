@@ -206,9 +206,57 @@ ${JSON.stringify(skinContext)}
 
       // SKINBLOOM_ALLERGY_SCREENING_V2
       // Preliminary ingredient screening, not a safety guarantee.
-      const allergies = (savedSkinContext?.allergies || [])
+      // SKINBLOOM_MESSAGE_ALLERGIES_V3
+      // Recognize common allergens explicitly mentioned by the user.
+      const knownAllergens = [
+        'fragrance', 'perfume', 'parfum',
+        'niacinamide', 'salicylic acid',
+        'hyaluronic acid', 'retinol',
+        'benzoyl peroxide', 'lanolin',
+        'shea butter', 'coconut oil',
+        'essential oils'
+      ]
+
+      // SKINBLOOM_ALLERGY_SAFETY_V3_1
+      // Conservative extraction: only clear positive allergy statements.
+      const normalizedMessage = message.toLowerCase()
+
+      const allergyPattern =
+        /\b(?:i am|i'm|im|i have|my skin is)?\s*(?:allergic to|allergy to|sensitive to|react to|allergies:|allergy:)\s+([^.!?\n]+)/gi
+
+      const mentionedAllergies = []
+
+      for (const match of normalizedMessage.matchAll(allergyPattern)) {
+        const statement = match[1].split(/\b(?:but|however|although)\b/i)[0]
+
+        for (const allergen of knownAllergens) {
+          if (statement.includes(allergen) &&
+              !mentionedAllergies.includes(allergen)) {
+            mentionedAllergies.push(allergen)
+          }
+        }
+      }
+
+      const allergies = [
+        ...(savedSkinContext?.allergies || []),
+        ...mentionedAllergies
+      ]
         .map(value => value.toLowerCase().trim())
         .filter(value => value.length >= 3)
+
+      if (allergies.length > 0) {
+        personalizedInstruction += `
+
+The user has reported these possible allergies or sensitivities:
+${JSON.stringify(allergies)}
+Avoid recommending products with matching ingredients.
+Do not claim any product is confirmed allergy-safe.
+If ingredient data is incomplete, explain that safety cannot be verified.
+Ingredient matching is preliminary and cannot rule out all allergens.
+Tell the user to check the complete manufacturer ingredient label.
+Do not suggest testing a product containing a known allergen on the skin.
+`
+      }
 
       const eligibleProducts = products.filter(product => {
         const ingredients = Array.isArray(product.ingredients)
@@ -219,6 +267,12 @@ ${JSON.stringify(skinContext)}
 
         const fragrance = String(product.fragrance || '')
           .toLowerCase()
+
+        // When allergies are reported, missing ingredient data
+        // means we cannot screen this product reliably.
+        if (allergies.length > 0 && ingredients.length === 0) {
+          return false
+        }
 
         return !allergies.some(allergy => {
           const ingredientMatch = ingredients.some(ingredient =>
