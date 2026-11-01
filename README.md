@@ -1,18 +1,28 @@
+
 # 🌸 SkinBloom — Your Personal Skincare Companion
 
 <div align="center">
 
-**Track Your Skincare. Discover Products. Connect with Professionals.**
+**Track Your Skincare. Discover Products. Chat with AI. Connect with Professionals.**
 
-A full-stack skincare management platform designed to help users organize their skincare routines, explore beauty products, monitor prices, and access professional skincare consultations.
+An AI-enhanced, full-stack skincare management and e-commerce platform built with the MERN stack.
 
-[![React](https://img.shields.io/badge/Frontend-React-61DAFB?logo=react&logoColor=black)](https://react.dev/)
+SkinBloom brings together personalized skincare routine management, beauty product discovery, online shopping, an AI-powered skincare chatbot, price tracking, and professional dermatologist consultations.
+
+[![React](https://img.shields.io/badge/Frontend-React_18-61DAFB?logo=react&logoColor=black)](https://react.dev/)
 [![Node.js](https://img.shields.io/badge/Backend-Node.js-339933?logo=nodedotjs&logoColor=white)](https://nodejs.org/)
 [![Express.js](https://img.shields.io/badge/API-Express.js-black?logo=express)](https://expressjs.com/)
 [![MongoDB](https://img.shields.io/badge/Database-MongoDB-47A248?logo=mongodb&logoColor=white)](https://www.mongodb.com/)
 [![JavaScript](https://img.shields.io/badge/Language-JavaScript-F7DF1E?logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![Vite](https://img.shields.io/badge/Build-Vite-646CFF?logo=vite&logoColor=white)](https://vite.dev/)
 
-[**View Repository**](https://github.com/Tuhfa2512/SkinBloom)
+### 🌐 Live Application
+
+**[Visit SkinBloom](https://skin-bloom.vercel.app/)**
+
+**[Backend API](https://skinbloom-api.onrender.com/)**
+
+**[GitHub Repository](https://github.com/Tuhfa2512/SkinBloom)**
 
 </div>
 
@@ -20,67 +30,144 @@ A full-stack skincare management platform designed to help users organize their 
 
 ## 📌 Overview
 
-Taking care of your skin involves more than choosing products. It requires consistency, understanding your skincare needs, organizing routines, and finding suitable products.
+Taking care of your skin involves more than selecting beauty products. It requires consistency, understanding individual skincare needs, following appropriate routines, and accessing reliable information.
 
-**SkinBloom** is a full-stack web application built with the MERN stack (MongoDB, Express.js, React, and Node.js) to bring essential skincare management features into one platform.
+**SkinBloom** is a full-stack skincare management platform developed using the MERN stack: MongoDB, Express.js, React.js, and Node.js.
 
-The application combines skincare routine management with beauty product discovery, wishlist management, price monitoring, product comparisons, and professional dermatologist consultation functionality.
+The platform integrates skincare routine tracking, an e-commerce system, AI-powered skincare assistance, dermatologist consultations, product comparison, wishlist management, and price monitoring into a centralized web application.
 
-SkinBloom aims to provide a convenient and organized digital experience for users who want to manage their skincare journey.
+SkinBloom aims to make skincare management more organized, accessible, interactive, and convenient.
+
+---
 
 ## 🎯 Project Objectives
 
 - Simplify personal skincare routine management.
-- Provide a centralized platform for discovering skincare and beauty products.
-- Allow users to save favorite products and monitor prices.
-- Help users compare products before making purchasing decisions.
-- Support professional skincare consultations.
-- Provide administrative tools for managing products and product categories.
-- Deliver a convenient and user-friendly skincare experience.
+- Provide a centralized platform for skincare and beauty products.
+- Integrate an AI-powered chatbot for interactive skincare assistance.
+- Allow users to browse, search, compare, and purchase products.
+- Support shopping cart and wishlist management.
+- Enable product price tracking and alerts.
+- Facilitate professional dermatologist consultations.
+- Implement secure authentication and role-based authorization.
+- Provide administrative tools for managing products and categories.
+- Deliver a responsive and user-friendly experience.
 
 ---
 
 ## ✨ Key Features
 
-### 🧴 Skincare Management
-- Organize and track personal skincare routines.
-- Access a centralized skincare management experience.
-- Keep skincare-related activities organized.
+### 🤖 AI-Powered Skincare Chatbot
+
+SkinBloom includes an AI-powered skincare chatbot designed to provide interactive assistance with skincare-related questions.
+
+**Features:**
+
+- Conversational interface for skincare-related queries.
+- AI-assisted responses to user questions.
+- Support for general skincare routine and product-related information.
+- Integration with the application's frontend and backend.
+- Convenient access to skincare guidance within the platform.
+
+The chatbot enhances the user experience by making skincare information more accessible through natural-language interaction.
+
+> **Disclaimer:** AI-generated skincare information is intended for general educational purposes and should not replace professional medical advice, diagnosis, or treatment.
+
+### 🧴 Skincare Routine Management
+
+- Create and manage personal skincare routines.
+- Organize skincare-related activities.
+- Track routine progress and consistency.
+- Access dedicated skincare routine pages.
+- Support routine reminders and tracking workflows.
 
 ### 🛍️ Beauty Product Discovery
+
 - Browse skincare and beauty products.
-- Explore product information, brands, categories, ingredients, and prices.
-- Integrate external product data sources where configured.
+- View detailed product descriptions.
+- Explore brands, categories, ingredients, prices, and product information.
+- Search and filter products.
+- Explore products based on available categories and attributes.
+- Support product data imports and external product integrations where configured.
+
+### 🛒 E-Commerce and Shopping Cart
+
+SkinBloom includes an integrated shopping experience.
+
+- Add products to the shopping cart.
+- Update product quantities.
+- Remove products from the cart.
+- View cart details and totals.
+- Access checkout and payment workflows.
+- Support product orders and payment verification.
+- Generate PDF payment receipts.
 
 ### ❤️ Wishlist Management
-- Save favorite products for future reference.
+
+- Save favorite skincare products.
 - Add or remove products from a personal wishlist.
+- Revisit products for future purchases.
 - Configure price alerts for selected products.
 
 ### 📊 Product Comparison
-- Compare multiple products side by side.
-- Review product information to support purchasing decisions.
-- Create and share product comparisons.
 
-### 📈 Price Tracking
-- Monitor saved products and their price history.
+- Compare skincare products side by side.
+- Review product details, ingredients, and pricing.
+- Evaluate products before purchasing.
+- Support shareable product comparisons.
+
+### 📈 Price Tracking and Alerts
+
+- Monitor product price information.
+- Maintain price history where available.
 - Configure target prices.
-- Manage price-tracking alerts and refresh tracked prices.
+- Manage price-tracking alerts.
+- Refresh tracked product prices through configured integrations.
 
-### 👩‍⚕️ Dermatologist Consultations
-- Support a professional consultation workflow.
-- Provide dedicated functionality for dermatologist-related interactions.
-- Support role-based access for relevant application users.
+### 👩‍⚕️ Dermatologist Consultation System
 
-### 🔐 Authentication and Role-Based Access
-- Provide user authentication.
-- Support different application roles, including users, administrators, and dermatologists.
-- Protect role-specific functionality.
+SkinBloom includes a dedicated dermatologist consultation workflow.
+
+- Access dermatologist-related features.
+- Request professional skincare consultations.
+- Manage consultation bookings.
+- Support booking and payment verification workflows.
+- Provide role-specific dermatologist functionality.
+- Generate consultation payment receipts.
+
+### 🔐 Authentication and Role-Based Authorization
+
+SkinBloom supports multiple user roles:
+
+- **User:** Access skincare routines, products, shopping features, and consultations.
+- **Dermatologist:** Access dermatologist-specific dashboard and consultation functionality.
+- **Administrator:** Access administrative management features.
+
+Authentication and authorization features include:
+
+- User registration and login.
+- JWT-based authentication.
+- Password hashing.
+- Protected frontend routes.
+- Role-based access restrictions.
+- Automatic redirects according to user roles.
 
 ### ⚙️ Administrative Dashboard
+
 - Manage product information.
 - Manage product categories.
-- Access category statistics and product management functionality.
+- Access category statistics.
+- Support product inventory and management workflows.
+- Access administrator-specific features.
+
+### 🎨 Responsive User Interface
+
+- React-based interactive interface.
+- Responsive layouts for different screen sizes.
+- Product cards and detailed product pages.
+- Interactive navigation.
+- User-focused dashboards.
+- Modern styling and visual components.
 
 ---
 
@@ -92,16 +179,26 @@ SkinBloom follows a client-server architecture using the MERN stack.
 flowchart TD
     A[User] --> B[React Frontend]
     B --> C[Axios HTTP Requests]
-    C --> D[Express REST API]
+    C --> D[Node.js and Express API]
+
     D --> E[Authentication and Authorization]
-    E --> F[Application Services]
-    F --> G[MongoDB Database]
-    F --> H[External Product APIs]
-    F --> I[Consultation and Payment Services]
-    G --> J[Application Response]
-    H --> J
-    I --> J
-    J --> D
+    D --> F[Application Services]
+
+    E --> G[Role-Based Access]
+
+    F --> H[(MongoDB Database)]
+    F --> I[AI Chatbot Integration]
+    F --> J[Product and Image Services]
+    F --> K[Stripe Payment Services]
+    F --> L[Consultation Services]
+
+    H --> M[API Response]
+    I --> M
+    J --> M
+    K --> M
+    L --> M
+
+    M --> D
     D --> C
     C --> B
 ```
@@ -110,16 +207,20 @@ flowchart TD
 
 | Component | Responsibility |
 |---|---|
-| React | Builds the interactive frontend interface |
-| React Router | Handles frontend navigation |
+| React | Builds the frontend interface |
+| React Router | Handles navigation and protected routes |
 | Axios | Communicates with backend APIs |
-| Node.js | Runs the backend JavaScript environment |
-| Express.js | Handles API routes and server requests |
+| Node.js | Runs the backend application |
+| Express.js | Provides REST API endpoints |
 | MongoDB | Stores application data |
-| Mongoose | Models and manages MongoDB documents |
-| JWT | Supports authentication workflows |
-| External APIs | Provide additional product data where configured |
-| Stripe | Supports payment-related functionality where configured |
+| Mongoose | Manages MongoDB models and queries |
+| JWT | Supports authentication |
+| AI Chatbot | Provides conversational skincare assistance |
+| Stripe | Supports payment processing |
+| Sharp | Processes images |
+| Multer | Handles file uploads |
+| ImageKit | Supports image-related integrations |
+| jsPDF | Generates client-side PDF receipts |
 
 ---
 
@@ -128,17 +229,35 @@ flowchart TD
 | Category | Technologies |
 |---|---|
 | Frontend | React 18, React Router |
-| Styling | Tailwind CSS, PostCSS |
+| Frontend Build Tool | Vite |
+| Styling | CSS, Tailwind CSS, PostCSS |
 | Backend | Node.js, Express.js |
 | Database | MongoDB, Mongoose |
-| Authentication | JSON Web Tokens, bcryptjs |
+| Authentication | JWT, bcryptjs |
 | HTTP Client | Axios |
+| AI Integration | AI-powered chatbot integrated with the application |
+| Payments | Stripe |
 | Image Processing | Sharp |
 | File Uploads | Multer |
-| PDF Generation | PDFKit, jsPDF |
-| External Integrations | Product APIs, ImageKit |
-| Payment Integration | Stripe |
-| Development Tools | Vite, Nodemon |
+| Image Integration | ImageKit |
+| PDF Generation | jsPDF, PDFKit |
+| Development Tools | Git, GitHub, VS Code, GitHub Codespaces, Nodemon |
+| Frontend Hosting | Vercel |
+| Backend Hosting | Render |
+
+### Recent Dependency Updates
+
+The following frontend dependencies were updated during the latest security maintenance:
+
+| Dependency | Updated Version |
+|---|---|
+| React | 18.3.1 |
+| React DOM | 18.3.1 |
+| React Router DOM | 7.18.4 |
+| jsPDF | 4.2.1 |
+| Vite | 5.4.21 |
+
+These versions reflect the latest locally verified development environment. They may differ from the currently deployed version until the dependency changes are committed and deployed.
 
 ---
 
@@ -150,16 +269,22 @@ SkinBloom/
 ├── client/
 │   ├── public/
 │   ├── src/
+│   │   ├── components/
+│   │   ├── context/
+│   │   ├── ui/
+│   │   ├── main.jsx
+│   │   └── styles.css
 │   ├── package.json
+│   ├── package-lock.json
 │   └── vite.config.js
 │
 ├── server/
 │   ├── server.js
-│   ├── package.json
-│   ├── createAdmin.js
 │   ├── models/
 │   ├── routes/
-│   └── middleware/
+│   ├── middleware/
+│   ├── package.json
+│   └── package-lock.json
 │
 ├── AUTHENTICATION_TEST_GUIDE.md
 ├── DEPLOYMENT_SUMMARY.md
@@ -171,11 +296,10 @@ SkinBloom/
 ├── UPLOAD_DEBUG_GUIDE.md
 ├── UPLOAD_FIXED.md
 ├── UPLOAD_TEST_GUIDE.md
-├── products_60.csv
 └── README.md
 ```
 
-*Note: This is a high-level overview. The exact folders and files inside `client/src` and `server` may differ from this illustrative tree.*
+*Note: This is a high-level representation of the repository. Additional scripts, product datasets, image-processing utilities, and application files may be present.*
 
 ---
 
@@ -185,12 +309,12 @@ Follow these instructions to run SkinBloom locally.
 
 ### Prerequisites
 
-Make sure you have installed:
+Install the following:
 
 - [Node.js](https://nodejs.org/) and npm
-- [MongoDB](https://www.mongodb.com/try/download/community) or a MongoDB Atlas database
+- [MongoDB](https://www.mongodb.com/) or MongoDB Atlas
 - [Git](https://git-scm.com/)
-- A code editor such as Visual Studio Code
+- Visual Studio Code or another code editor
 
 ### 1. Clone the Repository
 
@@ -201,8 +325,6 @@ cd SkinBloom
 
 ### 2. Configure the Backend
 
-Navigate to the server directory:
-
 ```bash
 cd server
 npm install
@@ -210,7 +332,7 @@ npm install
 
 Create a `.env` file inside the `server` directory.
 
-Example configuration:
+Example:
 
 ```env
 PORT=5000
@@ -219,9 +341,17 @@ JWT_SECRET=your_secure_jwt_secret
 FRONTEND_URL=http://localhost:5173
 ```
 
-Add any additional API credentials required by the features you intend to use.
+Additional environment variables may be required for:
 
-**Security:** Replace the example values with your own credentials. Never commit real secrets or database connection strings to GitHub.
+- Stripe payments
+- AI chatbot services
+- ImageKit
+- External product APIs
+- Other configured integrations
+
+Use the exact variable names expected by the relevant application code.
+
+**Never commit real API keys, database credentials, access tokens, or secrets to GitHub.**
 
 Start the backend:
 
@@ -229,137 +359,299 @@ Start the backend:
 npm run dev
 ```
 
-The backend is expected to run at `http://localhost:5000` when configured with the example port.
+With the example configuration, the backend runs at:
+
+```text
+http://localhost:5000
+```
 
 ### 3. Configure the Frontend
 
-Open a second terminal and navigate to the project directory:
+Open another terminal from the repository root:
 
 ```bash
-cd SkinBloom/client
+cd client
 npm install
+```
+
+If your frontend needs an API URL, configure it in `client/.env`:
+
+```env
+VITE_API_URL=http://localhost:5000/api
+```
+
+Start the frontend:
+
+```bash
 npm run dev
 ```
 
-Vite will display the local frontend URL in your terminal. With the default configuration, it is typically:
+The frontend typically runs at:
 
 ```text
 http://localhost:5173
 ```
 
-### 4. Open SkinBloom
+### 4. Access the Application
 
-Open the frontend URL in your browser. Ensure the backend is running and the MongoDB connection is configured correctly.
+Open the frontend URL in your browser.
 
-If a feature depends on an external API, configure its required credentials before testing that feature.
+Ensure that:
 
----
-
-## 🔑 Environment Variables
-
-The backend implementation guide documents the following configuration variables.
-
-| Variable | Purpose |
-|---|---|
-| `PORT` | Backend server port |
-| `MONGO_URI` | MongoDB connection string |
-| `JWT_SECRET` | Secret used for JWT-related authentication |
-| `FRONTEND_URL` | Frontend origin used by the backend |
-| `RAPIDAPI_KEY` | Optional external API access |
-| `SEPHORA_API_KEY` | Optional Sephora integration credential |
-| `ULTA_API_KEY` | Optional Ulta integration credential |
-
-Use the actual environment-variable names expected by the relevant integration. Additional credentials may be needed for payment processing, image hosting, or other external services.
-
-Keep all secret values in local environment files or secure deployment settings, not in the repository.
+- The backend is running.
+- MongoDB is connected.
+- Required environment variables are configured.
+- External services are available for the features being tested.
 
 ---
 
-## 🧪 Running the Application
+## 🌐 Deployment
 
-### Start the Backend
+SkinBloom uses separate frontend and backend deployments.
 
-```bash
-cd server
-npm run dev
-```
+### Frontend — Vercel
 
-The server package also defines a production-style start command:
+**Live URL:** https://skin-bloom.vercel.app/
 
-```bash
-npm start
-```
+The React frontend is deployed using Vercel.
 
-### Start the Frontend
+### Backend — Render
 
-In a separate terminal:
+**Backend URL:** https://skinbloom-api.onrender.com/
+
+The Node.js and Express backend is hosted on Render.
+
+### Deployment Configuration
+
+For production deployments:
+
+- Configure the correct frontend and backend URLs.
+- Set environment variables in the hosting platform.
+- Configure the backend CORS allowlist.
+- Use HTTPS for API communication.
+- Keep secrets in the deployment environment rather than source code.
+- Verify authentication and payment functionality after deployment.
+
+**Deployment note:** Recent frontend dependency updates were verified locally. They should not be considered deployed until committed, pushed, and successfully built by Vercel.
+
+---
+
+## 💳 Payment Integration
+
+SkinBloom includes Stripe-based payment workflows for product purchases and consultation bookings.
+
+Payment-related functionality includes:
+
+- Checkout integration.
+- Payment verification endpoints.
+- Product order confirmation.
+- Consultation payment confirmation.
+- PDF receipt generation using jsPDF.
+
+Payment processing requires valid Stripe configuration.
+
+Production payment flows should be tested independently before accepting real transactions.
+
+---
+
+## 🤖 AI Chatbot Integration
+
+The AI-powered skincare chatbot is integrated into SkinBloom's application workflow.
+
+### Purpose
+
+The chatbot is designed to help users interactively explore skincare-related information.
+
+### Application Integration
+
+The chatbot works alongside SkinBloom's existing frontend and backend architecture.
+
+Its implementation includes chatbot-related backend routing and an interactive application experience.
+
+### Responsible Use
+
+AI chatbot responses are informational and may contain inaccuracies. Users should consult qualified healthcare professionals for medical concerns.
+
+---
+
+## 🧪 Testing and Build Verification
+
+### Frontend Development
 
 ```bash
 cd client
 npm run dev
 ```
 
-### Build the Frontend
-
-To generate a production build:
+### Frontend Production Build
 
 ```bash
 cd client
 npm run build
 ```
 
-To preview the production build locally:
+### Preview Production Build
 
 ```bash
 npm run preview
 ```
 
+### Backend Development
+
+```bash
+cd server
+npm run dev
+```
+
+### Backend Start
+
+```bash
+npm start
+```
+
+### Latest Build Verification
+
+The frontend production build was successfully completed after updating jsPDF and React Router.
+
+**Latest observed build:**
+
+- Vite version: 5.4.21
+- Modules transformed: 513
+- Build completed successfully
+- Build duration: approximately 5.51 seconds
+
+The build reported non-blocking warnings concerning CSS syntax and large JavaScript bundles.
+
+A successful build confirms compilation, but does not guarantee that all application features have passed browser or integration testing.
+
+---
+
+## 🔒 Security and Dependency Maintenance
+
+SkinBloom has undergone dependency security maintenance for both the frontend and backend.
+
+### Completed Security Work
+
+- Updated frontend dependencies to address reported vulnerabilities.
+- Updated jsPDF to version 4.2.1.
+- Updated React Router DOM to version 7.18.4.
+- Updated backend dependencies, including Sharp.
+- Enabled GitHub Dependabot.
+- Enabled GitHub secret scanning and protection features.
+- Removed an exposed test credential file from the current tracked repository tree.
+- Reviewed production dependency audit reports.
+
+### Latest Frontend Production Audit
+
+The latest locally executed command:
+
+```bash
+cd client
+npm audit --omit=dev
+```
+
+Reported:
+
+| Severity | Findings |
+|---|---:|
+| Critical | 0 |
+| High | 0 |
+| Moderate | 0 |
+| Low | 0 |
+
+**Total: 0 reported vulnerabilities in frontend production dependencies at the time of testing.**
+
+### Backend Production Audit
+
+The previously verified backend production audit reported:
+
+| Severity | Findings |
+|---|---:|
+| Critical | 0 |
+| High | 0 |
+| Moderate | 2 |
+
+### Remaining Security Work
+
+- Review remaining backend Moderate findings.
+- Review frontend development dependency findings.
+- Recheck GitHub Dependabot alerts.
+- Verify deployment of the latest frontend dependency updates.
+- Continue reviewing authentication, authorization, uploads, and API security.
+
+**Important:** An npm audit with zero findings does not guarantee that an application is free from all security vulnerabilities.
+
+Previously exposed credentials should be rotated, and repository history should be reviewed when necessary.
+
 ---
 
 ## 🧭 Application Workflow
 
-1. **Access the application:** Open SkinBloom through the frontend.
-2. **Authenticate:** Sign in through the configured authentication workflow.
-3. **Explore products:** Browse available skincare and beauty products.
-4. **Save favorites:** Add products to your wishlist.
-5. **Compare products:** Select products and review their details side by side.
-6. **Track prices:** Configure target prices and manage available price alerts.
-7. **Access professional features:** Use the consultation workflow where configured.
-8. **Manage the platform:** Authorized administrators can access relevant management features.
+1. **Visit SkinBloom:** Open the deployed application.
+2. **Register or log in:** Access the application through its authentication workflow.
+3. **Explore skincare products:** Browse and search available products.
+4. **Chat with AI:** Ask skincare-related questions through the chatbot.
+5. **Manage skincare routines:** Organize and track skincare activities.
+6. **Save favorites:** Add products to the wishlist.
+7. **Compare products:** Review product details side by side.
+8. **Track prices:** Configure price alerts and monitor product information.
+9. **Shop online:** Add products to the cart and proceed to checkout.
+10. **Consult dermatologists:** Access consultation booking functionality.
+11. **Manage the platform:** Authorized administrators and dermatologists can access role-specific dashboards.
 
 ---
 
-## 🔒 Security Considerations
 
-- Store credentials in environment variables.
-- Do not expose JWT secrets or database credentials.
-- Restrict administrative and dermatologist functionality to authorized roles.
-- Validate incoming API requests.
-- Configure production CORS settings appropriately.
-- Use HTTPS in production.
-- Keep dependencies updated and review authentication and file-upload security.
+## 📋 Current Development Status
+
+| Feature or Area | Status |
+|---|---|
+| MERN application architecture | ✅ Implemented |
+| Product browsing and details | ✅ Implemented & Tested |
+| Shopping cart and wishlist | ✅ Implemented & Tested |
+| Skincare routine management | ✅ Implemented & Tested |
+| AI skincare chatbot | ✅ Implemented & Tested |
+| User registration and login | ✅ Implemented & Tested |
+| Role-based authentication | ✅ Implemented & Tested |
+| Admin and dermatologist dashboards | ✅ Implemented & Tested |
+| Dermatologist consultation workflow | ✅ Implemented & Tested |
+| Stripe payment integration | ✅ Implemented & Tested |
+| PDF receipt generation | ✅ Implemented & Tested |
+| Vercel frontend deployment | ✅ Deployed |
+| Render backend deployment | ✅ Deployed |
+| Frontend production dependency security audit | ✅ 0 reported vulnerabilities |
+| Frontend production build | ✅ Successful |
+| Backend dependency security improvements | ✅ Critical and High findings addressed |
+
+> **Note:** Core features have been implemented and previously tested. Recent dependency upgrades were successfully built locally; regression testing and deployment of those latest updates may still be required.
+
 
 ---
 
 ## 🔮 Future Improvements
 
-Potential enhancements for SkinBloom include:
+Potential future enhancements include:
 
-- More personalized skincare recommendations.
-- Improved skincare routine reminders and progress tracking.
-- More robust product reviews and ratings.
-- Enhanced product search and filtering.
-- Notifications for price changes.
+- More personalized AI-assisted skincare recommendations.
+- Improved chatbot response quality and safety.
+- Enhanced skincare routine reminders.
+- More advanced progress tracking.
+- Product recommendation improvements.
+- Better product search and filtering.
+- Enhanced notification systems.
 - Additional external product integrations.
-- Further usability and accessibility improvements.
+- Accessibility and usability improvements.
+- Improved frontend performance through code splitting.
+- Expanded automated testing.
+- Continued security monitoring and dependency updates.
 
-These are potential improvements, not a claim that all of these features are currently implemented.
+These are planned or potential improvements and are not claims of completed functionality.
 
 ---
 
 ## 📚 Project Documentation
 
-The repository contains additional documentation for specific implementation areas:
+Additional repository documentation includes:
 
 - [Implementation Guide](./IMPLEMENTATION_GUIDE.md)
 - [Authentication Test Guide](./AUTHENTICATION_TEST_GUIDE.md)
@@ -367,6 +659,7 @@ The repository contains additional documentation for specific implementation are
 - [Dermatologist Consultation System](./DERMATOLOGIST_CONSULTATION_SYSTEM.md)
 - [E-commerce Testing Guide](./ECOMMERCE_TESTING_GUIDE.md)
 - [Deployment Summary](./DEPLOYMENT_SUMMARY.md)
+- [Upload Test Guide](./UPLOAD_TEST_GUIDE.md)
 
 ---
 
@@ -378,18 +671,22 @@ Computer Science and Engineering
 
 [GitHub Profile](https://github.com/Tuhfa2512)
 
+[SkinBloom Repository](https://github.com/Tuhfa2512/SkinBloom)
+
 ---
 
 ## 📄 License
 
-No license has been specified in this README. Check the repository for a `LICENSE` file and add the applicable license information before distributing or reusing the project.
+Check the repository for an applicable `LICENSE` file before reusing or redistributing the project.
 
 ---
 
 <div align="center">
 
-**SkinBloom — Grow Your Skincare Journey 🌸**
+### 🌸 SkinBloom — Grow Your Skincare Journey
 
-*Discover. Organize. Compare. Care.*
+**Discover. Organize. Compare. Chat. Care.**
+
+Built with the MERN stack and AI-assisted skincare functionality.
 
 </div>
