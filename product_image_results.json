@@ -1,0 +1,472 @@
+[
+  {
+    "name": "Cetaphil Gentle Skin Cleanser",
+    "image": "https://www.cetaphil.com/on/demandware.static/Sites-Galderma-US-Site/-/default/dwca12e8f9/images/Cetaphil_Logo_285.png",
+    "status": "FOUND"
+  },
+  {
+    "name": "CeraVe Hydrating Cleanser",
+    "image": "https://www.cerave.com/-/media/project/loreal/brand-sites/cerave/americas/us/skincare/cleansers/hydrating-facial-cleanser/photos/2022/700x700/cerave_daily_hydrating-cleanser_12oz_front-700x700-v2.jpg?rev=8dcf681b75c042deaaa0c6ea1581d4df",
+    "status": "FOUND"
+  },
+  {
+    "name": "CeraVe Foaming Facial Cleanser",
+    "image": "https://www.cerave.com/-/media/project/loreal/brand-sites/cerave/americas/us/skincare/cleansers/foaming-facial-cleanser/photos/2026/700x785/ffc-atf-1-700x785-v1.jpg?rev=f0923e1e888a44b5ac66d4bb8025218a",
+    "status": "FOUND"
+  },
+  {
+    "name": "La Roche-Posay Toleriane Hydrating Gentle Cleanser",
+    "image": null,
+    "status": "ERROR"
+  },
+  {
+    "name": "Neutrogena Hydro Boost Hydrating Cleansing Gel",
+    "image": null,
+    "status": "ERROR"
+  },
+  {
+    "name": "Bioderma Sensibio H2O Micellar Water",
+    "image": null,
+    "status": "ERROR"
+  },
+  {
+    "name": "Garnier Micellar Cleansing Water (Pink)",
+    "image": null,
+    "status": "ERROR"
+  },
+  {
+    "name": "Clinique Take The Day Off Cleansing Balm",
+    "image": null,
+    "status": "ERROR"
+  },
+  {
+    "name": "Banila Co Clean It Zero Cleansing Balm Original",
+    "image": "https://banilausa.com/cdn/shop/files/180ml01.jpg?v=1775637077",
+    "status": "FOUND"
+  },
+  {
+    "name": "COSRX Low pH Good Morning Gel Cleanser",
+    "image": "http://www.cosrx.com/cdn/shop/files/low-ph-good-morning-gel-cleanser-cosrx-official-1_1200x1200.jpg?v=1768785801",
+    "status": "FOUND"
+  },
+  {
+    "name": "KraveBeauty Matcha Hemp Hydrating Cleanser",
+    "image": "http://kravebeauty.com/cdn/shop/files/MHHC_3.0_01.png?v=1782832322",
+    "status": "FOUND"
+  },
+  {
+    "name": "Innisfree Green Tea Hydrating Amino Acid Cleanser",
+    "image": null,
+    "status": "ERROR"
+  },
+  {
+    "name": "First Aid Beauty Pure Skin Face Cleanser",
+    "image": null,
+    "status": "ERROR"
+  },
+  {
+    "name": "Youth to the People Superfood Cleanser",
+    "image": null,
+    "status": "ERROR"
+  },
+  {
+    "name": "Simple Kind to Skin Refreshing Facial Wash",
+    "image": null,
+    "status": "ERROR"
+  },
+  {
+    "name": "Pixi Glow Tonic 5% Glycolic",
+    "image": null,
+    "status": "ERROR"
+  },
+  {
+    "name": "Paula’s Choice Skin Perfecting 2% BHA Liquid Exfoliant",
+    "image": null,
+    "status": "ERROR"
+  },
+  {
+    "name": "Klairs Supple Preparation Unscented Toner",
+    "image": null,
+    "status": "ERROR"
+  },
+  {
+    "name": "Laneige Cream Skin Toner & Moisturizer",
+    "image": "http://us.laneige.com/cdn/shop/files/1080x10800_Thumbnail_Product.jpg?v=1739393277",
+    "status": "FOUND"
+  },
+  {
+    "name": "COSRX AHA/BHA Clarifying Treatment Toner",
+    "image": "http://www.cosrx.com/cdn/shop/files/ahabha-clarifying-treatment-toner-cosrx-official-1_1200x1200.jpg?v=1724835581",
+    "status": "FOUND"
+  },
+  {
+    "name": "The Ordinary Hyaluronic Acid 2% + B5",
+    "image": "https://theordinary.com/on/demandware.static/-/Library-Sites-DeciemSharedLibrary/default/dw665025d6/theordinary/homepage/slotA/heroes-slot-a-mobile.jpg",
+    "status": "FOUND"
+  },
+  {
+    "name": "The Ordinary Niacinamide 10% + Zinc 1%",
+    "image": "https://theordinary.com/on/demandware.static/-/Library-Sites-DeciemSharedLibrary/default/dw665025d6/theordinary/homepage/slotA/heroes-slot-a-mobile.jpg",
+    "status": "FOUND"
+  },
+  {
+    "name": "La Roche-Posay Hyalu B5 Serum",
+    "image": null,
+    "status": "ERROR"
+  },
+  {
+    "name": "Skinceuticals C E Ferulic",
+    "image": null,
+    "status": "ERROR"
+  },
+  {
+    "name": "Vichy Mineral 89",
+    "image": null,
+    "status": "ERROR"
+  },
+  {
+    "name": "Estée Lauder Advanced Night Repair",
+    "image": null,
+    "status": "ERROR"
+  },
+  {
+    "name": "Sunday Riley Good Genes Lactic Acid",
+    "image": null,
+    "status": "ERROR"
+  },
+  {
+    "name": "Paula’s Choice 10% Azelaic Acid Booster",
+    "image": null,
+    "status": "ERROR"
+  },
+  {
+    "name": "Differin Gel 0.1% Adapalene",
+    "image": null,
+    "status": "ERROR"
+  },
+  {
+    "name": "The Ordinary Retinol 1% in Squalane",
+    "image": "https://theordinary.com/on/demandware.static/-/Library-Sites-DeciemSharedLibrary/default/dw665025d6/theordinary/homepage/slotA/heroes-slot-a-mobile.jpg",
+    "status": "FOUND"
+  },
+  {
+    "name": "Biossance Squalane + Vitamin C Rose Oil",
+    "image": "https://static.thcdn.com/productimg/original/12766621-1785143164103950.jpg",
+    "status": "FOUND"
+  },
+  {
+    "name": "The Inkey List Retinol Serum",
+    "image": "http://www.theinkeylist.com/cdn/shop/collections/Collection_Page_Skin_2880x1600_f980a8c5-af24-4fdf-927d-95adb6fc5d2d.jpg?v=1762961886",
+    "status": "FOUND"
+  },
+  {
+    "name": "Murad Retinol Youth Renewal Serum",
+    "image": "http://www.murad.com/cdn/shop/files/859300_RYRS_Product_Soldier_1oz_a27e2f42-64ab-4cce-9c71-83606c9edea0.png?v=1786988082",
+    "status": "FOUND"
+  },
+  {
+    "name": "Tranexamic Acid 5% Serum (Naturium)",
+    "image": "http://naturium.com/cdn/shop/files/Naturium_Tranexamic_Acid_Front_CapOn_Bone_1.webp?v=1774294545&width=2048",
+    "status": "FOUND"
+  },
+  {
+    "name": "Azelaic Acid Suspension 10% (The Ordinary)",
+    "image": "https://theordinary.com/on/demandware.static/-/Library-Sites-DeciemSharedLibrary/default/dw665025d6/theordinary/homepage/slotA/heroes-slot-a-mobile.jpg",
+    "status": "FOUND"
+  },
+  {
+    "name": "CeraVe Moisturizing Cream",
+    "image": "https://www.cerave.com/-/media/project/loreal/brand-sites/cerave/americas/us/products-v4/moisturizing-cream/cerave_moisturizing_cream_16oz_jar_front-700x700-v3.jpg?rev=7e37e9cc45754615b1532d77df5a0b52",
+    "status": "FOUND"
+  },
+  {
+    "name": "La Roche-Posay Toleriane Double Repair Face Moisturizer",
+    "image": null,
+    "status": "ERROR"
+  },
+  {
+    "name": "Neutrogena Hydro Boost Water Gel",
+    "image": null,
+    "status": "ERROR"
+  },
+  {
+    "name": "Clinique Dramatically Different Moisturizing Lotion+",
+    "image": null,
+    "status": "ERROR"
+  },
+  {
+    "name": "First Aid Beauty Ultra Repair Cream",
+    "image": null,
+    "status": "ERROR"
+  },
+  {
+    "name": "Dr. Jart+ Ceramidin Cream",
+    "image": null,
+    "status": "ERROR"
+  },
+  {
+    "name": "Kiehl’s Ultra Facial Cream",
+    "image": null,
+    "status": "ERROR"
+  },
+  {
+    "name": "Tatcha The Water Cream",
+    "image": null,
+    "status": "ERROR"
+  },
+  {
+    "name": "Belif The True Cream Aqua Bomb",
+    "image": null,
+    "status": "ERROR"
+  },
+  {
+    "name": "Embryolisse Lait‑Crème Concentré",
+    "image": null,
+    "status": "MISSING"
+  },
+  {
+    "name": "La Roche-Posay Anthelios Melt‑in Milk SPF 60",
+    "image": null,
+    "status": "ERROR"
+  },
+  {
+    "name": "EltaMD UV Clear Broad‑Spectrum SPF 46",
+    "image": "https://cdn.shopify.com/s/files/1/0467/8120/2585/files/EltaMD_VirtualBundles_052026_1.png?v=1791266221",
+    "status": "FOUND"
+  },
+  {
+    "name": "Supergoop! Unseen Sunscreen SPF 40",
+    "image": null,
+    "status": "ERROR"
+  },
+  {
+    "name": "Biore UV Aqua Rich Watery Essence SPF 50+",
+    "image": null,
+    "status": "ERROR"
+  },
+  {
+    "name": "CeraVe Hydrating Mineral Sunscreen SPF 50",
+    "image": null,
+    "status": "ERROR"
+  },
+  {
+    "name": "Black Girl Sunscreen SPF 30",
+    "image": null,
+    "status": "ERROR"
+  },
+  {
+    "name": "Shiseido Urban Environment Oil‑Free UV Protector",
+    "image": null,
+    "status": "MISSING"
+  },
+  {
+    "name": "Beauty of Joseon Relief Sun: Rice + Probiotics SPF50+",
+    "image": null,
+    "status": "ERROR"
+  },
+  {
+    "name": "ISDIN Eryfotona Actinica SPF 50+",
+    "image": null,
+    "status": "MISSING"
+  },
+  {
+    "name": "Aztec Secret Indian Healing Clay",
+    "image": null,
+    "status": "MISSING"
+  },
+  {
+    "name": "Origins Clear Improvement Active Charcoal Mask",
+    "image": null,
+    "status": "ERROR"
+  },
+  {
+    "name": "Fresh Rose Face Mask",
+    "image": "https://www.fresh.com/on/demandware.static/-/Sites-fresh_master_catalog/default/dwaa9c48dd/product_images/H00006231_main_pdp.jpg",
+    "status": "FOUND"
+  },
+  {
+    "name": "The Ordinary AHA 30% + BHA 2% Peeling Solution",
+    "image": "https://theordinary.com/on/demandware.static/-/Library-Sites-DeciemSharedLibrary/default/dw665025d6/theordinary/homepage/slotA/heroes-slot-a-mobile.jpg",
+    "status": "FOUND"
+  },
+  {
+    "name": "Paula’s Choice Skin Perfecting 8% AHA Gel",
+    "image": null,
+    "status": "ERROR"
+  },
+  {
+    "name": "Glow Recipe Watermelon Glow Sleeping Mask",
+    "image": "http://www.glowrecipe.com/cdn/shop/files/5_14_24_PDP_CLAIM_REFRESH_WM_NIGHTTREATMENT-01.jpg?v=1762198094",
+    "status": "FOUND"
+  },
+  {
+    "name": "Laneige Water Sleeping Mask",
+    "image": "http://us.laneige.com/cdn/shop/files/WSM_AD_PDP_2.jpg?v=1754046790",
+    "status": "FOUND"
+  },
+  {
+    "name": "Kiehl’s Creamy Eye Treatment with Avocado",
+    "image": null,
+    "status": "ERROR"
+  },
+  {
+    "name": "The Ordinary Caffeine Solution 5% + EGCG",
+    "image": "https://theordinary.com/on/demandware.static/-/Library-Sites-DeciemSharedLibrary/default/dw665025d6/theordinary/homepage/slotA/heroes-slot-a-mobile.jpg",
+    "status": "FOUND"
+  },
+  {
+    "name": "Laneige Lip Sleeping Mask",
+    "image": "http://us.laneige.com/cdn/shop/files/LSM_Gingerbread_PDPCrops_2000x2000_02_1_1.jpg?v=1791253589",
+    "status": "FOUND"
+  },
+  {
+    "name": "Aquaphor Lip Repair + Protect SPF 30",
+    "image": "https://images-1.eucerin.com/~/media/eucerin%20relaunch%20media/media-center-items/1/b/4/6186e7c7b2ce4f85afda0d92de0e9437-screen.jpg",
+    "status": "FOUND"
+  },
+  {
+    "name": "Vaseline Lip Therapy Original",
+    "image": null,
+    "status": "ERROR"
+  },
+  {
+    "name": "Mario Badescu Drying Lotion",
+    "image": "http://www.mariobadescu.com/cdn/shop/files/telgrbauypesbxtq2yzg_b3137526-0535-4dbe-8b6d-ca50a78d2c2e.jpg?v=1702450609",
+    "status": "FOUND"
+  },
+  {
+    "name": "COSRX Acne Pimple Master Patch",
+    "image": "http://www.cosrx.com/cdn/shop/files/acne-pimple-master-patch-cosrx-official-1_1200x1200.jpg?v=1724835736",
+    "status": "FOUND"
+  },
+  {
+    "name": "Clean & Clear Persa-Gel 10",
+    "image": null,
+    "status": "ERROR"
+  },
+  {
+    "name": "La Roche-Posay Effaclar Duo Acne Treatment",
+    "image": null,
+    "status": "ERROR"
+  },
+  {
+    "name": "The Ordinary 100% Plant‑Derived Squalane",
+    "image": "https://theordinary.com/on/demandware.static/-/Library-Sites-DeciemSharedLibrary/default/dw665025d6/theordinary/homepage/slotA/heroes-slot-a-mobile.jpg",
+    "status": "FOUND"
+  },
+  {
+    "name": "Bioré Deep Pore Charcoal Strips",
+    "image": null,
+    "status": "MISSING"
+  },
+  {
+    "name": "Thayers Alcohol‑Free Rose Witch Hazel Toner",
+    "image": null,
+    "status": "ERROR"
+  },
+  {
+    "name": "Kosas DreamBeam SPF 40 PA+++",
+    "image": null,
+    "status": "ERROR"
+  },
+  {
+    "name": "Tower 28 SOS Daily Rescue Facial Spray",
+    "image": null,
+    "status": "ERROR"
+  },
+  {
+    "name": "Tatcha The Rice Wash",
+    "image": null,
+    "status": "ERROR"
+  },
+  {
+    "name": "Shiseido WASO Quick Gentle Cleanser",
+    "image": null,
+    "status": "ERROR"
+  },
+  {
+    "name": "Glossier Milky Jelly Cleanser",
+    "image": "http://www.glossier.com/cdn/shop/files/glossier-skincare-mjc177ml-carousel-1.png?v=1770906323",
+    "status": "FOUND"
+  },
+  {
+    "name": "KraveBeauty Oat So Simple Water Cream",
+    "image": "http://kravebeauty.com/cdn/shop/files/OSSWC_01.png?v=1762526160",
+    "status": "FOUND"
+  },
+  {
+    "name": "Benton Aloe BHA Skin Toner",
+    "image": null,
+    "status": "ERROR"
+  },
+  {
+    "name": "Isntree Hyaluronic Acid Toner",
+    "image": null,
+    "status": "ERROR"
+  },
+  {
+    "name": "COSRX Advanced Snail 96 Mucin Power Essence",
+    "image": "http://www.cosrx.com/cdn/shop/files/james_800x1067_1_1_4e9750cc-2cd6-4817-ace5-be2305a85806_1200x1200.jpg?v=1763111577",
+    "status": "FOUND"
+  },
+  {
+    "name": "Purito Centella Unscented Serum",
+    "image": null,
+    "status": "ERROR"
+  },
+  {
+    "name": "Kiehl’s Clearly Corrective Dark Spot Solution",
+    "image": null,
+    "status": "ERROR"
+  },
+  {
+    "name": "Biossance Squalane + Omega Repair Cream",
+    "image": "https://static.thcdn.com/productimg/original/12766625-1555183318702811.jpg",
+    "status": "FOUND"
+  },
+  {
+    "name": "Drunk Elephant Protini Polypeptide Cream",
+    "image": "https://www.drunkelephant.com/dw/image/v2/BBSK_PRD/on/demandware.static/-/Sites-itemmaster_drunkelephant/default/dw8edb26bf/products/images/2026/August/Protini/Protini-PDP-01_Hero.jpg?sw=540&sh=540&sm=fit",
+    "status": "FOUND"
+  },
+  {
+    "name": "Kojic Acid Dark Spot Corrector (Naturium)",
+    "image": null,
+    "status": "ERROR"
+  },
+  {
+    "name": "The Inkey List Niacinamide Serum",
+    "image": "http://www.theinkeylist.com/cdn/shop/files/TheINKEYList_NiacinamideSerum_30mlbottle_1000x1000_5c1f85db-53c9-48cd-975e-e70371e617a1.png?v=1700586730",
+    "status": "FOUND"
+  },
+  {
+    "name": "Good Molecules Discoloration Correcting Serum",
+    "image": null,
+    "status": "ERROR"
+  },
+  {
+    "name": "CeraVe PM Facial Moisturizing Lotion",
+    "image": "https://www.cerave.com/-/media/project/loreal/brand-sites/cerave/americas/us/products-v3/pm-facial-moisturizing-lotion/700x700/cerave_pm-facial-moisturizing-lotion-3oz_front-700x700-v2.jpg?rev=8953e1e5ce79401eaee4c3b01473a236",
+    "status": "FOUND"
+  },
+  {
+    "name": "Olay Regenerist Micro‑Sculpting Cream",
+    "image": null,
+    "status": "ERROR"
+  },
+  {
+    "name": "Eucerin Advanced Repair Cream (Body)",
+    "image": null,
+    "status": "ERROR"
+  },
+  {
+    "name": "Bioderma Atoderm Intensive Baume",
+    "image": null,
+    "status": "ERROR"
+  },
+  {
+    "name": "La Roche-Posay Cicaplast Baume B5",
+    "image": null,
+    "status": "ERROR"
+  }
+]

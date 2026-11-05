@@ -1,0 +1,752 @@
+[
+  {
+    "name": "La Roche-Posay Toleriane Hydrating Gentle Cleanser",
+    "brand": "La Roche-Posay",
+    "category": "Cleanser",
+    "skinType": "All;Sensitive",
+    "description": "Gentle cream cleanser with thermal water.",
+    "step": "1",
+    "popular": "True",
+    "image": "https://www.laroche-posay.us/face-and-body-cleanser/toleriane-hydrating-gentle-facial-cleanser-3606000436713.html"
+  },
+  {
+    "name": "Neutrogena Hydro Boost Hydrating Cleansing Gel",
+    "brand": "Neutrogena",
+    "category": "Cleanser",
+    "skinType": "All;Dry",
+    "description": "Hydrating gel cleanser with HA.",
+    "step": "1",
+    "popular": "True",
+    "image": "https://www.neutrogena.com/products/skincare/hydro-boost-hydrating-cleansing-gel/6811041.html"
+  },
+  {
+    "name": "Bioderma Sensibio H2O Micellar Water",
+    "brand": "Bioderma",
+    "category": "Cleanser",
+    "skinType": "All;Sensitive",
+    "description": "Micellar water makeup remover.",
+    "step": "1",
+    "popular": "True",
+    "image": "https://www.bioderma.us/our-products/sensibio/h2o"
+  },
+  {
+    "name": "Garnier Micellar Cleansing Water (Pink)",
+    "brand": "Garnier",
+    "category": "Cleanser",
+    "skinType": "All;Sensitive",
+    "description": "No‑rinse makeup remover & cleanse.",
+    "step": "1",
+    "popular": "True",
+    "image": "https://www.garnierusa.com/about-our-brands/skin-care/micellar-water"
+  },
+  {
+    "name": "Clinique Take The Day Off Cleansing Balm",
+    "brand": "Clinique",
+    "category": "Cleanser",
+    "skinType": "All",
+    "description": "Makeup‑melting balm cleanser.",
+    "step": "1",
+    "popular": "True",
+    "image": "https://www.clinique.com/product/1573/5128/skincare/cleansers-makeup-removers/take-the-day-off-cleansing-balm"
+  },
+  {
+    "name": "COSRX Low pH Good Morning Gel Cleanser",
+    "brand": "COSRX",
+    "category": "Cleanser",
+    "skinType": "All;Combination",
+    "description": "Gentle low‑pH gel cleanser.",
+    "step": "1",
+    "popular": "True",
+    "image": "https://www.cosrx.com/products/low-ph-good-morning-gel-cleanser"
+  },
+  {
+    "name": "KraveBeauty Matcha Hemp Hydrating Cleanser",
+    "brand": "KraveBeauty",
+    "category": "Cleanser",
+    "skinType": "All",
+    "description": "Hydrating jelly cleanser with matcha.",
+    "step": "1",
+    "popular": "True",
+    "image": "https://kravebeauty.com/products/matcha-hemp-hydrating-cleanser"
+  },
+  {
+    "name": "Innisfree Green Tea Hydrating Amino Acid Cleanser",
+    "brand": "Innisfree",
+    "category": "Cleanser",
+    "skinType": "All;Combination",
+    "description": "Foam cleanser with green tea extract.",
+    "step": "1",
+    "popular": "True",
+    "image": "https://us.innisfree.com/products/green-tea-hydrating-aminos-acid-cleanser"
+  },
+  {
+    "name": "First Aid Beauty Pure Skin Face Cleanser",
+    "brand": "First Aid Beauty",
+    "category": "Cleanser",
+    "skinType": "All;Sensitive",
+    "description": "Fragrance‑free gentle cleanser.",
+    "step": "1",
+    "popular": "True",
+    "image": "https://www.firstaidbeauty.com/product/pure-skin-face-cleanser/FA356.html"
+  },
+  {
+    "name": "Youth to the People Superfood Cleanser",
+    "brand": "Youth to the People",
+    "category": "Cleanser",
+    "skinType": "All",
+    "description": "Kale + green tea daily cleanser.",
+    "step": "1",
+    "popular": "True",
+    "image": "https://www.youthtothepeople.com/products/superfood-cleanser"
+  },
+  {
+    "name": "Simple Kind to Skin Refreshing Facial Wash",
+    "brand": "Simple",
+    "category": "Cleanser",
+    "skinType": "All;Sensitive",
+    "description": "No perfume/dye gentle wash.",
+    "step": "1",
+    "popular": "True",
+    "image": "https://www.simpleskincare.com/us/products/face-wash/kind-to-skin-refreshing-facial-wash-gel.html"
+  },
+  {
+    "name": "Pixi Glow Tonic 5% Glycolic",
+    "brand": "Pixi",
+    "category": "Toner",
+    "skinType": "All;Combination",
+    "description": "Exfoliating toner with glycolic acid.",
+    "step": "2",
+    "popular": "True",
+    "image": "https://www.pixibeauty.com/products/glow-tonic"
+  },
+  {
+    "name": "Paula’s Choice Skin Perfecting 2% BHA Liquid Exfoliant",
+    "brand": "Paula's Choice",
+    "category": "Toner",
+    "skinType": "Oily;Combination;All",
+    "description": "Salicylic acid leave‑on exfoliant.",
+    "step": "2",
+    "popular": "True",
+    "image": "https://www.paulaschoice.com/skin-perfecting-2pct-bha-liquid-exfoliant/201-2010.html"
+  },
+  {
+    "name": "Klairs Supple Preparation Unscented Toner",
+    "brand": "Klairs",
+    "category": "Toner",
+    "skinType": "All;Sensitive",
+    "description": "Balance pH, fragrance‑free.",
+    "step": "2",
+    "popular": "True",
+    "image": "https://www.klairscosmetics.com/product/supple-preparation-unscented-toner/"
+  },
+  {
+    "name": "Laneige Cream Skin Toner & Moisturizer",
+    "brand": "Laneige",
+    "category": "Toner",
+    "skinType": "Dry;All",
+    "description": "Milky toner‑moisturizer hybrid.",
+    "step": "2",
+    "popular": "True",
+    "image": "https://us.laneige.com/products/cream-skin-toner-moisturizer"
+  },
+  {
+    "name": "COSRX AHA/BHA Clarifying Treatment Toner",
+    "brand": "COSRX",
+    "category": "Toner",
+    "skinType": "All;Combination",
+    "description": "Mild daily exfoliating toner.",
+    "step": "2",
+    "popular": "True",
+    "image": "https://www.cosrx.com/products/aha-bha-clarifying-treatment-toner"
+  },
+  {
+    "name": "La Roche-Posay Hyalu B5 Serum",
+    "brand": "La Roche-Posay",
+    "category": "Serum",
+    "skinType": "All",
+    "description": "HA + B5 plumping serum.",
+    "step": "3",
+    "popular": "True",
+    "image": "https://www.laroche-posay.us/face-and-body-serum/hyalu-b5-pure-hyaluronic-acid-serum-3337875583626.html"
+  },
+  {
+    "name": "Skinceuticals C E Ferulic",
+    "brand": "SkinCeuticals",
+    "category": "Serum",
+    "skinType": "All",
+    "description": "Vit C + E + ferulic antioxidant.",
+    "step": "3",
+    "popular": "True",
+    "image": "https://www.skinceuticals.com/c-e-ferulic-635494347207.html"
+  },
+  {
+    "name": "Vichy Mineral 89",
+    "brand": "Vichy",
+    "category": "Serum",
+    "skinType": "All",
+    "description": "HA booster with volcanic water.",
+    "step": "3",
+    "popular": "True",
+    "image": "https://www.vichyusa.com/mineral-89/3337875543248.html"
+  },
+  {
+    "name": "Estée Lauder Advanced Night Repair",
+    "brand": "Estée Lauder",
+    "category": "Serum",
+    "skinType": "All",
+    "description": "Multi‑recovery night serum.",
+    "step": "3",
+    "popular": "True",
+    "image": "https://www.esteelauder.com/product/681/46153/product-catalog/skincare/repair/advanced-night-repair/synchronized-multi-recovery-complex"
+  },
+  {
+    "name": "Sunday Riley Good Genes Lactic Acid",
+    "brand": "Sunday Riley",
+    "category": "Treatment",
+    "skinType": "All;Combination",
+    "description": "Lactic acid resurfacing treatment.",
+    "step": "3",
+    "popular": "True",
+    "image": "https://www.sundayriley.com/products/good-genes"
+  },
+  {
+    "name": "Paula’s Choice 10% Azelaic Acid Booster",
+    "brand": "Paula's Choice",
+    "category": "Treatment",
+    "skinType": "All;Oily;Combination",
+    "description": "Azelaic acid for tone and redness.",
+    "step": "3",
+    "popular": "True",
+    "image": "https://www.paulaschoice.com/10-azelaic-acid-booster/777.html"
+  },
+  {
+    "name": "Differin Gel 0.1% Adapalene",
+    "brand": "Differin",
+    "category": "Treatment",
+    "skinType": "All;Oily;Combination",
+    "description": "Retinoid acne treatment.",
+    "step": "3",
+    "popular": "True",
+    "image": "https://www.differin.com/acne-treatment/differin-gel/"
+  },
+  {
+    "name": "The Inkey List Retinol Serum",
+    "brand": "The Inkey List",
+    "category": "Treatment",
+    "skinType": "All",
+    "description": "Slow‑release retinol serum.",
+    "step": "3",
+    "popular": "True",
+    "image": "https://www.theinkeylist.com/products/retinol-serum"
+  },
+  {
+    "name": "Murad Retinol Youth Renewal Serum",
+    "brand": "Murad",
+    "category": "Serum",
+    "skinType": "All",
+    "description": "Retinol tri‑active technology.",
+    "step": "3",
+    "popular": "True",
+    "image": "https://www.murad.com/products/retinol-youth-renewal-serum/"
+  },
+  {
+    "name": "Tranexamic Acid 5% Serum (Naturium)",
+    "brand": "Naturium",
+    "category": "Serum",
+    "skinType": "All",
+    "description": "Target dark spots and tone.",
+    "step": "3",
+    "popular": "True",
+    "image": "https://naturium.com/products/tranexamic-topical-acid-5"
+  },
+  {
+    "name": "La Roche-Posay Toleriane Double Repair Face Moisturizer",
+    "brand": "La Roche-Posay",
+    "category": "Moisturizer",
+    "skinType": "All;Sensitive",
+    "description": "Barrier‑supporting daily moisturizer.",
+    "step": "4",
+    "popular": "True",
+    "image": "https://www.laroche-posay.us/face-and-body-moisturizer/toleriane-double-repair-face-moisturizer-3337875543248.html"
+  },
+  {
+    "name": "Neutrogena Hydro Boost Water Gel",
+    "brand": "Neutrogena",
+    "category": "Moisturizer",
+    "skinType": "Dry;All",
+    "description": "HA water gel moisturizer.",
+    "step": "4",
+    "popular": "True",
+    "image": "https://www.neutrogena.com/products/skincare/hydro-boost-water-gel/6811047.html"
+  },
+  {
+    "name": "Clinique Dramatically Different Moisturizing Lotion+",
+    "brand": "Clinique",
+    "category": "Moisturizer",
+    "skinType": "Dry;All",
+    "description": "Iconic daily hydrator.",
+    "step": "4",
+    "popular": "True",
+    "image": "https://www.clinique.com/product/1573/5166/skincare/moisturizers/dramatically-different-moisturizing-lotion"
+  },
+  {
+    "name": "First Aid Beauty Ultra Repair Cream",
+    "brand": "First Aid Beauty",
+    "category": "Moisturizer",
+    "skinType": "Dry;Sensitive;All",
+    "description": "Intense hydration, fragrance‑free.",
+    "step": "4",
+    "popular": "True",
+    "image": "https://www.firstaidbeauty.com/product/ultra-repair-cream/FA-U-10001.html"
+  },
+  {
+    "name": "Dr. Jart+ Ceramidin Cream",
+    "brand": "Dr. Jart+",
+    "category": "Moisturizer",
+    "skinType": "Dry;All",
+    "description": "Ceramide‑rich barrier cream.",
+    "step": "4",
+    "popular": "True",
+    "image": "https://us.drjart.com/products/ceramidin-cream"
+  },
+  {
+    "name": "Kiehl’s Ultra Facial Cream",
+    "brand": "Kiehl's",
+    "category": "Moisturizer",
+    "skinType": "All",
+    "description": "24‑hour lightweight hydration.",
+    "step": "4",
+    "popular": "True",
+    "image": "https://www.kiehls.com/skincare/face-moisturizers/ultra-facial-cream/622.html"
+  },
+  {
+    "name": "Tatcha The Water Cream",
+    "brand": "Tatcha",
+    "category": "Moisturizer",
+    "skinType": "Oily;Combination",
+    "description": "Oil‑free water cream.",
+    "step": "4",
+    "popular": "True",
+    "image": "https://www.tatcha.com/product/WWC.html"
+  },
+  {
+    "name": "Belif The True Cream Aqua Bomb",
+    "brand": "belif",
+    "category": "Moisturizer",
+    "skinType": "Oily;Combination;All",
+    "description": "Gel‑cream hydration burst.",
+    "step": "4",
+    "popular": "True",
+    "image": "https://belifusa.com/products/the-true-cream-aqua-bomb"
+  },
+  {
+    "name": "Embryolisse Lait‑Crème Concentré",
+    "brand": "Embryolisse",
+    "category": "Moisturizer",
+    "skinType": "Dry;All",
+    "description": "Makeup‑artist favorite moisturizer.",
+    "step": "4",
+    "popular": "True",
+    "image": "https://www.embryolisseusa.com/products/lait-creme-concentre"
+  },
+  {
+    "name": "La Roche-Posay Anthelios Melt‑in Milk SPF 60",
+    "brand": "La Roche-Posay",
+    "category": "Sunscreen",
+    "skinType": "All",
+    "description": "Broad‑spectrum daily sunscreen.",
+    "step": "5",
+    "popular": "True",
+    "image": "https://www.laroche-posay.us/sunscreen/anthelios-melt-in-milk-sunscreen-spf-60-3337872411991.html"
+  },
+  {
+    "name": "Supergoop! Unseen Sunscreen SPF 40",
+    "brand": "Supergoop!",
+    "category": "Sunscreen",
+    "skinType": "All",
+    "description": "Invisible gel sunscreen.",
+    "step": "5",
+    "popular": "True",
+    "image": "https://supergoop.com/products/unseen-sunscreen-spf-40"
+  },
+  {
+    "name": "Biore UV Aqua Rich Watery Essence SPF 50+",
+    "brand": "Biore",
+    "category": "Sunscreen",
+    "skinType": "All",
+    "description": "Lightweight Japanese sunscreen.",
+    "step": "5",
+    "popular": "True",
+    "image": "https://www.kao.com/global/en/biore/uv/"
+  },
+  {
+    "name": "CeraVe Hydrating Mineral Sunscreen SPF 50",
+    "brand": "CeraVe",
+    "category": "Sunscreen",
+    "skinType": "All;Sensitive",
+    "description": "100% mineral face sunscreen.",
+    "step": "5",
+    "popular": "True",
+    "image": "https://www.cerave.com/skincare/sunscreen/hydrating-mineral-face-sunscreen-lotion-spf-50"
+  },
+  {
+    "name": "Black Girl Sunscreen SPF 30",
+    "brand": "Black Girl Sunscreen",
+    "category": "Sunscreen",
+    "skinType": "All",
+    "description": "No‑white‑cast moisturizing SPF.",
+    "step": "5",
+    "popular": "True",
+    "image": "https://www.blackgirlsunscreen.com/product/black-girl-sunscreen-spf-30/"
+  },
+  {
+    "name": "Shiseido Urban Environment Oil‑Free UV Protector",
+    "brand": "Shiseido",
+    "category": "Sunscreen",
+    "skinType": "All;Combination",
+    "description": "Oil‑free daily UV protector.",
+    "step": "5",
+    "popular": "True",
+    "image": "https://www.shiseido.com/urban-environment/"
+  },
+  {
+    "name": "Beauty of Joseon Relief Sun: Rice + Probiotics SPF50+",
+    "brand": "Beauty of Joseon",
+    "category": "Sunscreen",
+    "skinType": "All",
+    "description": "Beloved K‑beauty sunscreen.",
+    "step": "5",
+    "popular": "True",
+    "image": "https://beautyofjoseon.com/products/relief-sun-rice-probiotics"
+  },
+  {
+    "name": "ISDIN Eryfotona Actinica SPF 50+",
+    "brand": "ISDIN",
+    "category": "Sunscreen",
+    "skinType": "All",
+    "description": "Photolyase + zinc oxide SPF.",
+    "step": "5",
+    "popular": "True",
+    "image": "https://www.isdin.com/en-US/eryfotona-actinica-5oz"
+  },
+  {
+    "name": "Aztec Secret Indian Healing Clay",
+    "brand": "Aztec Secret",
+    "category": "Mask",
+    "skinType": "Oily;Combination",
+    "description": "Deep pore cleansing clay mask.",
+    "step": "6",
+    "popular": "True",
+    "image": "https://www.aztec-secret.com/"
+  },
+  {
+    "name": "Origins Clear Improvement Active Charcoal Mask",
+    "brand": "Origins",
+    "category": "Mask",
+    "skinType": "Oily;Combination",
+    "description": "Charcoal purifying mask.",
+    "step": "6",
+    "popular": "True",
+    "image": "https://www.origins.com/product/15348/11910/skincare/masks/clear-improvement/active-charcoal-mask-to-clear-pores"
+  },
+  {
+    "name": "Paula’s Choice Skin Perfecting 8% AHA Gel",
+    "brand": "Paula's Choice",
+    "category": "Exfoliant",
+    "skinType": "All;Combination",
+    "description": "Leave‑on glycolic exfoliant.",
+    "step": "6",
+    "popular": "True",
+    "image": "https://www.paulaschoice.com/skin-perfecting-8-aha-gel-exfoliant/135.html"
+  },
+  {
+    "name": "Glow Recipe Watermelon Glow Sleeping Mask",
+    "brand": "Glow Recipe",
+    "category": "Mask",
+    "skinType": "All;Dry",
+    "description": "Hydrating sleeping mask.",
+    "step": "6",
+    "popular": "True",
+    "image": "https://www.glowrecipe.com/products/watermelon-glow-sleeping-mask"
+  },
+  {
+    "name": "Laneige Water Sleeping Mask",
+    "brand": "Laneige",
+    "category": "Mask",
+    "skinType": "All;Dry",
+    "description": "Overnight hydration mask.",
+    "step": "6",
+    "popular": "True",
+    "image": "https://us.laneige.com/products/water-sleeping-mask"
+  },
+  {
+    "name": "Kiehl’s Creamy Eye Treatment with Avocado",
+    "brand": "Kiehl's",
+    "category": "Eye",
+    "skinType": "All;Dry",
+    "description": "Rich eye cream with avocado oil.",
+    "step": "7",
+    "popular": "True",
+    "image": "https://www.kiehls.com/skincare/eye-care/creamy-eye-treatment-with-avocado/622.html"
+  },
+  {
+    "name": "Laneige Lip Sleeping Mask",
+    "brand": "Laneige",
+    "category": "Lip",
+    "skinType": "All",
+    "description": "Overnight lip mask.",
+    "step": "7",
+    "popular": "True",
+    "image": "https://us.laneige.com/products/lip-sleeping-mask"
+  },
+  {
+    "name": "Vaseline Lip Therapy Original",
+    "brand": "Vaseline",
+    "category": "Lip",
+    "skinType": "All",
+    "description": "Occlusive lip jelly.",
+    "step": "7",
+    "popular": "True",
+    "image": "https://www.vaseline.com/us/en/products/lip-care/lip-therapy-original.html"
+  },
+  {
+    "name": "Mario Badescu Drying Lotion",
+    "brand": "Mario Badescu",
+    "category": "Spot Treatment",
+    "skinType": "All;Oily",
+    "description": "Overnight acne spot treatment.",
+    "step": "8",
+    "popular": "True",
+    "image": "https://www.mariobadescu.com/product/drying-lotion/"
+  },
+  {
+    "name": "COSRX Acne Pimple Master Patch",
+    "brand": "COSRX",
+    "category": "Spot Treatment",
+    "skinType": "All",
+    "description": "Hydrocolloid pimple patches.",
+    "step": "8",
+    "popular": "True",
+    "image": "https://www.cosrx.com/products/acne-pimple-master-patch"
+  },
+  {
+    "name": "Clean & Clear Persa-Gel 10",
+    "brand": "Clean & Clear",
+    "category": "Spot Treatment",
+    "skinType": "Oily;Combination",
+    "description": "10% benzoyl peroxide gel.",
+    "step": "8",
+    "popular": "True",
+    "image": "https://www.cleanandclear.com/products/acne-treatment/persa-gel-10"
+  },
+  {
+    "name": "La Roche-Posay Effaclar Duo Acne Treatment",
+    "brand": "La Roche-Posay",
+    "category": "Spot Treatment",
+    "skinType": "Oily;Combination",
+    "description": "BPO + lipo‑hydroxy acid spot tx.",
+    "step": "8",
+    "popular": "True",
+    "image": "https://www.laroche-posay.us/acne-treatment/effaclar-duo-3337872413025.html"
+  },
+  {
+    "name": "Bioré Deep Pore Charcoal Strips",
+    "brand": "Bioré",
+    "category": "Treatment",
+    "skinType": "Oily;Combination",
+    "description": "Charcoal nose pore strips.",
+    "step": "6",
+    "popular": "True",
+    "image": "https://www.biore.com/us/en/products/charcoal-pore-strips"
+  },
+  {
+    "name": "Thayers Alcohol‑Free Rose Witch Hazel Toner",
+    "brand": "Thayers",
+    "category": "Toner",
+    "skinType": "All;Sensitive",
+    "description": "Soothing witch hazel toner.",
+    "step": "2",
+    "popular": "True",
+    "image": "https://www.thayers.com/products/rose-petal-alcohol-free-toner"
+  },
+  {
+    "name": "Kosas DreamBeam SPF 40 PA+++",
+    "brand": "Kosas",
+    "category": "Sunscreen",
+    "skinType": "All",
+    "description": "Mineral SPF with peptides.",
+    "step": "5",
+    "popular": "True",
+    "image": "https://kosas.com/products/dreambeam-spf-40"
+  },
+  {
+    "name": "Tower 28 SOS Daily Rescue Facial Spray",
+    "brand": "Tower 28",
+    "category": "Treatment",
+    "skinType": "All;Sensitive",
+    "description": "Hypochlorous acid soothing spray.",
+    "step": "3",
+    "popular": "True",
+    "image": "https://www.tower28beauty.com/products/sos-daily-rescue-facial-spray"
+  },
+  {
+    "name": "Tatcha The Rice Wash",
+    "brand": "Tatcha",
+    "category": "Cleanser",
+    "skinType": "All",
+    "description": "Soft cream cleanser with rice.",
+    "step": "1",
+    "popular": "True",
+    "image": "https://www.tatcha.com/product/TRW.html"
+  },
+  {
+    "name": "Shiseido WASO Quick Gentle Cleanser",
+    "brand": "Shiseido",
+    "category": "Cleanser",
+    "skinType": "All;Combination",
+    "description": "Oil‑free jelly cleanser.",
+    "step": "1",
+    "popular": "True",
+    "image": "https://www.shiseido.com/waso-quick-gentle-cleanser-730852150298.html"
+  },
+  {
+    "name": "Glossier Milky Jelly Cleanser",
+    "brand": "Glossier",
+    "category": "Cleanser",
+    "skinType": "All;Sensitive",
+    "description": "pH‑balanced conditioning cleanser.",
+    "step": "1",
+    "popular": "True",
+    "image": "https://www.glossier.com/products/milky-jelly-cleanser"
+  },
+  {
+    "name": "KraveBeauty Oat So Simple Water Cream",
+    "brand": "KraveBeauty",
+    "category": "Moisturizer",
+    "skinType": "All;Sensitive",
+    "description": "Minimalist oat moisturizer.",
+    "step": "4",
+    "popular": "True",
+    "image": "https://kravebeauty.com/products/oat-so-simple-water-cream"
+  },
+  {
+    "name": "Benton Aloe BHA Skin Toner",
+    "brand": "Benton",
+    "category": "Toner",
+    "skinType": "Oily;Combination;All",
+    "description": "Aloe soothing + BHA toner.",
+    "step": "2",
+    "popular": "True",
+    "image": "https://bentoncosmetics.com/product/aloe-bha-skin-toner/52/"
+  },
+  {
+    "name": "Isntree Hyaluronic Acid Toner",
+    "brand": "Isntree",
+    "category": "Toner",
+    "skinType": "Dry;All",
+    "description": "Multi‑weight HA toner.",
+    "step": "2",
+    "popular": "True",
+    "image": "https://isntree.com/product/hyaluronic-acid-toner/52/"
+  },
+  {
+    "name": "COSRX Advanced Snail 96 Mucin Power Essence",
+    "brand": "COSRX",
+    "category": "Essence",
+    "skinType": "All;Dry",
+    "description": "Snail mucin hydrating essence.",
+    "step": "2",
+    "popular": "True",
+    "image": "https://www.cosrx.com/products/advanced-snail-96-mucin-power-essence"
+  },
+  {
+    "name": "Purito Centella Unscented Serum",
+    "brand": "Purito",
+    "category": "Serum",
+    "skinType": "All;Sensitive",
+    "description": "Centella barrier‑support serum.",
+    "step": "3",
+    "popular": "True",
+    "image": "https://puritoen.com/product/centella-unscented-serum/154/"
+  },
+  {
+    "name": "Kiehl’s Clearly Corrective Dark Spot Solution",
+    "brand": "Kiehl's",
+    "category": "Serum",
+    "skinType": "All",
+    "description": "Brightening serum with activated C.",
+    "step": "3",
+    "popular": "True",
+    "image": "https://www.kiehls.com/skincare/face-serums/clearly-corrective-dark-spot-solution/WW0138KIE.html"
+  },
+  {
+    "name": "Kojic Acid Dark Spot Corrector (Naturium)",
+    "brand": "Naturium",
+    "category": "Treatment",
+    "skinType": "All",
+    "description": "Kojic acid brightening serum.",
+    "step": "3",
+    "popular": "True",
+    "image": "https://naturium.com/products/kojic-acid-emulsion-5"
+  },
+  {
+    "name": "The Inkey List Niacinamide Serum",
+    "brand": "The Inkey List",
+    "category": "Serum",
+    "skinType": "Oily;Combination;All",
+    "description": "Oil‑control niacinamide serum.",
+    "step": "3",
+    "popular": "True",
+    "image": "https://www.theinkeylist.com/products/niacinamide-serum"
+  },
+  {
+    "name": "Good Molecules Discoloration Correcting Serum",
+    "brand": "Good Molecules",
+    "category": "Serum",
+    "skinType": "All",
+    "description": "Tranexamic acid derivative.",
+    "step": "3",
+    "popular": "True",
+    "image": "https://goodmolecules.com/products/discoloration-correcting-serum"
+  },
+  {
+    "name": "Olay Regenerist Micro‑Sculpting Cream",
+    "brand": "Olay",
+    "category": "Moisturizer",
+    "skinType": "All",
+    "description": "Niacinamide anti‑aging cream.",
+    "step": "4",
+    "popular": "True",
+    "image": "https://www.olay.com/regenerist-micro-sculpting-cream"
+  },
+  {
+    "name": "Eucerin Advanced Repair Cream (Body)",
+    "brand": "Eucerin",
+    "category": "Body",
+    "skinType": "Dry;All",
+    "description": "Ceramide body moisturizer.",
+    "step": "4",
+    "popular": "True",
+    "image": "https://www.eucerinus.com/products/advanced-repair/advanced-repair-cream"
+  },
+  {
+    "name": "Bioderma Atoderm Intensive Baume",
+    "brand": "Bioderma",
+    "category": "Body",
+    "skinType": "Dry;Sensitive",
+    "description": "Ultra‑soothing body balm.",
+    "step": "4",
+    "popular": "True",
+    "image": "https://www.bioderma.us/our-products/atoderm/atoderm-intensive-baume"
+  },
+  {
+    "name": "La Roche-Posay Cicaplast Baume B5",
+    "brand": "La Roche-Posay",
+    "category": "Treatment",
+    "skinType": "All;Sensitive",
+    "description": "Soothing repairing balm.",
+    "step": "3",
+    "popular": "True",
+    "image": "https://www.laroche-posay.us/face-and-body-moisturizer/cicaplast-baume-b5-3337872418730.html"
+  }
+]

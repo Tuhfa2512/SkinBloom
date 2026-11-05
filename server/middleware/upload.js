@@ -2,9 +2,9 @@
 import ImageKit from "imagekit";
 
 export const imagekit = new ImageKit({
-    publicKey: "public_uYn8YrnqRSiXK8cAWLvdu8BufSA=",
-    privateKey: "private_xI5pbsKbTjIPEs/TH3Wm+kvCraQ=",
-    urlEndpoint: "https://ik.imagekit.io/faahim06",
+    publicKey: process.env.IMAGEKIT_PUBLIC_KEY,
+    privateKey: process.env.IMAGEKIT_PRIVATE_KEY,
+    urlEndpoint: process.env.IMAGEKIT_URL_ENDPOINT,
 });
 
 import multer from "multer";

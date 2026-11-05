@@ -1,0 +1,312 @@
+[
+  {
+    "name": "CeraVe Hydrating Cleanser",
+    "brand": "CeraVe",
+    "source": "https://www.cerave.com/skincare/cleansers/hydrating-facial-cleanser"
+  },
+  {
+    "name": "CeraVe Foaming Facial Cleanser",
+    "brand": "CeraVe",
+    "source": "https://www.cerave.com/skincare/cleansers/foaming-facial-cleanser"
+  },
+  {
+    "name": "La Roche-Posay Toleriane Hydrating Gentle Cleanser",
+    "brand": "La Roche-Posay",
+    "source": "https://www.laroche-posay.us/face-and-body-cleanser/toleriane-hydrating-gentle-facial-cleanser-3606000436713.html"
+  },
+  {
+    "name": "Neutrogena Hydro Boost Hydrating Cleansing Gel",
+    "brand": "Neutrogena",
+    "source": "https://www.neutrogena.com/products/skincare/hydro-boost-hydrating-cleansing-gel/6811041.html"
+  },
+  {
+    "name": "Bioderma Sensibio H2O Micellar Water",
+    "brand": "Bioderma",
+    "source": "https://www.bioderma.us/our-products/sensibio/h2o"
+  },
+  {
+    "name": "Garnier Micellar Cleansing Water (Pink)",
+    "brand": "Garnier",
+    "source": "https://www.garnierusa.com/about-our-brands/skin-care/micellar-water"
+  },
+  {
+    "name": "Clinique Take The Day Off Cleansing Balm",
+    "brand": "Clinique",
+    "source": "https://www.clinique.com/product/1573/5128/skincare/cleansers-makeup-removers/take-the-day-off-cleansing-balm"
+  },
+  {
+    "name": "Innisfree Green Tea Hydrating Amino Acid Cleanser",
+    "brand": "Innisfree",
+    "source": "https://us.innisfree.com/products/green-tea-hydrating-aminos-acid-cleanser"
+  },
+  {
+    "name": "First Aid Beauty Pure Skin Face Cleanser",
+    "brand": "First Aid Beauty",
+    "source": "https://www.firstaidbeauty.com/product/pure-skin-face-cleanser/FA356.html"
+  },
+  {
+    "name": "Youth to the People Superfood Cleanser",
+    "brand": "Youth to the People",
+    "source": "https://www.youthtothepeople.com/products/superfood-cleanser"
+  },
+  {
+    "name": "Simple Kind to Skin Refreshing Facial Wash",
+    "brand": "Simple",
+    "source": "https://www.simpleskincare.com/us/products/face-wash/kind-to-skin-refreshing-facial-wash-gel.html"
+  },
+  {
+    "name": "Pixi Glow Tonic 5% Glycolic",
+    "brand": "Pixi",
+    "source": "https://www.pixibeauty.com/products/glow-tonic"
+  },
+  {
+    "name": "Paula’s Choice Skin Perfecting 2% BHA Liquid Exfoliant",
+    "brand": "Paula's Choice",
+    "source": "https://www.paulaschoice.com/skin-perfecting-2pct-bha-liquid-exfoliant/201-2010.html"
+  },
+  {
+    "name": "Klairs Supple Preparation Unscented Toner",
+    "brand": "Klairs",
+    "source": "https://www.klairscosmetics.com/product/supple-preparation-unscented-toner/"
+  },
+  {
+    "name": "La Roche-Posay Hyalu B5 Serum",
+    "brand": "La Roche-Posay",
+    "source": "https://www.laroche-posay.us/face-and-body-serum/hyalu-b5-pure-hyaluronic-acid-serum-3337875583626.html"
+  },
+  {
+    "name": "Skinceuticals C E Ferulic",
+    "brand": "SkinCeuticals",
+    "source": "https://www.skinceuticals.com/c-e-ferulic-635494347207.html"
+  },
+  {
+    "name": "Vichy Mineral 89",
+    "brand": "Vichy",
+    "source": "https://www.vichyusa.com/mineral-89/3337875543248.html"
+  },
+  {
+    "name": "Estée Lauder Advanced Night Repair",
+    "brand": "Estée Lauder",
+    "source": "https://www.esteelauder.com/product/681/46153/product-catalog/skincare/repair/advanced-night-repair/synchronized-multi-recovery-complex"
+  },
+  {
+    "name": "Sunday Riley Good Genes Lactic Acid",
+    "brand": "Sunday Riley",
+    "source": "https://www.sundayriley.com/products/good-genes"
+  },
+  {
+    "name": "Paula’s Choice 10% Azelaic Acid Booster",
+    "brand": "Paula's Choice",
+    "source": "https://www.paulaschoice.com/10-azelaic-acid-booster/777.html"
+  },
+  {
+    "name": "Differin Gel 0.1% Adapalene",
+    "brand": "Differin",
+    "source": "https://www.differin.com/acne-treatment/differin-gel/"
+  },
+  {
+    "name": "CeraVe Moisturizing Cream",
+    "brand": "CeraVe",
+    "source": "https://www.cerave.com/skincare/moisturizers/moisturizing-cream"
+  },
+  {
+    "name": "La Roche-Posay Toleriane Double Repair Face Moisturizer",
+    "brand": "La Roche-Posay",
+    "source": "https://www.laroche-posay.us/face-and-body-moisturizer/toleriane-double-repair-face-moisturizer-3337875543248.html"
+  },
+  {
+    "name": "Neutrogena Hydro Boost Water Gel",
+    "brand": "Neutrogena",
+    "source": "https://www.neutrogena.com/products/skincare/hydro-boost-water-gel/6811047.html"
+  },
+  {
+    "name": "Clinique Dramatically Different Moisturizing Lotion+",
+    "brand": "Clinique",
+    "source": "https://www.clinique.com/product/1573/5166/skincare/moisturizers/dramatically-different-moisturizing-lotion"
+  },
+  {
+    "name": "First Aid Beauty Ultra Repair Cream",
+    "brand": "First Aid Beauty",
+    "source": "https://www.firstaidbeauty.com/product/ultra-repair-cream/FA-U-10001.html"
+  },
+  {
+    "name": "Dr. Jart+ Ceramidin Cream",
+    "brand": "Dr. Jart+",
+    "source": "https://us.drjart.com/products/ceramidin-cream"
+  },
+  {
+    "name": "Kiehl’s Ultra Facial Cream",
+    "brand": "Kiehl's",
+    "source": "https://www.kiehls.com/skincare/face-moisturizers/ultra-facial-cream/622.html"
+  },
+  {
+    "name": "Tatcha The Water Cream",
+    "brand": "Tatcha",
+    "source": "https://www.tatcha.com/product/WWC.html"
+  },
+  {
+    "name": "Belif The True Cream Aqua Bomb",
+    "brand": "belif",
+    "source": "https://belifusa.com/products/the-true-cream-aqua-bomb"
+  },
+  {
+    "name": "Embryolisse Lait‑Crème Concentré",
+    "brand": "Embryolisse",
+    "source": "https://www.embryolisseusa.com/products/lait-creme-concentre"
+  },
+  {
+    "name": "La Roche-Posay Anthelios Melt‑in Milk SPF 60",
+    "brand": "La Roche-Posay",
+    "source": "https://www.laroche-posay.us/sunscreen/anthelios-melt-in-milk-sunscreen-spf-60-3337872411991.html"
+  },
+  {
+    "name": "Supergoop! Unseen Sunscreen SPF 40",
+    "brand": "Supergoop!",
+    "source": "https://supergoop.com/products/unseen-sunscreen-spf-40"
+  },
+  {
+    "name": "Biore UV Aqua Rich Watery Essence SPF 50+",
+    "brand": "Biore",
+    "source": "https://www.kao.com/global/en/biore/uv/"
+  },
+  {
+    "name": "CeraVe Hydrating Mineral Sunscreen SPF 50",
+    "brand": "CeraVe",
+    "source": "https://www.cerave.com/skincare/sunscreen/hydrating-mineral-face-sunscreen-lotion-spf-50"
+  },
+  {
+    "name": "Black Girl Sunscreen SPF 30",
+    "brand": "Black Girl Sunscreen",
+    "source": "https://www.blackgirlsunscreen.com/product/black-girl-sunscreen-spf-30/"
+  },
+  {
+    "name": "Shiseido Urban Environment Oil‑Free UV Protector",
+    "brand": "Shiseido",
+    "source": "https://www.shiseido.com/urban-environment/"
+  },
+  {
+    "name": "Beauty of Joseon Relief Sun: Rice + Probiotics SPF50+",
+    "brand": "Beauty of Joseon",
+    "source": "https://beautyofjoseon.com/products/relief-sun-rice-probiotics"
+  },
+  {
+    "name": "ISDIN Eryfotona Actinica SPF 50+",
+    "brand": "ISDIN",
+    "source": "https://www.isdin.com/en-US/eryfotona-actinica-5oz"
+  },
+  {
+    "name": "Aztec Secret Indian Healing Clay",
+    "brand": "Aztec Secret",
+    "source": "https://www.aztec-secret.com/"
+  },
+  {
+    "name": "Origins Clear Improvement Active Charcoal Mask",
+    "brand": "Origins",
+    "source": "https://www.origins.com/product/15348/11910/skincare/masks/clear-improvement/active-charcoal-mask-to-clear-pores"
+  },
+  {
+    "name": "Paula’s Choice Skin Perfecting 8% AHA Gel",
+    "brand": "Paula's Choice",
+    "source": "https://www.paulaschoice.com/skin-perfecting-8-aha-gel-exfoliant/135.html"
+  },
+  {
+    "name": "Kiehl’s Creamy Eye Treatment with Avocado",
+    "brand": "Kiehl's",
+    "source": "https://www.kiehls.com/skincare/eye-care/creamy-eye-treatment-with-avocado/622.html"
+  },
+  {
+    "name": "Vaseline Lip Therapy Original",
+    "brand": "Vaseline",
+    "source": "https://www.vaseline.com/us/en/products/lip-care/lip-therapy-original.html"
+  },
+  {
+    "name": "Clean & Clear Persa-Gel 10",
+    "brand": "Clean & Clear",
+    "source": "https://www.cleanandclear.com/products/acne-treatment/persa-gel-10"
+  },
+  {
+    "name": "La Roche-Posay Effaclar Duo Acne Treatment",
+    "brand": "La Roche-Posay",
+    "source": "https://www.laroche-posay.us/acne-treatment/effaclar-duo-3337872413025.html"
+  },
+  {
+    "name": "Bioré Deep Pore Charcoal Strips",
+    "brand": "Bioré",
+    "source": "https://www.biore.com/us/en/products/charcoal-pore-strips"
+  },
+  {
+    "name": "Thayers Alcohol‑Free Rose Witch Hazel Toner",
+    "brand": "Thayers",
+    "source": "https://www.thayers.com/products/rose-petal-alcohol-free-toner"
+  },
+  {
+    "name": "Kosas DreamBeam SPF 40 PA+++",
+    "brand": "Kosas",
+    "source": "https://kosas.com/products/dreambeam-spf-40"
+  },
+  {
+    "name": "Tower 28 SOS Daily Rescue Facial Spray",
+    "brand": "Tower 28",
+    "source": "https://www.tower28beauty.com/products/sos-daily-rescue-facial-spray"
+  },
+  {
+    "name": "Tatcha The Rice Wash",
+    "brand": "Tatcha",
+    "source": "https://www.tatcha.com/product/TRW.html"
+  },
+  {
+    "name": "Shiseido WASO Quick Gentle Cleanser",
+    "brand": "Shiseido",
+    "source": "https://www.shiseido.com/waso-quick-gentle-cleanser-730852150298.html"
+  },
+  {
+    "name": "Benton Aloe BHA Skin Toner",
+    "brand": "Benton",
+    "source": "https://bentoncosmetics.com/product/aloe-bha-skin-toner/52/"
+  },
+  {
+    "name": "Isntree Hyaluronic Acid Toner",
+    "brand": "Isntree",
+    "source": "https://isntree.com/product/hyaluronic-acid-toner/52/"
+  },
+  {
+    "name": "Purito Centella Unscented Serum",
+    "brand": "Purito",
+    "source": "https://puritoen.com/product/centella-unscented-serum/154/"
+  },
+  {
+    "name": "Kiehl’s Clearly Corrective Dark Spot Solution",
+    "brand": "Kiehl's",
+    "source": "https://www.kiehls.com/skincare/face-serums/clearly-corrective-dark-spot-solution/WW0138KIE.html"
+  },
+  {
+    "name": "Kojic Acid Dark Spot Corrector (Naturium)",
+    "brand": "Naturium",
+    "source": "https://naturium.com/products/kojic-acid-emulsion-5"
+  },
+  {
+    "name": "CeraVe PM Facial Moisturizing Lotion",
+    "brand": "CeraVe",
+    "source": "https://www.cerave.com/skincare/moisturizers/pm-facial-moisturizing-lotion"
+  },
+  {
+    "name": "Olay Regenerist Micro‑Sculpting Cream",
+    "brand": "Olay",
+    "source": "https://www.olay.com/regenerist-micro-sculpting-cream"
+  },
+  {
+    "name": "Eucerin Advanced Repair Cream (Body)",
+    "brand": "Eucerin",
+    "source": "https://www.eucerinus.com/products/advanced-repair/advanced-repair-cream"
+  },
+  {
+    "name": "Bioderma Atoderm Intensive Baume",
+    "brand": "Bioderma",
+    "source": "https://www.bioderma.us/our-products/atoderm/atoderm-intensive-baume"
+  },
+  {
+    "name": "La Roche-Posay Cicaplast Baume B5",
+    "brand": "La Roche-Posay",
+    "source": "https://www.laroche-posay.us/face-and-body-moisturizer/cicaplast-baume-b5-3337872418730.html"
+  }
+]
