@@ -12,6 +12,17 @@ export default function AIChatbot() {
   const [messages, setMessages] = useState([welcomeMessage]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
+
+  // SKINBLOOM_CHAT_HISTORY_UI_V1
+  const [conversationId, setConversationId] = useState(null);
+  const [conversations, setConversations] = useState([]);
+  const [showHistory, setShowHistory] = useState(false);
+  const [historyLoading, setHistoryLoading] = useState(false);
+  const [historyError, setHistoryError] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(
+    () => Boolean(localStorage.getItem("token"))
+  );
+
   // PERSONALIZED_CHAT_UI_V1
   const [useSkinProfile, setUseSkinProfile] = useState(false);
   const messagesEndRef = useRef(null);
@@ -21,6 +32,93 @@ export default function AIChatbot() {
       messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
     }
   }, [messages, isOpen, loading]);
+
+  const loadConversations = async () => {
+    const token = localStorage.getItem("token");
+    setIsLoggedIn(Boolean(token));
+
+    if (!token) {
+      setConversations([]);
+      return;
+    }
+
+    setHistoryLoading(true);
+    setHistoryError("");
+
+    try {
+      const { data } = await API.get("/chatbot/conversations");
+      setConversations(Array.isArray(data.conversations)
+        ? data.conversations
+        : []);
+    } catch (error) {
+      setHistoryError(
+        error.response?.data?.error || "Could not load chat history."
+      );
+    } finally {
+      setHistoryLoading(false);
+    }
+  };
+
+  const startNewChat = () => {
+    if (loading || historyLoading) return;
+    setConversationId(null);
+    setMessages([welcomeMessage]);
+    setInput("");
+    setShowHistory(false);
+    setHistoryError("");
+  };
+
+  const openConversation = async (id) => {
+    if (loading || historyLoading) return;
+
+    setHistoryLoading(true);
+    setHistoryError("");
+
+    try {
+      const { data } = await API.get(`/chatbot/conversations/${id}`);
+      const savedMessages = Array.isArray(data.conversation?.messages)
+        ? data.conversation.messages
+        : [];
+
+      setConversationId(data.conversation._id);
+      setMessages([welcomeMessage, ...savedMessages]);
+      setInput("");
+      setShowHistory(false);
+    } catch (error) {
+      setHistoryError(
+        error.response?.data?.error || "Could not open conversation."
+      );
+    } finally {
+      setHistoryLoading(false);
+    }
+  };
+
+  const deleteConversation = async (id) => {
+    if (loading || historyLoading) return;
+    if (!window.confirm("Delete this conversation permanently?")) return;
+
+    setHistoryLoading(true);
+    setHistoryError("");
+
+    try {
+      await API.delete(`/chatbot/conversations/${id}`);
+
+      setConversations((prev) =>
+        prev.filter((conversation) => conversation._id !== id)
+      );
+
+      if (conversationId === id) {
+        setConversationId(null);
+        setMessages([welcomeMessage]);
+      }
+    } catch (error) {
+      setHistoryError(
+        error.response?.data?.error || "Could not delete conversation."
+      );
+    } finally {
+      setHistoryLoading(false);
+    }
+  };
 
   const sendMessage = async (text) => {
     const message = text.trim();
@@ -37,9 +135,13 @@ export default function AIChatbot() {
     try {
       const { data } = await API.post(
         "/chatbot/message",
-        { message, history, useSkinProfile },
+        { message, history, useSkinProfile, conversationId },
         { timeout: 35000 }
       );
+
+      if (data.conversationId) {
+        setConversationId(data.conversationId);
+      }
 
       setMessages((prev) => [
         ...prev,
@@ -89,6 +191,67 @@ export default function AIChatbot() {
               ✕
             </button>
           </header>
+
+          {/* SKINBLOOM_CHAT_HISTORY_PANEL_V1 */}
+          <div className="skinbloom-ai-history-toolbar">
+            <button
+              type="button"
+              onClick={startNewChat}
+              disabled={loading || historyLoading}
+            >
+              + New Chat
+            </button>
+
+            {isLoggedIn && (
+              <button
+                type="button"
+                onClick={() => {
+                  if (!showHistory) loadConversations();
+                  setShowHistory((prev) => !prev);
+                }}
+                disabled={loading || historyLoading}
+              >
+                {showHistory ? "Back to Chat" : "History"}
+              </button>
+            )}
+          </div>
+
+          {showHistory && isLoggedIn && (
+            <div className="skinbloom-ai-history-panel">
+              <strong>Previous Conversations</strong>
+
+              {historyLoading && <p>Loading conversations...</p>}
+              {historyError && <p role="alert">{historyError}</p>}
+
+              {!historyLoading && conversations.length === 0 && (
+                <p>No saved conversations yet.</p>
+              )}
+
+              {conversations.map((conversation) => (
+                <div
+                  key={conversation._id}
+                  className="skinbloom-ai-history-item"
+                >
+                  <button
+                    type="button"
+                    onClick={() => openConversation(conversation._id)}
+                    disabled={loading || historyLoading}
+                  >
+                    {conversation.title || "New Conversation"}
+                  </button>
+
+                  <button
+                    type="button"
+                    aria-label="Delete conversation"
+                    onClick={() => deleteConversation(conversation._id)}
+                    disabled={loading || historyLoading}
+                  >
+                    🗑️
+                  </button>
+                </div>
+              ))}
+            </div>
+          )}
 
           <div className="skinbloom-ai-messages" aria-live="polite">
             {messages.map((message, index) => (

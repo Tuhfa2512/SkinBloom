@@ -1,3 +1,6 @@
+import mongoose from 'mongoose'
+import ChatHistory from '../models/ChatHistory.js'
+import { authRequired } from '../middleware/auth.js'
 import express from 'express'
 import jwt from 'jsonwebtoken'
 import Profile from '../models/Profile.js'
@@ -21,6 +24,70 @@ Guidelines:
 `
 
 const recentRequests = new Map()
+
+
+// SKINBLOOM_CHAT_HISTORY_API_V1
+
+router.get('/conversations', authRequired, async (req, res) => {
+  try {
+    const conversations = await ChatHistory.find({
+      userId: req.user.id
+    })
+      .select('_id title createdAt updatedAt')
+      .sort({ updatedAt: -1 })
+      .limit(50)
+      .lean()
+
+    res.json({ conversations })
+  } catch (error) {
+    console.error('Chat history list error:', error.message)
+    res.status(500).json({ error: 'Unable to load conversations.' })
+  }
+})
+
+router.get('/conversations/:id', authRequired, async (req, res) => {
+  try {
+    if (!mongoose.isValidObjectId(req.params.id)) {
+      return res.status(400).json({ error: 'Invalid conversation ID.' })
+    }
+
+    const conversation = await ChatHistory.findOne({
+      _id: req.params.id,
+      userId: req.user.id
+    }).lean()
+
+    if (!conversation) {
+      return res.status(404).json({ error: 'Conversation not found.' })
+    }
+
+    res.json({ conversation })
+  } catch (error) {
+    console.error('Chat history load error:', error.message)
+    res.status(500).json({ error: 'Unable to load conversation.' })
+  }
+})
+
+router.delete('/conversations/:id', authRequired, async (req, res) => {
+  try {
+    if (!mongoose.isValidObjectId(req.params.id)) {
+      return res.status(400).json({ error: 'Invalid conversation ID.' })
+    }
+
+    const deleted = await ChatHistory.findOneAndDelete({
+      _id: req.params.id,
+      userId: req.user.id
+    })
+
+    if (!deleted) {
+      return res.status(404).json({ error: 'Conversation not found.' })
+    }
+
+    res.json({ message: 'Conversation deleted successfully.' })
+  } catch (error) {
+    console.error('Chat history delete error:', error.message)
+    res.status(500).json({ error: 'Unable to delete conversation.' })
+  }
+})
 
 router.post('/message', async (req, res) => {
   try {
@@ -50,7 +117,58 @@ router.post('/message', async (req, res) => {
       recentRequests.clear()
     }
 
-    const { message, history = [], useSkinProfile = false } = req.body || {}
+    const { message, history = [], useSkinProfile = false, conversationId = null } = req.body || {}
+
+    // SKINBLOOM_AUTO_CHAT_SAVE_V1
+    let chatUserId = null
+    let existingConversation = null
+
+    const authHeaderForHistory = req.headers.authorization || ''
+    const chatToken = authHeaderForHistory.startsWith('Bearer ')
+      ? authHeaderForHistory.slice(7)
+      : ''
+
+    if (chatToken) {
+      try {
+        const decodedChatUser = jwt.verify(chatToken, process.env.JWT_SECRET)
+        if (decodedChatUser.id && mongoose.isValidObjectId(decodedChatUser.id)) {
+          chatUserId = decodedChatUser.id
+        }
+      } catch {
+        // Invalid session cannot access saved chat history.
+        if (conversationId) {
+          return res.status(401).json({
+            error: 'Please log in again to continue this conversation.'
+          })
+        }
+      }
+    }
+
+    if (conversationId !== null) {
+      if (!chatUserId) {
+        return res.status(401).json({
+          error: 'Please log in to continue a saved conversation.'
+        })
+      }
+
+      if (typeof conversationId !== 'string' ||
+          !mongoose.isValidObjectId(conversationId)) {
+        return res.status(400).json({
+          error: 'Invalid conversation ID.'
+        })
+      }
+
+      existingConversation = await ChatHistory.findOne({
+        _id: conversationId,
+        userId: chatUserId
+      })
+
+      if (!existingConversation) {
+        return res.status(404).json({
+          error: 'Conversation not found.'
+        })
+      }
+    }
 
     if (typeof message !== 'string' ||
         !message.trim() ||
@@ -66,7 +184,14 @@ router.post('/message', async (req, res) => {
       })
     }
 
-    const safeHistory = history.slice(-10)
+    // SKINBLOOM_SERVER_SIDE_HISTORY_V1
+    // For saved conversations, use verified MongoDB history.
+    // New and guest conversations retain the existing behavior.
+    const historySource = existingConversation
+      ? existingConversation.messages
+      : history
+
+    const safeHistory = historySource.slice(-10)
       .filter(m =>
         m &&
         (m.role === 'user' || m.role === 'model') &&
@@ -227,6 +352,16 @@ ${JSON.stringify(skinContext)}
       const mentionedAllergies = []
 
       for (const match of normalizedMessage.matchAll(allergyPattern)) {
+        const beforeMatch = normalizedMessage.slice(
+          Math.max(0, match.index - 30),
+          match.index
+        )
+
+        // Ignore negated allergy statements.
+        if (/\b(?:not|never|don't|do not)\s*$/i.test(beforeMatch)) {
+          continue
+        }
+
         const statement = match[1].split(/\b(?:but|however|although)\b/i)[0]
 
         for (const allergen of knownAllergens) {
@@ -258,7 +393,24 @@ Do not suggest testing a product containing a known allergen on the skin.
 `
       }
 
-      const eligibleProducts = products.filter(product => {
+      // SKINBLOOM_UNVERIFIED_INGREDIENT_GUARD_V4
+      // Existing catalog ingredient lists have not been verified.
+      // Avoid product recommendations for reported allergies.
+      if (allergies.length > 0) {
+        personalizedInstruction += `
+
+IMPORTANT ALLERGY SAFETY RULE:
+SkinBloom's current ingredient lists are not verified against
+manufacturer labels. Do not recommend a specific product as
+suitable or safe for the user's reported allergy.
+Explain that reliable allergy screening is currently unavailable.
+Encourage checking the manufacturer's complete ingredient label.
+`
+      }
+
+      const eligibleProducts = allergies.length > 0
+        ? []
+        : products.filter(product => {
         const ingredients = Array.isArray(product.ingredients)
           ? product.ingredients.map(value =>
               String(value).toLowerCase().trim()
@@ -355,8 +507,77 @@ Do not explain this format to the user.
 Do not claim products are guaranteed allergy-safe.
 `
     }
+// SKINBLOOM_PERSONALIZED_ROUTINE_V1
 
-    const model = process.env.GEMINI_MODEL || 'gemini-2.5-flash'
+const routineIntent =
+  /\b(routine|morning routine|night routine|am routine|pm routine|skincare steps|skin care routine|daily skincare)\b|রুটিন|সকালের স্কিনকেয়ার|রাতের স্কিনকেয়ার/i.test(message)
+
+if (routineIntent) {
+  personalizedInstruction += `
+
+SKINBLOOM PERSONALIZED ROUTINE GENERATOR
+
+The user is asking for a skincare routine.
+
+Create a practical skincare routine based on the user's
+skin type, concerns, goals, and preferences.
+
+If the user explicitly opted in to using their saved
+skin profile, use that profile to personalize the routine.
+
+If important information is missing, provide a gentle
+beginner-friendly routine and ask one relevant follow-up
+question.
+
+ROUTINE FORMAT:
+
+🌞 MORNING ROUTINE (AM)
+1. Gentle cleanser
+2. Moisturizer
+3. Broad-spectrum sunscreen SPF 30 or higher
+
+🌙 NIGHT ROUTINE (PM)
+1. Gentle cleanser
+2. Moisturizer
+
+PERSONALIZATION RULES:
+
+- Adapt the routine to oily, dry, combination, normal,
+  or sensitive skin.
+- Consider acne, dryness, pigmentation, and other
+  concerns without diagnosing conditions.
+- Explain why each step is useful.
+- Explain the correct application order.
+- Avoid recommending too many active ingredients.
+- Introduce new products gradually.
+- Do not recommend prescription medications.
+- Do not claim that any product will cure a condition.
+- Avoid known allergens or sensitivities.
+- Never claim a product is allergy-safe.
+- If the user reports an allergy, do not recommend
+  specific SkinBloom products because the catalog
+  ingredient information is not manufacturer-verified.
+- Do not invent SkinBloom product names or prices.
+- Recommend professional medical care for severe
+  or persistent skin problems.
+
+IMPORTANT:
+The routine format above is a beginner template,
+not a mandatory routine for every user.
+
+If the user requests only a morning or night routine,
+provide only the requested routine.
+
+If the user requests both, provide both AM and PM.
+
+If the user requests SkinBloom products, use only
+the available catalog products supplied separately
+in the system instructions.
+
+Keep the explanation clear, friendly, and practical.
+`
+}
+    const model = process.env.GEMINI_MODEL || 'gemini-3.8-flash'
 
     const response = await fetch(
       `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent`,
@@ -444,9 +665,41 @@ Do not claim products are guaranteed allergy-safe.
         .map(id => availableById.get(id))
     }
 
+    // Save only successful AI exchanges for authenticated users.
+    let savedConversationId = null
+
+    if (chatUserId) {
+      try {
+        let conversation = existingConversation
+
+        if (!conversation) {
+          conversation = new ChatHistory({
+            userId: chatUserId,
+            title: message.trim().slice(0, 80),
+            messages: []
+          })
+        }
+
+        conversation.messages.push(
+          { role: 'user', text: message.trim() },
+          {
+            role: 'model',
+            text: cleanReply,
+            products: selectedProducts
+          }
+        )
+
+        await conversation.save()
+        savedConversationId = String(conversation._id)
+      } catch (saveError) {
+        console.error('Chat history save error:', saveError.message)
+      }
+    }
+
     res.json({
       reply: cleanReply,
-      products: selectedProducts
+      products: selectedProducts,
+      conversationId: savedConversationId
     })
 
   } catch (err) {
