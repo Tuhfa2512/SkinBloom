@@ -1162,7 +1162,7 @@ textarea:focus {
     color: var(--muted);
     font-size: 14px;
 }
-*/ :root {
+:root {
     --brand: #1b212c;
     --brand-2: #4f46e5;
     --text: #1b212c;
