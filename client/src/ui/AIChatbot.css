@@ -272,3 +272,78 @@
 .skinbloom-ai-product-info a:hover {
   background: #047857;
 }
+\n
+/* SKINBLOOM_CHAT_HISTORY_STYLES_V1 */
+
+.skinbloom-ai-history-toolbar {
+  display: flex;
+  gap: 8px;
+  padding: 10px 12px;
+  border-bottom: 1px solid #f0dce5;
+}
+
+.skinbloom-ai-history-toolbar button {
+  border: 1px solid #e5b8cc;
+  background: #fff5f9;
+  color: #9c3263;
+  padding: 7px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.skinbloom-ai-history-toolbar button:hover {
+  background: #ffe6f0;
+}
+
+.skinbloom-ai-history-panel {
+  padding: 12px;
+  max-height: 180px;
+  overflow-y: auto;
+  background: #fff9fc;
+  border-bottom: 1px solid #f0dce5;
+}
+
+.skinbloom-ai-history-panel > strong {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 13px;
+  color: #87365b;
+}
+
+.skinbloom-ai-history-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 7px;
+}
+
+.skinbloom-ai-history-item button:first-child {
+  flex: 1;
+  min-width: 0;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.skinbloom-ai-history-item button {
+  padding: 7px 9px;
+  border: 1px solid #f0dce5;
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+  color: #77314f;
+  font-size: 12px;
+}
+
+.skinbloom-ai-history-item button:hover {
+  background: #ffeaf2;
+}
+
+.skinbloom-ai-history-toolbar button:disabled,
+.skinbloom-ai-history-item button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
