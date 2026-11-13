@@ -577,49 +577,69 @@ in the system instructions.
 Keep the explanation clear, friendly, and practical.
 `
 }
-    const model = process.env.GEMINI_MODEL || 'gemini-3.8-flash'
+    const primaryModel = process.env.GEMINI_MODEL || 'gemini-3.8-flash'
+    const fallbackModel = process.env.GEMINI_FALLBACK_MODEL || 'gemini-3.5-flash-lite'
 
-    const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'x-goog-api-key': key
-        },
-        body: JSON.stringify({
-          systemInstruction: {
-            parts: [{ text: personalizedInstruction }]
-          },
-          contents: [
-            ...safeHistory,
-            {
-              role: 'user',
-              parts: [{ text: message.trim() }]
-            }
-          ],
-          generationConfig: {
-            maxOutputTokens: 700,
-            temperature: 0.7
-          }
-        }),
-        signal: AbortSignal.timeout(25000)
+    const requestBody = {
+      systemInstruction: {
+        parts: [{ text: personalizedInstruction }]
+      },
+      contents: [
+        ...safeHistory,
+        { role: 'user', parts: [{ text: message.trim() }] }
+      ],
+      generationConfig: {
+        maxOutputTokens: 2048,
+        temperature: 0.7
       }
-    )
+    }
 
-    if (!response.ok) {
-      const errorBody = await response.text()
-      console.error('Gemini API status:', response.status)
-      console.error('Gemini API details:', errorBody.slice(0, 1000))
+    let data = null
+    let lastStatus = null
 
+    for (const model of [...new Set([primaryModel, fallbackModel])]) {
+      try {
+        const response = await fetch(
+          `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent`,
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'x-goog-api-key': key
+            },
+            body: JSON.stringify(requestBody),
+            signal: AbortSignal.timeout(30000)
+          }
+        )
+
+        if (response.ok) {
+          data = await response.json()
+          console.log('Gemini model used:', model)
+          console.log('Gemini finish reason:', data.candidates?.[0]?.finishReason)
+          break
+        }
+
+        lastStatus = response.status
+        const errorBody = await response.text()
+        console.error('Gemini API status:', model, response.status)
+        console.error('Gemini API details:', errorBody.slice(0, 500))
+
+        if (![429, 503].includes(response.status)) {
+          break
+        }
+      } catch (error) {
+        console.error('Gemini request error:', model, error.message)
+        lastStatus = 503
+      }
+    }
+
+    if (!data) {
       return res.status(502).json({
-        error: response.status === 429
+        error: lastStatus === 429
           ? 'AI service is busy or quota exceeded. Please try later.'
           : 'AI service is temporarily unavailable.'
       })
     }
-
-    const data = await response.json()
 
     const reply = data.candidates?.[0]?.content?.parts
       ?.filter(part => typeof part.text === 'string')
