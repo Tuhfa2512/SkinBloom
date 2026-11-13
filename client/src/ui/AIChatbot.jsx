@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import API from "../auth";
+import { useAuth } from "../context/AuthContext";
 import "./AIChatbot.css";
 
 const welcomeMessage = {
@@ -19,9 +20,8 @@ export default function AIChatbot() {
   const [showHistory, setShowHistory] = useState(false);
   const [historyLoading, setHistoryLoading] = useState(false);
   const [historyError, setHistoryError] = useState("");
-  const [isLoggedIn, setIsLoggedIn] = useState(
-    () => Boolean(localStorage.getItem("token"))
-  );
+  const { isAuthenticated } = useAuth();
+  const isLoggedIn = isAuthenticated;
 
   // PERSONALIZED_CHAT_UI_V1
   const [useSkinProfile, setUseSkinProfile] = useState(false);
@@ -34,10 +34,7 @@ export default function AIChatbot() {
   }, [messages, isOpen, loading]);
 
   const loadConversations = async () => {
-    const token = localStorage.getItem("token");
-    setIsLoggedIn(Boolean(token));
-
-    if (!token) {
+    if (!isAuthenticated) {
       setConversations([]);
       return;
     }
@@ -136,7 +133,7 @@ export default function AIChatbot() {
       const { data } = await API.post(
         "/chatbot/message",
         { message, history, useSkinProfile, conversationId },
-        { timeout: 35000 }
+        { timeout: 75000 }
       );
 
       if (data.conversationId) {
